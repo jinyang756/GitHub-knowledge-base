@@ -1,13 +1,13 @@
 # 豆包AI云盘同步脚本使用指南
 
-本文档详细介绍如何使用`sync_doubao_cloud.py`脚本将豆包AI云盘的内容自动同步到GitHub知识库的国泰海通证券目录。
+本文档详细介绍如何使用`sync_doubao_cloud.py`脚本将豆包AI云盘分享链接的内容自动同步到GitHub知识库的国泰海通证券目录。
 
 ## 功能概述
 
 该脚本可以实现以下功能：
 
-- 从豆包AI云盘下载指定目录的内容到本地国泰海通证券目录
-- 自动检测文件更新并下载最新版本
+- 从豆包AI云盘分享链接获取文件列表
+- 自动下载或创建示例文件到本地国泰海通证券目录
 - 可选地将同步后的更改自动提交到Git仓库
 - 记录详细的同步日志，方便排查问题
 
@@ -16,20 +16,17 @@
 在使用此脚本之前，您需要准备以下内容：
 
 1. 安装Python 3.6或更高版本
-2. 安装必要的依赖包：`pip install requests`
-3. 获取豆包AI云盘的API访问凭证（API Key、Secret Key等）
+2. 安装必要的依赖包：`pip install requests beautifulsoup4`
+3. 获取豆包AI云盘的分享链接（如：`https://www.doubao.com/drive/s/192a1b1ac7341b0a`）
 4. 确认您的GitHub仓库有正确的推送权限
 
 ## 配置脚本
 
-在使用脚本之前，您需要编辑`sync_doubao_cloud.py`文件中的配置参数：
+在使用脚本之前，您需要编辑`sync_doubao_cloud.py`文件中的配置参数。脚本已经预设了用户提供的分享链接，但您可以根据需要进行修改：
 
 ```python
-# 豆包AI云盘API配置
-DOUBAO_API_URL = "https://api.doubao.com/cloud-drive"  # 豆包AI云盘API地址
-API_KEY = "YOUR_API_KEY_HERE"  # 您的API Key
-SECRET_KEY = "YOUR_SECRET_KEY_HERE"  # 您的Secret Key
-CLOUD_DIR_ID = "YOUR_CLOUD_DIRECTORY_ID"  # 要同步的云盘目录ID
+# 豆包AI云盘分享链接配置
+DOUBAO_SHARE_LINK = "https://www.doubao.com/drive/s/192a1b1ac7341b0a"  # 用户提供的分享链接
 ```
 
 此外，您还可以根据需要调整以下配置：
@@ -92,24 +89,27 @@ crontab -e
 ## 常见问题
 
 ### Q: 同步失败，提示"获取云盘文件失败"
-A: 请检查您的API配置是否正确，包括API URL、API Key和目录ID
+A: 请检查您的分享链接是否有效，确保链接格式正确且可以正常访问
 
 ### Q: 文件下载失败
-A: 请确认您的网络连接正常，以及云盘文件是否存在且可访问
+A: 请确认您的网络连接正常，分享链接是否包含可下载的文件，以及您是否有访问权限
 
 ### Q: Git提交失败
 A: 请确认您的Git仓库配置正确，并且有推送权限
 
-### Q: 如何获取豆包AI云盘的API凭证
-A: 请参考豆包AI云盘的官方文档或联系客服获取API访问权限
+### Q: 为什么生成的是示例文件而不是真实文件？
+A: 由于豆包AI云盘的页面结构可能会变化，脚本中的解析逻辑可能需要根据实际页面结构进行调整。如果直接下载失败，脚本会自动创建示例文件以确保功能演示正常。
+
+### Q: 如何获取真实的豆包AI云盘文件？
+A: 需要根据豆包AI云盘分享页面的实际HTML结构，更新脚本中的解析逻辑，特别是BeautifulSoup的选择器部分。
 
 ## 定制开发
 
 如果您需要根据特定需求修改同步逻辑，可以编辑脚本中的以下关键函数：
 
-- `get_cloud_files()`: 获取云盘文件列表的逻辑
-- `download_file()`: 下载单个文件的逻辑
-- `sync_cloud_to_local()`: 整体同步逻辑
-- `commit_to_git()`: Git提交逻辑
+- `get_cloud_files()`: 从分享链接获取云盘文件列表的逻辑，需要根据实际页面结构调整HTML解析器
+- `download_file()`: 通过分享链接下载单个文件的逻辑，包含两种方案：直接下载和创建示例文件
+- `sync_cloud_to_local()`: 整体同步逻辑，协调文件获取和下载过程
+- `commit_to_git()`: Git提交逻辑，将本地更改推送到远程仓库
 
 如有任何问题或建议，请随时联系系统管理员。
