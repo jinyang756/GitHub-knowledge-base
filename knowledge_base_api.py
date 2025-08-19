@@ -198,6 +198,12 @@ def serve_static(filename):
     """提供静态文件访问"""
     return send_from_directory(DOCS_DIR, filename)
 
+# 提供管理界面访问
+@app.route('/admin.html')
+def serve_admin():
+    """提供管理界面访问"""
+    return send_from_directory(BASE_DIR, 'admin.html')
+
 # 健康检查端点
 @app.route('/api/health')
 def health_check():
@@ -208,15 +214,181 @@ def health_check():
         'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     })
 
+# 创建分类端点
+@app.route('/api/categories', methods=['POST'])
+def create_category():
+    """创建新分类的API端点"""
+    try:
+        data = request.json
+        if not data or 'name' not in data:
+            return jsonify({
+                'success': False,
+                'error': '请提供分类名称'
+            }), 400
+        
+        category_name = data['name']
+        # 验证分类名称是否合法
+        if not category_name or not category_name.strip():
+            return jsonify({
+                'success': False,
+                'error': '分类名称不能为空'
+            }), 400
+        
+        # 检查是否包含非法字符
+        import re
+        if re.search(r'[^\w\-\u4e00-\u9fa5]', category_name):
+            return jsonify({
+                'success': False,
+                'error': '分类名称只能包含字母、数字、下划线、连字符和中文字符'
+            }), 400
+        
+        category_path = os.path.join(DOCS_DIR, category_name)
+        
+        # 检查分类是否已存在
+        if os.path.exists(category_path):
+            return jsonify({
+                'success': False,
+                'error': '分类已存在'
+            }), 400
+        
+        # 创建分类目录
+        os.makedirs(category_path)
+        
+        # 可选：创建默认的README.md文件
+        if 'description' in data:
+            readme_path = os.path.join(category_path, 'README.md')
+            with open(readme_path, 'w', encoding='utf-8') as f:
+                f.write(f"# {data['description']}\n\n这是 {category_name} 分类的描述文件。")
+        
+        log(f'分类创建成功: {category_name}')
+        
+        return jsonify({
+            'success': True,
+            'message': '分类创建成功',
+            'data': {
+                'name': category_name,
+                'path': category_name,
+                'description': data.get('description', ''),
+                'file_count': 0
+            }
+        })
+    except Exception as e:
+        log(f'创建分类失败: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': f'创建分类失败: {str(e)}'
+        }), 500
+
+# 文件上传端点
+@app.route('/api/categories/<category>/upload', methods=['POST'])
+def upload_file(category):
+    """上传文件到指定分类的API端点"""
+    # 检查分类是否存在
+    category_path = os.path.join(DOCS_DIR, category)
+    if not os.path.exists(category_path) or not os.path.isdir(category_path):
+        return jsonify({
+            'success': False,
+            'error': '分类不存在'
+        }), 404
+    
+    # 检查是否有文件上传
+    if 'file' not in request.files:
+        return jsonify({
+            'success': False,
+            'error': '没有文件上传'
+        }), 400
+    
+    file = request.files['file']
+    
+    # 检查文件名是否为空
+    if file.filename == '':
+        return jsonify({
+            'success': False,
+            'error': '文件名不能为空'
+        }), 400
+    
+    # 检查文件类型是否允许
+    if not allowed_file(file.filename):
+        return jsonify({
+            'success': False,
+            'error': f'不支持的文件类型，仅支持: {', '.join(ALLOWED_EXTENSIONS)}'
+        }), 400
+    
+    try:
+        # 保存文件到分类目录
+        file_path = os.path.join(category_path, file.filename)
+        file.save(file_path)
+        
+        # 获取文件信息
+        stats = os.stat(file_path)
+        
+        log(f'文件上传成功: {category}/{file.filename} ({stats.st_size} bytes)')
+        
+        return jsonify({
+            'success': True,
+            'message': '文件上传成功',
+            'data': {
+                'name': file.filename,
+                'category': category,
+                'path': os.path.join(category, file.filename),
+                'size': stats.st_size,
+                'upload_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            }
+        })
+    except Exception as e:
+        log(f'文件上传失败: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': f'文件上传失败: {str(e)}'
+        }), 500
+
+# 删除文档端点
+@app.route('/api/categories/<category>/<path:filename>', methods=['DELETE'])
+def delete_file(category, filename):
+    """删除指定文档的API端点"""
+    file_path = os.path.join(DOCS_DIR, category, filename)
+    
+    try:
+        # 检查文件是否存在
+        if not os.path.exists(file_path) or not os.path.isfile(file_path) or not allowed_file(filename):
+            return jsonify({
+                'success': False,
+                'error': '文件不存在或不允许访问'
+            }), 404
+        
+        # 删除文件
+        os.remove(file_path)
+        
+        log(f'文件删除成功: {category}/{filename}')
+        
+        return jsonify({
+            'success': True,
+            'message': '文件删除成功',
+            'data': {
+                'name': filename,
+                'category': category,
+                'path': os.path.join(category, filename)
+            }
+        })
+    except Exception as e:
+        log(f'文件删除失败: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': f'文件删除失败: {str(e)}'
+        }), 500
+
 if __name__ == '__main__':
     log("知识库API服务启动中...")
     log(f"文档目录: {DOCS_DIR}")
     log("API服务运行在 http://localhost:5000")
     log("可用端点:")
     log("  - /api/health          - 健康检查")
-    log("  - /api/categories      - 获取所有分类")
+    log("  - GET /api/categories  - 获取所有分类")
+    log("  - POST /api/categories - 创建新分类")
     log("  - /api/categories/{分类名} - 获取分类下的文件")
-    log("  - /api/categories/{分类名}/{文件名} - 获取文件内容")
+    log("  - GET /api/categories/{分类名}/{文件名} - 获取文件内容")
+    log("  - DELETE /api/categories/{分类名}/{文件名} - 删除文件")
+    log("  - /api/categories/{分类名}/upload - 上传文件到分类")
     
     # 启动API服务
     app.run(host='0.0.0.0', port=5000, debug=False)

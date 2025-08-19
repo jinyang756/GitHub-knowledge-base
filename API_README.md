@@ -145,6 +145,95 @@ GET /api/categories/{category}/{filename}
 }
 ```
 
+### 创建分类
+
+```
+POST /api/categories
+```
+
+**描述**：创建新的知识库分类
+
+**请求体 (JSON)**：
+```json
+{
+  "name": "分类名称",
+  "description": "分类描述" // 可选
+}
+```
+
+**响应示例**：
+```json
+{
+  "success": true,
+  "message": "分类创建成功",
+  "data": {
+    "name": "新分类",
+    "path": "新分类",
+    "description": "新分类的描述",
+    "file_count": 0
+  }
+}
+```
+
+### 上传文件
+
+```
+POST /api/categories/{category}/upload
+```
+
+**描述**：上传文件到指定分类
+
+**参数**：
+- `category`: 目标分类名称
+- Form Data: `file` (文件上传字段)
+
+**请求示例**：
+```
+POST /api/categories/国泰海通证券/upload
+Content-Type: multipart/form-data
+
+[表单数据包含一个名为'file'的文件]
+```
+
+**响应示例**：
+```json
+{
+  "success": true,
+  "message": "文件上传成功",
+  "data": {
+    "name": "new_document.md",
+    "category": "国泰海通证券",
+    "path": "国泰海通证券/new_document.md",
+    "size": 1024,
+    "upload_time": "2025-08-20 08:30:00"
+  }
+}
+```
+
+### 删除文件
+
+```
+DELETE /api/categories/{category}/{filename}
+```
+
+**描述**：删除指定分类下的文档
+
+**参数**：
+- `category`: 分类名称
+- `filename`: 文件名
+
+**响应示例**：
+```json
+{
+  "success": true,
+  "message": "文件删除成功",
+  "data": {
+    "name": "document.md",
+    "category": "国泰海通证券",
+    "path": "国泰海通证券/document.md"
+  }
+}
+
 ## 支持的文件类型
 
 API目前支持访问以下类型的文件：
@@ -155,6 +244,14 @@ API目前支持访问以下类型的文件：
 
 API会返回适当的HTTP状态码和错误信息，常见的错误情况包括：
 
+- 400 Bad Request：请求参数错误或不完整
+  - 没有文件上传
+  - 文件名不能为空
+  - 不支持的文件类型
+  - 请提供分类名称
+  - 分类名称不能为空
+  - 分类名称包含非法字符
+  - 分类已存在
 - 404 Not Found：请求的分类或文件不存在
 - 500 Internal Server Error：服务器内部错误
 
