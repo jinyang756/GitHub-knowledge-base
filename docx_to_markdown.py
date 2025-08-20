@@ -53,42 +53,46 @@ def convert_docx_to_markdown(input_file, output_file=None):
                 markdown_content.append('')
                 continue
             
-            # 处理标题
-            if para.style.name.startswith('Heading'):
-                # 提取标题级别（1-9）
-                try:
-                    level = int(para.style.name.replace('Heading ', ''))
-                    if 1 <= level <= 6:  # Markdown最多支持6级标题
-                        markdown_content.append(f"{'#' * level} {para.text}")
-                    else:
-                        # 级别超过6的标题，使用普通段落
+            try:
+                # 处理标题
+                if para.style and para.style.name and para.style.name.startswith('Heading'):
+                    # 提取标题级别（1-9）
+                    try:
+                        level = int(para.style.name.replace('Heading ', ''))
+                        if 1 <= level <= 6:  # Markdown最多支持6级标题
+                            markdown_content.append(f"{'#' * level} {para.text}")
+                        else:
+                            # 级别超过6的标题，使用普通段落
+                            markdown_content.append(para.text)
+                    except ValueError:
+                        # 无法解析标题级别，作为普通段落处理
                         markdown_content.append(para.text)
-                except ValueError:
-                    # 无法解析标题级别，作为普通段落处理
+                
+                # 处理列表（项目符号和编号）
+                elif para.style and para.style.name and para.style.name.startswith('List Bullet'):
+                    markdown_content.append(f"* {para.text}")
+                elif para.style and para.style.name and para.style.name.startswith('List Number'):
+                    # 简化处理，所有编号列表都使用1. 作为前缀
+                    markdown_content.append(f"1. {para.text}")
+                
+                # 处理引用
+                elif para.style and para.style.name and para.style.name.startswith('Quote'):
+                    markdown_content.append(f"> {para.text}")
+                
+                # 处理代码块（这里简化处理，实际docx中可能没有直接的代码块样式）
+                elif para.style and para.style.name and 'code' in para.style.name.lower():
+                    # 检查是否已经有代码块开始标记
+                    if markdown_content and not markdown_content[-1].startswith('```'):
+                        markdown_content.append('```')
                     markdown_content.append(para.text)
-            
-            # 处理列表（项目符号和编号）
-            elif para.style.name.startswith('List Bullet'):
-                markdown_content.append(f"* {para.text}")
-            elif para.style.name.startswith('List Number'):
-                # 简化处理，所有编号列表都使用1. 作为前缀
-                markdown_content.append(f"1. {para.text}")
-            
-            # 处理引用
-            elif para.style.name.startswith('Quote'):
-                markdown_content.append(f"> {para.text}")
-            
-            # 处理代码块（这里简化处理，实际docx中可能没有直接的代码块样式）
-            elif 'code' in para.style.name.lower():
-                # 检查是否已经有代码块开始标记
-                if markdown_content and not markdown_content[-1].startswith('```'):
+                    # 代码块结束（后续可能需要更复杂的逻辑来检测代码块结束）
                     markdown_content.append('```')
-                markdown_content.append(para.text)
-                # 代码块结束（后续可能需要更复杂的逻辑来检测代码块结束）
-                markdown_content.append('```')
-            
-            # 普通段落
-            else:
+                
+                # 普通段落
+                else:
+                    markdown_content.append(para.text)
+            except Exception:
+                # 任何异常都作为普通段落处理
                 markdown_content.append(para.text)
         
         # 处理表格
