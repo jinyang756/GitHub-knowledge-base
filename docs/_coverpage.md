@@ -1,12 +1,8 @@
 ![logo](https://docsify.js.org/_media/icon.svg)
 
-# 我的知识库 <small>1.0</small>
+# 国泰海通证券知识库 <small>1.0</small>
 
-> 个人学习笔记与技术分享
-
-- 简洁优雅的文档网站
-- 基于Docsify构建
-- 易于维护和扩展
+> 支撑证券投资群话术生成的专业内容平台
 
 [GitHub](https://github.com/jinyang756/GitHub-knowledge-base.git)
-[开始阅读](#我的知识库)
+[开始阅读](#国泰海通证券知识库)
