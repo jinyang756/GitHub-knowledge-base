@@ -51,6 +51,18 @@
         successText: '已复制'
       }
     }
+    
+    // 自定义页脚
+    window.addEventListener('DOMContentLoaded', function() {
+      var footer = document.createElement('footer');
+      footer.style.textAlign = 'center';
+      footer.style.padding = '20px 0';
+      footer.style.color = '#999';
+      footer.style.fontSize = '14px';
+      footer.style.borderTop = '1px solid #eee';
+      footer.innerHTML = '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: #2563EB;">前往话术平台</a></p>';
+      document.body.appendChild(footer);
+    });
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
