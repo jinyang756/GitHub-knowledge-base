@@ -319,10 +319,90 @@
       transform: scale(0.95);
     }
     
+    /* 搜索区域样式 */
+    .search-section {
+      background-color: var(--bg-color);
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      position: relative;
+      z-index: 990;
+      transition: background-color 0.3s;
+    }
+    
+    .dark-mode .search-section {
+      border-bottom-color: #333;
+    }
+    
+    .search-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* 搜索联想结果样式 */
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-color);
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 980;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      transition: all 0.3s ease;
+    }
+    
+    .dark-mode .search-suggestions {
+      border-color: #444;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .search-suggestion-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    
+    .dark-mode .search-suggestion-item {
+      border-bottom-color: #333;
+    }
+    
+    .search-suggestion-item:last-child {
+      border-bottom: none;
+    }
+    
+    .search-suggestion-item:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .dark-mode .search-suggestion-item:hover {
+      background-color: #2a2a2a;
+    }
+    
+    .search-suggestion-item.active {
+      background-color: #e3f2fd;
+    }
+    
+    .dark-mode .search-suggestion-item.active {
+      background-color: #1e3a8a;
+    }
+    
     /* 响应式设计 */
     @media screen and (max-width: 768px) {
       .header-title h1 {
         font-size: 20px;
+      }
+      
+      .search-section {
+        padding: 15px 0;
       }
       
       #header-search-input {
@@ -338,7 +418,7 @@
       
       /* 移动端暗黑模式按钮位置优化 */
       .theme-toggle {
-        top: 80px;
+        top: 15px;
       }
     }
     
@@ -394,58 +474,220 @@
   </style>
 </head>
 <body>
-  <!-- 页面顶部搜索区域 -->
+  <!-- 页面顶部区域 -->
   <header class="site-header">
     <div class="header-content">
       <div class="header-title">
         <h1>国泰海通证券知识库</h1>
-      </div>
-      <div class="header-search">
-        <div class="search-wrapper">
-          <input type="text" id="header-search-input" placeholder="搜索知识库内容..." />
-          <button id="header-search-btn">🔍</button>
-        </div>
       </div>
     </div>
   </header>
   
   <div id="app"></div>
   <script>
-    // 初始化页头搜索功能
+    // 初始化搜索功能（包含打字联想）
     document.addEventListener('DOMContentLoaded', function() {
-      const searchInput = document.getElementById('header-search-input');
-      const searchBtn = document.getElementById('header-search-btn');
-      
-      // 搜索按钮点击事件
-      searchBtn.addEventListener('click', function() {
-        const searchText = searchInput.value.trim();
-        if (searchText) {
-          // 触发docsify内置搜索
-          const event = new KeyboardEvent('keydown', {
-            bubbles: true,
-            cancelable: true,
-            key: 'Enter',
-            which: 13,
-            code: 'Enter'
+      // 确保搜索元素存在再执行初始化
+      setTimeout(() => {
+        const searchInput = document.getElementById('header-search-input');
+        const searchBtn = document.getElementById('header-search-btn');
+        const suggestionsContainer = document.getElementById('search-suggestions');
+        
+        // 如果元素不存在，不执行后续代码
+        if (!searchInput || !searchBtn || !suggestionsContainer) {
+          return;
+        }
+        
+        // 等待DOM加载完成后初始化搜索功能
+        document.addEventListener('DOMContentLoaded', function() {
+          // 获取搜索相关元素
+          const searchInput = document.getElementById('header-search-input');
+          const searchBtn = document.getElementById('header-search-btn');
+          const suggestionsContainer = document.getElementById('search-suggestions');
+          
+          // 确保元素存在
+          if (!searchInput || !searchBtn || !suggestionsContainer) {
+            console.warn('Search elements not found');
+            return;
+          }
+          
+          // 预设的知识库常见搜索关键词，用于联想功能
+          const commonKeywords = [
+            'A股交易制度改革',
+            '全面注册制',
+            '上市规则',
+            '再融资新规',
+            '新能源行业',
+            '荀玉根',
+            '首席来了',
+            '投资顾问',
+            '资金运作',
+            '风险控制',
+            '市场分析',
+            '政策解读',
+            '投资策略',
+            '行业研究',
+            '公司资料'
+          ];
+          
+          // 获取搜索建议的函数
+          const getSuggestions = (query) => {
+            if (!query || query.trim().length < 1) return [];
+            
+            query = query.toLowerCase();
+            return commonKeywords.filter(keyword => 
+              keyword.toLowerCase().includes(query)
+            ).slice(0, 8); // 限制最多显示8个建议
+          };
+          
+          // 渲染搜索建议的函数
+          const renderSuggestions = (suggestions) => {
+            suggestionsContainer.innerHTML = '';
+            
+            if (suggestions.length === 0) {
+              suggestionsContainer.style.display = 'none';
+              return;
+            }
+            
+            suggestions.forEach(suggestion => {
+              const item = document.createElement('div');
+              item.className = 'search-suggestion-item';
+              item.textContent = suggestion;
+              
+              // 点击建议项时，填充到搜索框并执行搜索
+              item.addEventListener('click', () => {
+                searchInput.value = suggestion;
+                suggestionsContainer.style.display = 'none';
+                searchBtn.click();
+              });
+              
+              suggestionsContainer.appendChild(item);
+            });
+            
+            suggestionsContainer.style.display = 'block';
+          };
+          
+          // 搜索框输入事件（打字联想）
+          let searchTimeout;
+          searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(() => {
+              const query = this.value.trim();
+              const suggestions = getSuggestions(query);
+              renderSuggestions(suggestions);
+            }, 300); // 300ms防抖
           });
           
-          // 将搜索值设置到docsify搜索框
-          setTimeout(() => {
-            const docsifySearch = document.querySelector('.sidebar-nav .search');
-            if (docsifySearch && docsifySearch.querySelector('input')) {
-              docsifySearch.querySelector('input').value = searchText;
-              docsifySearch.querySelector('input').dispatchEvent(event);
+          // 搜索按钮点击事件
+          searchBtn.addEventListener('click', function() {
+            const searchText = searchInput.value.trim();
+            if (searchText) {
+              // 隐藏建议框
+              suggestionsContainer.style.display = 'none';
+              
+              // 使用docsify的搜索API执行搜索
+              if (window.Docsify && window.Docsify.search) {
+                // docsify的搜索插件提供了直接搜索的方法
+                const searchEvent = new CustomEvent('docsify:search', {
+                  detail: {
+                    query: searchText,
+                    options: {
+                      hideOtherSidebarContent: true
+                    }
+                  }
+                });
+                document.dispatchEvent(searchEvent);
+              } else {
+                // 如果docsify搜索API不可用，使用备用方案
+                // 创建一个临时搜索框并触发搜索
+                const tempSearchInput = document.createElement('input');
+                tempSearchInput.type = 'search';
+                tempSearchInput.className = 'sidebar-nav search-input';
+                tempSearchInput.value = searchText;
+                tempSearchInput.style.display = 'none';
+                document.body.appendChild(tempSearchInput);
+                
+                // 触发搜索事件
+                const event = new KeyboardEvent('keydown', {
+                  bubbles: true,
+                  cancelable: true,
+                  key: 'Enter',
+                  which: 13,
+                  code: 'Enter'
+                });
+                tempSearchInput.dispatchEvent(event);
+                
+                // 移除临时输入框
+                setTimeout(() => {
+                  document.body.removeChild(tempSearchInput);
+                }, 100);
+              }
             }
-          }, 100);
-        }
-      });
-      
-      // 搜索框回车事件
-      searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          searchBtn.click();
-        }
-      });
+          });
+          
+          // 搜索框回车事件
+          searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              searchBtn.click();
+            }
+          });
+        });
+        
+          // 监听键盘导航事件
+          searchInput.addEventListener('keydown', function(e) {
+            const activeItem = suggestionsContainer.querySelector('.search-suggestion-item.active');
+            const allItems = suggestionsContainer.querySelectorAll('.search-suggestion-item');
+            
+            if (suggestionsContainer.style.display === 'block') {
+              if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (activeItem) {
+                  activeItem.classList.remove('active');
+                  const nextItem = activeItem.nextElementSibling;
+                  if (nextItem) {
+                    nextItem.classList.add('active');
+                    nextItem.scrollIntoView({ block: 'nearest' });
+                  } else {
+                    allItems[0].classList.add('active');
+                    allItems[0].scrollIntoView({ block: 'nearest' });
+                  }
+                } else if (allItems.length > 0) {
+                  allItems[0].classList.add('active');
+                  allItems[0].scrollIntoView({ block: 'nearest' });
+                }
+              } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (activeItem) {
+                  activeItem.classList.remove('active');
+                  const prevItem = activeItem.previousElementSibling;
+                  if (prevItem) {
+                    prevItem.classList.add('active');
+                    prevItem.scrollIntoView({ block: 'nearest' });
+                  } else {
+                    allItems[allItems.length - 1].classList.add('active');
+                    allItems[allItems.length - 1].scrollIntoView({ block: 'nearest' });
+                  }
+                } else if (allItems.length > 0) {
+                  allItems[allItems.length - 1].classList.add('active');
+                  allItems[allItems.length - 1].scrollIntoView({ block: 'nearest' });
+                }
+              } else if (e.key === 'Escape') {
+                suggestionsContainer.style.display = 'none';
+              }
+            }
+          });
+          
+          // 点击页面其他地方关闭建议框
+          document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && 
+                !suggestionsContainer.contains(e.target) && 
+                e.target !== searchBtn) {
+              suggestionsContainer.style.display = 'none';
+            }
+          });
+      }, 100); // 延迟100ms执行，确保DOM渲染完成
     });
     window.$docsify = {
       name: '国泰海通证券知识库',
@@ -612,26 +854,7 @@
         
         // 页面内容加载完成后执行
         hook.doneEach(function() {
-          // 添加阅读时间统计
-          const article = document.querySelector('.markdown-section');
-          if (article && !article.querySelector('.reading-time')) {
-            const words = article.innerText.split(/\s+/).length;
-            const minutes = Math.ceil(words / 200); // 假设每分钟阅读200字
-            
-            const timeElement = createElement('div', 'reading-time');
-            Object.assign(timeElement.style, {
-              fontSize: '12px',
-              color: '#999',
-              marginBottom: '15px',
-              padding: '5px 0'
-            });
-            timeElement.textContent = `阅读时间：约 ${minutes} 分钟`;
-            
-            // 插入到文章顶部
-            if (article.firstChild) {
-              article.insertBefore(timeElement, article.firstChild);
-            }
-          }
+          // 移除阅读时间统计功能，优化页面美观
           
           // 优化图片加载体验
           const optimizeImages = () => {
@@ -688,9 +911,24 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   
-  <!-- 隐藏默认的侧边栏搜索框 -->
+  <!-- 隐藏默认的侧边栏搜索框和阅读时间相关元素 -->
   <style>
     .sidebar-nav .search {
+      display: none !important;
+    }
+    
+    /* 隐藏阅读时间统计 */
+    .reading-time {
+      display: none !important;
+    }
+    
+    /* 隐藏字数统计 */
+    .docsify-count {
+      display: none !important;
+    }
+    
+    /* 隐藏页面底部可能出现的字数统计信息 */
+    .markdown-section > p:last-child {
       display: none !important;
     }
   </style>

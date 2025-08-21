@@ -1,5 +1,17 @@
 # 国泰海通证券知识库
 
+<!-- 搜索框 - 放置在页面标题下方 -->
+<div class="search-section">
+  <div class="search-container">
+    <div class="search-wrapper">
+      <input type="text" id="header-search-input" placeholder="搜索知识库内容..." autocomplete="off" />
+      <button id="header-search-btn">🔍</button>
+      <!-- 搜索联想结果容器 -->
+      <div id="search-suggestions" class="search-suggestions"></div>
+    </div>
+  </div>
+</div>
+
 欢迎来到国泰海通证券知识库，这是一个为投资者、分析师和金融专业人士打造的综合性知识平台。我们致力于提供最新、最全面的金融市场资讯、深度分析和专业研究，助力您做出更明智的投资决策。
 
 ## 关于本知识库
