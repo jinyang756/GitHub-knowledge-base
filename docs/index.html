@@ -152,6 +152,27 @@
       z-index: 1000;
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
       font-size: 20px;
+      /* 可访问性优化 */
+      outline: none;
+      border: 2px solid transparent;
+    }
+    
+    .back-to-top:focus {
+      border-color: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+    }
+    
+    /* 屏幕阅读器友好提示 */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     
     .back-to-top.visible {
@@ -315,6 +336,7 @@
         font-size: 14px;
       }
       
+      /* 移动端暗黑模式按钮位置优化 */
       .theme-toggle {
         top: 80px;
       }
@@ -471,31 +493,42 @@
       }
     }
     
-    // 自定义插件（页脚、返回顶部按钮、暗黑模式等）
+    // 自定义插件（模块化实现）
     window.$docsify.plugins = [
       function(hook) {
-        // 页面加载完成后执行
+        // 创建DOM元素的辅助函数
+        const createElement = (tag, className, content = '', attributes = {}) => {
+          const element = document.createElement(tag);
+          if (className) element.className = className;
+          if (content) element.innerHTML = content;
+          Object.keys(attributes).forEach(key => {
+            element.setAttribute(key, attributes[key]);
+          });
+          return element;
+        };
+        
+        // 页面加载完成后执行的函数
         hook.ready(function() {
-          // 先检查是否已存在footer元素，如果存在则不重复添加
+          // 添加页脚
           if (!document.querySelector('footer.footer-custom')) {
-            var footer = document.createElement('footer');
-            footer.className = 'footer-custom';
-            footer.style.textAlign = 'center';
-            footer.style.padding = '20px 0';
-            footer.style.color = '#999';
-            footer.style.fontSize = '14px';
-            footer.style.borderTop = '1px solid #eee';
-            footer.style.marginTop = '20px';
-            footer.style.zIndex = '1'; // 确保在正常层显示
-            footer.innerHTML = '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: var(--theme-color);">前往话术平台</a> | <a href="https://shouweizhe-lark.web.app/" target="_blank" style="color: var(--theme-color);">访问官网</a> | <a href="https://moni.10jqka.com.cn/" target="_blank" style="color: var(--theme-color);">模拟炒股平台</a> | <a href="https://t.me/anyu168168" target="_blank" style="color: var(--theme-color);">Teledram社区</a></p>';
+            const footer = createElement('footer', 'footer-custom', 
+              '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: var(--theme-color);">前往话术平台</a> | <a href="https://shouweizhe-lark.web.app/" target="_blank" style="color: var(--theme-color);">访问官网</a> | <a href="https://moni.10jqka.com.cn/" target="_blank" style="color: var(--theme-color);">模拟炒股平台</a> | <a href="https://t.me/anyu168168" target="_blank" style="color: var(--theme-color);">Telegram社区</a></p>'
+            );
+            Object.assign(footer.style, {
+              textAlign: 'center',
+              padding: '20px 0',
+              color: '#999',
+              fontSize: '14px',
+              borderTop: '1px solid #eee',
+              marginTop: '20px',
+              zIndex: '1'
+            });
             document.body.appendChild(footer);
           }
           
           // 添加返回顶部按钮
           if (!document.querySelector('.back-to-top')) {
-            var backToTopBtn = document.createElement('div');
-            backToTopBtn.className = 'back-to-top';
-            backToTopBtn.innerHTML = '↑';
+            const backToTopBtn = createElement('div', 'back-to-top', '↑');
             document.body.appendChild(backToTopBtn);
             
             // 返回顶部功能
@@ -506,45 +539,53 @@
           
           // 添加暗黑模式切换按钮
           if (!document.querySelector('.theme-toggle')) {
-            var themeToggle = document.createElement('div');
-            themeToggle.className = 'theme-toggle';
-            themeToggle.innerHTML = '🌙';
+            const themeToggle = createElement('div', 'theme-toggle', '🌙');
             document.body.appendChild(themeToggle);
             
-            // 检查用户偏好或存储的主题设置
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-              document.documentElement.classList.add('dark-mode');
-              themeToggle.innerHTML = '☀️';
-            } else {
-              document.documentElement.classList.remove('dark-mode');
-              themeToggle.innerHTML = '🌙';
-            }
+            // 检查并应用用户主题偏好
+            const applyTheme = () => {
+              if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+                themeToggle.innerHTML = '☀️';
+              } else {
+                document.documentElement.classList.remove('dark-mode');
+                themeToggle.innerHTML = '🌙';
+              }
+            };
+            
+            // 初始化主题
+            applyTheme();
             
             // 切换主题
             themeToggle.addEventListener('click', function() {
               if (document.documentElement.classList.contains('dark-mode')) {
                 document.documentElement.classList.remove('dark-mode');
                 localStorage.theme = 'light';
-                themeToggle.innerHTML = '🌙';
               } else {
                 document.documentElement.classList.add('dark-mode');
                 localStorage.theme = 'dark';
-                themeToggle.innerHTML = '☀️';
+              }
+              applyTheme();
+            });
+            
+            // 监听系统主题变化
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+              if (!('theme' in localStorage)) {
+                applyTheme();
               }
             });
           }
           
           // 添加阅读进度指示器
           if (!document.querySelector('.reading-progress')) {
-            var progressBar = document.createElement('div');
-            progressBar.className = 'reading-progress';
+            const progressBar = createElement('div', 'reading-progress');
             document.body.appendChild(progressBar);
           }
           
-          // 监听滚动事件
-          window.addEventListener('scroll', function() {
+          // 滚动事件处理
+          const handleScroll = () => {
             // 控制返回顶部按钮显示/隐藏
-            var backToTopBtn = document.querySelector('.back-to-top');
+            const backToTopBtn = document.querySelector('.back-to-top');
             if (window.scrollY > 300) {
               backToTopBtn.classList.add('visible');
             } else {
@@ -552,19 +593,24 @@
             }
             
             // 更新阅读进度条
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
             document.querySelector('.reading-progress').style.width = scrolled + '%';
-          });
+          };
           
-          // 内容加载动画
-          hook.beforeEach(function(content) {
-            return content;
+          // 监听滚动事件（使用节流优化）
+          let lastScrollTime = 0;
+          window.addEventListener('scroll', function() {
+            const currentTime = Date.now();
+            if (currentTime - lastScrollTime > 100) { // 100ms节流
+              handleScroll();
+              lastScrollTime = currentTime;
+            }
           });
         });
         
-        // 页面加载完成后添加内容
+        // 页面内容加载完成后执行
         hook.doneEach(function() {
           // 添加阅读时间统计
           const article = document.querySelector('.markdown-section');
@@ -572,12 +618,13 @@
             const words = article.innerText.split(/\s+/).length;
             const minutes = Math.ceil(words / 200); // 假设每分钟阅读200字
             
-            const timeElement = document.createElement('div');
-            timeElement.className = 'reading-time';
-            timeElement.style.fontSize = '12px';
-            timeElement.style.color = '#999';
-            timeElement.style.marginBottom = '15px';
-            timeElement.style.padding = '5px 0';
+            const timeElement = createElement('div', 'reading-time');
+            Object.assign(timeElement.style, {
+              fontSize: '12px',
+              color: '#999',
+              marginBottom: '15px',
+              padding: '5px 0'
+            });
             timeElement.textContent = `阅读时间：约 ${minutes} 分钟`;
             
             // 插入到文章顶部
@@ -587,13 +634,16 @@
           }
           
           // 优化图片加载体验
-          const images = document.querySelectorAll('.markdown-section img');
-          images.forEach(img => {
-            if (!img.classList.contains('optimized')) {
+          const optimizeImages = () => {
+            const images = document.querySelectorAll('.markdown-section img:not(.optimized)');
+            images.forEach(img => {
               img.classList.add('optimized');
-              img.style.maxWidth = '100%';
-              img.style.height = 'auto';
-              img.style.transition = 'opacity 0.3s';
+              Object.assign(img.style, {
+                maxWidth: '100%',
+                height: 'auto',
+                transition: 'opacity 0.3s',
+                cursor: 'pointer'
+              });
               
               // 图片懒加载
               if ('loading' in HTMLImageElement.prototype) {
@@ -601,26 +651,32 @@
               }
               
               // 添加图片点击放大效果
-              img.style.cursor = 'pointer';
               img.addEventListener('click', function() {
                 if (img.classList.contains('expanded')) {
                   img.classList.remove('expanded');
-                  img.style.position = 'static';
-                  img.style.zIndex = '1';
-                  img.style.transform = 'none';
-                  img.style.boxShadow = 'none';
+                  Object.assign(img.style, {
+                    position: 'static',
+                    zIndex: '1',
+                    transform: 'none',
+                    boxShadow: 'none'
+                  });
                 } else {
                   img.classList.add('expanded');
-                  img.style.position = 'fixed';
-                  img.style.top = '50%';
-                  img.style.left = '50%';
-                  img.style.transform = 'translate(-50%, -50%)';
-                  img.style.zIndex = '1000';
-                  img.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
+                  Object.assign(img.style, {
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: '1000',
+                    boxShadow: '0 0 20px rgba(0,0,0,0.5)'
+                  });
                 }
               });
-            }
-          });
+            });
+          };
+          
+          // 执行图片优化
+          optimizeImages();
         });
       }
     ]
@@ -645,9 +701,7 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js" defer></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js" defer></script>
   
-  <!-- 新增功能插件 -->
-  <script src="//unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js" defer></script>
-  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js" defer></script>
+  <!-- 功能插件 - 已移除重复加载的插件 -->
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js" defer></script>
   <script src="//unpkg.com/docsify-count/dist/countable.min.js" defer></script>
   
