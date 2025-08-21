@@ -28,7 +28,6 @@
   <script>
     window.$docsify = {
       name: '国泰海通证券知识库',
-      repo: 'https://github.com/jinyang756/GitHub-knowledge-base.git',
       loadSidebar: true,
       subMaxLevel: 3,
       auto2top: true,
@@ -52,17 +51,27 @@
       }
     }
     
-    // 自定义页脚
-    window.addEventListener('DOMContentLoaded', function() {
-      var footer = document.createElement('footer');
-      footer.style.textAlign = 'center';
-      footer.style.padding = '20px 0';
-      footer.style.color = '#999';
-      footer.style.fontSize = '14px';
-      footer.style.borderTop = '1px solid #eee';
-      footer.innerHTML = '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: #2563EB;">前往话术平台</a> | <a href="https://shouweizhe-lark.web.app/" target="_blank" style="color: #2563EB;">访问官网</a> | <a href="https://t.me/anyu168168" target="_blank" style="color: #2563EB;">Teledram社区</a></p>';
-      document.body.appendChild(footer);
-    });
+    // 自定义页脚（修复水印问题）
+    window.$docsify.plugins = [
+      function(hook) {
+        hook.ready(function() {
+          // 先检查是否已存在footer元素，如果存在则不重复添加
+          if (!document.querySelector('footer.footer-custom')) {
+            var footer = document.createElement('footer');
+            footer.className = 'footer-custom';
+            footer.style.textAlign = 'center';
+            footer.style.padding = '20px 0';
+            footer.style.color = '#999';
+            footer.style.fontSize = '14px';
+            footer.style.borderTop = '1px solid #eee';
+            footer.style.marginTop = '20px';
+            footer.style.zIndex = '1'; // 确保在正常层显示
+            footer.innerHTML = '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: #2563EB;">前往话术平台</a> | <a href="https://shouweizhe-lark.web.app/" target="_blank" style="color: #2563EB;">访问官网</a> | <a href="https://t.me/anyu168168" target="_blank" style="color: #2563EB;">Teledram社区</a></p>';
+            document.body.appendChild(footer);
+          }
+        });
+      }
+    ]
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>

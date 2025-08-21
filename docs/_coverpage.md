@@ -4,5 +4,9 @@
 
 > 支撑证券投资群话术生成的专业内容平台
 
-[GitHub](https://github.com/jinyang756/GitHub-knowledge-base.git)
-[开始阅读](#国泰海通证券知识库)
+<!-- 隐藏默认按钮 -->
+<style>
+  .cover-main > blockquote + p {
+    display: none;
+  }
+</style>
