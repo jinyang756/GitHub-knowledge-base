@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件系统测试</title>
+</head>
+<body>
+    <h1>文件系统测试</h1>
+    <p>正在尝试读取热门指标公式集README.md文件内容...</p>
+    <div id="result"></div>
+    
+    <script>
+        // 使用Fetch API尝试读取README.md文件
+        fetch('技术/热门指标公式集/README.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP错误! 状态码: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('result').innerHTML = `
+                    <h2>文件读取成功!</h2>
+                    <pre>${data.substring(0, 500)}...</pre>
+                    <p>文件内容已成功读取，这表明文件路径是正确的。</p>
+                `;
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = `
+                    <h2>读取错误</h2>
+                    <p>无法读取文件: ${error.message}</p>
+                    <p>检查文件路径是否正确或文件是否存在。</p>
+                `;
+                console.error('读取文件时出错:', error);
+            });
+        
+        // 测试其他文件的路径
+        setTimeout(() => {
+            fetch('技术/热门指标公式集/1.%20AI量价共振指标.md')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('AI量价共振指标文件路径正确，可以访问。');
+                    } else {
+                        console.log('无法访问AI量价共振指标文件，状态码:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('测试AI量价共振指标文件时出错:', error);
+                });
+        }, 2000);
+    </script>
+</body>
+</html>

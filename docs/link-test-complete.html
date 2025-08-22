@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全面链接测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2563EB; }
+        h2 { color: #1E40AF; margin-top: 30px; }
+        a { color: #2563EB; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .test-section { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 5px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>热门指标公式集 - 链接格式测试</h1>
+    
+    <p>本页面提供多种不同格式的链接，用于测试热门指标公式集页面的访问情况：</p>
+    
+    <div class="test-section">
+        <h2>1. 绝对路径测试</h2>
+        <p><a href="/技术/热门指标公式集/" target="_blank">/技术/热门指标公式集/</a> - 侧边栏中使用的格式</p>
+        <p><a href="/技术/热门指标公式集/README.md" target="_blank">/技术/热门指标公式集/README.md</a> - 直接链接到README.md文件</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 相对路径测试</h2>
+        <p><a href="技术/热门指标公式集/" target="_blank">技术/热门指标公式集/</a> - 相对根目录的路径</p>
+        <p><a href="技术/热门指标公式集/README.md" target="_blank">技术/热门指标公式集/README.md</a> - 直接链接到README.md文件</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. URL编码测试</h2>
+        <p><a href="/%E6%8A%80%E6%9C%AF/%E7%83%AD%E9%97%A8%E6%8C%87%E6%A0%87%E5%85%AC%E5%BC%8F%E9%9B%86/" target="_blank">URL编码路径</a> - 所有中文字符都进行URL编码</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 直接指标链接测试</h2>
+        <p><a href="/技术/热门指标公式集/1.%20AI量价共振指标.md" target="_blank">AI量价共振指标</a> - 直接链接到具体指标文件</p>
+    </div>
+    
+    <h2>解决方案总结</h2>
+    <p>我们已经在index.html中添加了alias配置，以确保docsify能够正确解析热门指标公式集的路径：</p>
+    <pre>
+alias: {
+  '/.*/_navbar.md': '/_navbar.md',
+  // 为热门指标公式集添加明确的别名配置
+  '/技术/热门指标公式集/': '/技术/热门指标公式集/README.md',
+  '/热门指标公式集/': '/技术/热门指标公式集/README.md'
+}
+    </pre>
+    
+    <p>如果以上链接仍然无法正常访问，可能需要考虑以下额外解决方案：</p>
+    <ol>
+        <li>确保docsify-cli版本是最新的</li>
+        <li>检查文件和目录的权限设置</li>
+        <li>尝试使用更简单的目录名称（无空格和特殊字符）</li>
+        <li>考虑在本地环境中使用英文目录名进行测试</li>
+    </ol>
+    
+    <script>
+        // 可选：添加简单的链接检测功能
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('测试页面已加载，请尝试点击上面的链接来测试访问情况。');
+        });
+    </script>
+</body>
+</html>
