@@ -913,6 +913,16 @@
         hook.doneEach(function() {
           // 移除阅读时间统计功能，优化页面美观
           
+          // 渲染数学公式
+          if (window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise().catch((err) => {
+              console.warn('MathJax渲染错误:', err.message);
+            });
+          } else if (window.MathJax && MathJax.typeset) {
+            // 兼容旧版本MathJax
+            MathJax.typeset();
+          }
+          
           // 优化图片加载体验
           const optimizeImages = () => {
             const images = document.querySelectorAll('.markdown-section img:not(.optimized)');
@@ -961,8 +971,19 @@
       }
     ]
   </script>
-  <!-- Docsify v4 -->
+  <!-- 核心插件先加载 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- 添加MathJax支持数学公式渲染 -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
   
   <!-- 核心插件先加载 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
