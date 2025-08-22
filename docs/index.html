@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="国泰海通证券知识库 - 支撑证券投资群话术生成的专业内容平台">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- 添加优质中文字体 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- 自定义样式增强 -->
   <style>
@@ -88,6 +90,8 @@
       --sidebar-bg: #f8f8f8;
       --sidebar-text: #34495e;
       --code-bg: #f8f8f8;
+      --title-font: 'Noto Serif SC', serif;
+      --body-font: 'Inter', 'Noto Serif SC', sans-serif;
     }
     
     /* 暗黑模式样式 */
@@ -102,6 +106,9 @@
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.7;
       transition: background-color 0.3s, color 0.3s;
     }
     
@@ -119,7 +126,45 @@
       transition: background-color 0.3s, color 0.3s;
     }
     
-    h1, h2, h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; }
+    /* 优化标题字体样式 */
+    h1, h2, h3 {
+      font-family: var(--title-font);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-top: 1.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 0;
+      background: linear-gradient(90deg, var(--theme-color), #4f46e5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    h1:hover {
+      transform: translateY(-2px);
+      text-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      color: #1e293b;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.3rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      color: #334155;
+    }
     ul li { margin: 0.3rem 0; }
     
     /* 代码块样式 */
@@ -397,6 +442,18 @@
     
     /* 响应式设计 */
     @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+      
       .header-title h1 {
         font-size: 20px;
       }
