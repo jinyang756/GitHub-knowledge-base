@@ -1,5 +1,7 @@
 import re
 import json
+import os
+import urllib.parse
 from typing import List, Dict, Any, Optional
 
 class KnowledgeBaseTools:
@@ -149,8 +151,116 @@ class KnowledgeBaseTools:
         
         return content
 
+    def generateDocsifyAliasConfig(self, target_dir: str, base_url: str = "", physical_path: str = None) -> str:
+        """
+        自动生成docsify的alias配置
+        
+        参数:
+            target_dir: 目标目录的URL路径（使用斜杠/）
+            base_url: 基础URL路径
+            physical_path: 目标目录的物理路径（可选，用于文件系统操作）
+            
+        返回:
+            格式化的alias配置字符串
+        """
+        alias_config = {
+            f'{base_url}{target_dir}/': f'{base_url}{target_dir}/README.md',
+            f'{base_url}{target_dir.split("/")[-1]}/': f'{base_url}{target_dir}/README.md'
+        }
+        
+        # 如果提供了物理路径，遍历目录中的文件
+        if physical_path and os.path.exists(physical_path):
+            for filename in os.listdir(physical_path):
+                if filename.endswith('.md') and filename != 'README.md':
+                    # 生成原始URL路径和编码URL路径
+                    original_path = f'{base_url}{target_dir}/{filename}'
+                    encoded_filename = urllib.parse.quote(filename)
+                    encoded_path = f'{base_url}{target_dir}/{encoded_filename}'
+                    
+                    # 添加两种格式的alias
+                    alias_config[original_path] = encoded_path
+                    alias_config[encoded_path] = encoded_path
+        
+        # 生成格式化的配置字符串
+        config_lines = ['alias: {']
+        for key, value in alias_config.items():
+            config_lines.append(f'  "{key}": "{value}",')
+        
+        # 移除最后一个逗号
+        if len(config_lines) > 1:
+            config_lines[-1] = config_lines[-1].rstrip(',')
+        
+        config_lines.append('}')
+        
+        return '\n'.join(config_lines)
+    
+    def updateIndexHtmlAlias(self, index_html_path: str, target_dir: str, base_url: str = "", physical_path: str = None) -> bool:
+        """
+        更新index.html文件中的alias配置
+        
+        参数:
+            index_html_path: index.html文件的路径
+            target_dir: 目标目录的URL路径（使用斜杠/）
+            base_url: 基础URL路径
+            physical_path: 目标目录的物理路径（可选，用于文件系统操作）
+            
+        返回:
+            是否更新成功
+        """
+        try:
+            # 生成新的alias配置
+            new_alias_config = self.generateDocsifyAliasConfig(target_dir, base_url, physical_path)
+            
+            # 读取index.html文件内容
+            with open(index_html_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 使用正则表达式查找并替换alias配置
+            # 查找以'alias:'开头，以'}'结尾的部分
+            alias_pattern = r'alias:\s*\{[^{}]*\}'
+            updated_content = re.sub(alias_pattern, new_alias_config, content, flags=re.DOTALL)
+            
+            # 写入更新后的内容
+            with open(index_html_path, 'w', encoding='utf-8') as f:
+                f.write(updated_content)
+            
+            return True
+        except Exception as e:
+            print(f"更新alias配置失败: {str(e)}")
+            return False
+
 # 测试用例
 if __name__ == "__main__":
+    # 初始化工具类
+    kb_tools = KnowledgeBaseTools()
+    
+    # 测试自动生成alias配置
+    print("\n测试自动生成alias配置：")
+    # 获取物理路径
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    docs_dir = os.path.dirname(script_dir)
+    physical_path = os.path.join(docs_dir, "技术", "热门指标公式集")
+    
+    # 生成alias配置
+    alias_config = kb_tools.generateDocsifyAliasConfig("技术/热门指标公式集", physical_path=physical_path)
+    print(alias_config)
+    
+    # 保存配置到文件
+    output_file = os.path.join(script_dir, "alias_config.json")
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(alias_config)
+    print(f"\nAlias配置已保存到: {output_file}")
+    
+    # 测试更新index.html中的alias配置
+    print("\n测试更新index.html中的alias配置：")
+    index_html_path = os.path.join(docs_dir, "index.html")
+    update_result = kb_tools.updateIndexHtmlAlias(index_html_path, "技术/热门指标公式集", physical_path=physical_path)
+    if update_result:
+        print("index.html中的alias配置更新成功！")
+    else:
+        print("index.html中的alias配置更新失败！")
+    
+    # 原始测试用例
     # 初始化工具类
     kb_tools = KnowledgeBaseTools()
     
