@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>高视觉盛宴渲染方案 - 证券行业知识库演示</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="国泰海通证券知识库 - 高视觉盛宴渲染方案演示">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
+  <!-- 高级视觉效果样式 -->
+  <link rel="stylesheet" href="styles/advanced-visuals.css">
+</head>
+<body>
+  <!-- 主容器 -->
+  <div id="app">
+    <div class="content">
+      <h1 class="track-decoration">证券行业知识库 - 高视觉盛宴渲染方案演示</h1>
+      
+      <h2 class="track-decoration">一、视觉基底：科技感与金融属性的碰撞</h2>
+      
+      <div class="holo-card">
+        <h3>色彩体系升级</h3>
+        <p>采用「深空蓝」（#0F172A）为基底，搭配「霓虹青绿」（#06B6D4）作为数据高亮色，形成「宇宙级交易市场」的视觉隐喻。</p>
+        <p>关键数据节点使用「脉冲红」（<span class="data-highlight price-down">#F87171</span>）与「量子绿」（<span class="data-highlight price-up">#34D399</span>），模拟多空博弈的视觉张力。</p>
+        <p>页面背景采用「星系级渐变」，随滚动呈现从深蓝到靛蓝的无缝过渡，营造穿越市场周期的沉浸感。</p>
+        <div class="energy-border"></div>
+      </div>
+      
+      <div class="holo-card">
+        <h3>排版与空间层次</h3>
+        <p>采用「星际层级」设计，主标题使用「太空探索体」，搭配「数据轨道」装饰线。</p>
+        <p>通过「全息投影框」（半透明玻璃态卡片）划分内容块，边框带有「能量流动画」，hover时呈现电流脉冲效果。</p>
+        <p>利用「多层视差」，背景星空、中层内容、前景交互元素以不同速率滚动，模拟3D空间透视。</p>
+        <div class="energy-border"></div>
+      </div>
+      
+      <h2 class="track-decoration">二、动态数据可视化：让金融数据「活」起来</h2>
+      
+      <div class="holo-card">
+        <h3>实时市场数据展示</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>指数名称</th>
+              <th>最新点位</th>
+              <th>涨跌幅</th>
+              <th>成交额(亿)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>上证指数</td>
+              <td class="data-highlight">3,215.68</td>
+              <td class="data-highlight price-up">+1.24%</td>
+              <td class="data-highlight">3,892</td>
+            </tr>
+            <tr>
+              <td>深证成指</td>
+              <td class="data-highlight">10,824.35</td>
+              <td class="data-highlight price-up">+1.56%</td>
+              <td class="data-highlight">5,245</td>
+            </tr>
+            <tr>
+              <td>创业板指</td>
+              <td class="data-highlight">2,256.79</td>
+              <td class="data-highlight price-down">-0.32%</td>
+              <td class="data-highlight">2,138</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="energy-border"></div>
+      </div>
+      
+      <div class="holo-card">
+        <h3>资金流向分析</h3>
+        <p>用「粒子流动画」模拟主力资金与散户资金的运动轨迹，红色粒子团代表资金流入，蓝色代表流出，形成动态资金地图。</p>
+        <p><strong>今日主力净流入行业Top3：</strong></p>
+        <ol>
+          <li>半导体：<span class="data-highlight price-up">+23.5亿元</span></li>
+          <li>新能源：<span class="data-highlight price-up">+18.2亿元</span></li>
+          <li>金融服务：<span class="data-highlight price-up">+12.8亿元</span></li>
+        </ol>
+        <p><strong>今日主力净流出行业Top3：</strong></p>
+        <ol>
+          <li>医药生物：<span class="data-highlight price-down">-15.6亿元</span></li>
+          <li>食品饮料：<span class="data-highlight price-down">-10.3亿元</span></li>
+          <li>房地产：<span class="data-highlight price-down">-8.9亿元</span></li>
+        </ol>
+        <div class="energy-border"></div>
+      </div>
+      
+      <h2 class="track-decoration">三、沉浸式交互：突破平面边界</h2>
+      
+      <div class="holo-card">
+        <h3>数据穿透效果演示</h3>
+        <p>尝试<strong>长按</strong>下方的关键数据，触发「时间切片」效果：</p>
+        <div style="text-align: center; padding: 20px;">
+          <div class="data-highlight" style="font-size: 2rem; font-weight: bold;">+3.85%</div>
+          <p style="color: #94a3b8;">上证指数今日涨幅</p>
+        </div>
+        <div class="energy-border"></div>
+      </div>
+      
+      <div class="holo-card">
+        <h3>交互触发式视觉冲击</h3>
+        <p>结合散户社群情绪数据，用「声波可视化」将多空观点转化为动态波形图。</p>
+        <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+          <button onclick="showAnimation('bullish')">看多情绪</button>
+          <button onclick="showAnimation('bearish')">看空情绪</button>
+          <button onclick="showAnimation('neutral')">中性情绪</button>
+        </div>
+        <div id="sentiment-wave" style="width: 100%; height: 100px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin-top: 20px;"></div>
+        <div class="energy-border"></div>
+      </div>
+      
+      <h2 class="track-decoration">四、行业板块分析：星系集群呈现</h2>
+      
+      <div class="holo-card">
+        <h3>板块联动分析</h3>
+        <p>行业板块以「星系集群」形式呈现，板块间的关联度通过发光连接线的亮度表示。</p>
+        <p><strong>核心板块涨跌幅：</strong></p>
+        <ul>
+          <li>半导体：<span class="data-highlight price-up">+4.21%</span></li>
+          <li>新能源：<span class="data-highlight price-up">+3.85%</span></li>
+          <li>人工智能：<span class="data-highlight price-up">+2.97%</span></li>
+          <li>金融服务：<span class="data-highlight price-up">+1.56%</span></li>
+          <li>医药生物：<span class="data-highlight price-down">-0.89%</span></li>
+          <li>食品饮料：<span class="data-highlight price-down">-1.23%</span></li>
+        </ul>
+        <div class="energy-border"></div>
+      </div>
+      
+      <h2 class="track-decoration">五、视觉与内容的协同设计</h2>
+      
+      <div class="holo-card">
+        <h3>报告场景化包装</h3>
+        <p>《首席来了》分析报告采用「直播回放式」排版，关键观点用「弹幕气泡」突出，数据图表可点击切换「专家解读」动画。</p>
+        <blockquote style="border-left: 3px solid #06B6D4; padding-left: 15px; margin: 20px 0;">
+          <p><strong>首席观点：</strong>当前市场处于政策红利释放期，科技板块受益于国产替代和产业升级，有望迎来持续性机会。建议关注半导体、人工智能和新能源等领域的优质标的。</p>
+        </blockquote>
+        <div class="energy-border"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 高级视觉效果脚本 -->
+  <script src="scripts/advanced-visuals.js"></script>
+  
+  <!-- 情绪波形动画脚本 -->
+  <script>
+    // 简单的情绪波形动画示例
+    function showAnimation(type) {
+      const container = document.getElementById('sentiment-wave');
+      container.innerHTML = '';
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+      container.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      const centerY = canvas.height / 2;
+      const width = canvas.width;
+      let phase = 0;
+      
+      // 根据情绪类型设置参数
+      let amplitude, frequency, color;
+      
+      if (type === 'bullish') {
+        amplitude = 30;
+        frequency = 0.02;
+        color = '#34D399'; // 看涨-绿色
+      } else if (type === 'bearish') {
+        amplitude = 20;
+        frequency = 0.03;
+        color = '#F87171'; // 看跌-红色
+      } else {
+        amplitude = 10;
+        frequency = 0.01;
+        color = '#06B6D4'; // 中性-青色
+      }
+      
+      // 动画循环
+      function drawWave() {
+        ctx.clearRect(0, 0, width, canvas.height);
+        ctx.beginPath();
+        ctx.moveTo(0, centerY);
+        
+        for (let x = 0; x < width; x++) {
+          const y = centerY + Math.sin(x * frequency + phase) * amplitude;
+          ctx.lineTo(x, y);
+        }
+        
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        phase += 0.05;
+        requestAnimationFrame(drawWave);
+      }
+      
+      drawWave();
+    }
+  </script>
+</body>
+</html>
