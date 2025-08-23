@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件系统访问测试器</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2563EB; }
+        h2 { color: #1E40AF; margin-top: 30px; }
+        .test-result { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 5px; }
+        .success { border-color: green; background-color: #f0fff0; }
+        .error { border-color: red; background-color: #fff0f0; }
+        .filename { font-family: monospace; font-weight: bold; }
+        .status { font-weight: bold; }
+        .status.success { color: green; }
+        .status.error { color: red; }
+        .response-content { margin-top: 10px; padding: 10px; background-color: #f8f8f8; border-radius: 3px; font-family: monospace; white-space: pre-wrap; word-wrap: break-word; max-height: 300px; overflow-y: auto; }
+        button { background-color: #2563EB; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #1E40AF; }
+    </style>
+</head>
+<body>
+    <h1>热门指标公式集 - 文件系统访问测试器</h1>
+    
+    <p>本页面使用Fetch API直接测试热门指标公式集文件的HTTP可访问性，绕过docsify路由系统：</p>
+    
+    <div style="margin-bottom: 20px;">
+        <button id="testAllBtn">测试所有文件</button>
+        <span style="margin-left: 15px; font-style: italic; color: #666;">点击按钮开始测试，结果将显示在下方</span>
+    </div>
+    
+    <div id="testResults">
+        <p style="color: #666;">点击上方按钮开始测试...</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testAllBtn = document.getElementById('testAllBtn');
+            const testResults = document.getElementById('testResults');
+            
+            // 要测试的文件路径列表
+            const filesToTest = [
+                '/技术/热门指标公式集/README.md',
+                '/技术/热门指标公式集/1.%20AI量价共振指标.md',
+                '/技术/热门指标公式集/3.%20涨停因子+N指标.md'
+            ];
+            
+            testAllBtn.addEventListener('click', function() {
+                testResults.innerHTML = '';
+                testAllBtn.disabled = true;
+                testAllBtn.textContent = '测试中...';
+                
+                // 逐个测试文件
+                filesToTest.forEach((filePath, index) => {
+                    setTimeout(() => {
+                        testFileAccess(filePath);
+                        
+                        // 如果是最后一个文件，恢复按钮状态
+                        if (index === filesToTest.length - 1) {
+                            testAllBtn.disabled = false;
+                            testAllBtn.textContent = '测试所有文件';
+                        }
+                    }, index * 1000); // 每个测试间隔1秒
+                });
+            });
+            
+            // 测试单个文件访问
+            function testFileAccess(filePath) {
+                const resultContainer = document.createElement('div');
+                resultContainer.className = 'test-result';
+                resultContainer.innerHTML = `
+                    <div>
+                        <span class="filename">${filePath}</span>
+                        <span class="status" style="margin-left: 15px;">测试中...</span>
+                    </div>
+                `;
+                testResults.appendChild(resultContainer);
+                
+                console.log(`正在测试文件访问: ${filePath}`);
+                
+                fetch(filePath)
+                    .then(response => {
+                        if (response.ok) {
+                            resultContainer.querySelector('.status').textContent = '访问成功';
+                            resultContainer.querySelector('.status').className = 'status success';
+                            resultContainer.className = 'test-result success';
+                            
+                            // 读取文件内容并显示前100个字符
+                            return response.text().then(content => {
+                                const contentPreview = document.createElement('div');
+                                contentPreview.className = 'response-content';
+                                contentPreview.textContent = content.substring(0, 100) + (content.length > 100 ? '...' : '');
+                                resultContainer.appendChild(contentPreview);
+                                console.log(`文件访问成功: ${filePath}`);
+                            });
+                        } else {
+                            throw new Error(`HTTP错误: ${response.status}`);
+                        }
+                    })
+                    .catch(error => {
+                        resultContainer.querySelector('.status').textContent = `访问失败: ${error.message}`;
+                        resultContainer.querySelector('.status').className = 'status error';
+                        resultContainer.className = 'test-result error';
+                        console.error(`文件访问失败: ${filePath}`, error);
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
