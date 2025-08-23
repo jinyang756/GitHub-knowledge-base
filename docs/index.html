@@ -4,758 +4,96 @@
   <meta charset="UTF-8">
   <title>国泰海通证券知识库</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="国泰海通证券知识库 - 支撑证券投资群话术生成的专业内容平台">
+  <meta name="description" content="国泰海通证券知识库 - 提供政策文档、行业研究、投资策略、风险控制和技术文档等内容">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <!-- 添加优质中文字体 -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <!-- 自定义样式增强 -->
-  <style>
-    /* 工具类样式 */
-    .content-auto {
-      content-visibility: auto;
-    }
-    .highlight-box {
-      background-color: #eff6ff;
-      border-left: 4px solid #3b82f6;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .warning-box {
-      background-color: #fffbeb;
-      border-left: 4px solid #eab308;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .danger-box {
-      background-color: #fef2f2;
-      border-left: 4px solid #ef4444;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .table-wrapper {
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-    .table-wrapper table {
-      width: 100%;
-      font-size: 0.875rem;
-      text-align: left;
-      color: #374151;
-    }
-    .table-wrapper table thead {
-      font-size: 0.75rem;
-      color: #374151;
-      text-transform: uppercase;
-      background-color: #f3f4f6;
-    }
-    .table-wrapper table th,
-    .table-wrapper table td {
-      padding: 0.75rem 1rem;
-    }
-    .table-wrapper table tbody tr {
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .table-wrapper table tbody tr:hover {
-      background-color: #f9fafb;
-    }
-    /* 暗黑模式适配 */
-    .dark-mode .table-wrapper table {
-      color: #d1d5db;
-    }
-    .dark-mode .table-wrapper table thead {
-      color: #d1d5db;
-      background-color: #374151;
-    }
-    .dark-mode .table-wrapper table tbody tr {
-      border-bottom-color: #374151;
-    }
-    .dark-mode .table-wrapper table tbody tr:hover {
-      background-color: #1f2937;
-    }
-  </style>
   
-  <!-- 样式优化（突出重点内容，方便工具识别） -->
+  <!-- 基础样式 -->
   <style>
-    /* 强调关键数据和政策条款（工具会优先提取此类内容） */
-    .policy-term { color: #2563EB; font-weight: 500; }
-    .data-number { color: #EF4444; font-weight: 600; }
-    .important-note { background-color: #FFF8E1; padding: 0.5rem; border-left: 3px solid #FFC107; }
-    
-    /* 优化阅读体验 */
-    :root {
-      --theme-color: #2563EB;
-      --bg-color: #fff;
-      --text-color: #34495e;
-      --sidebar-bg: #f8f8f8;
-      --sidebar-text: #34495e;
-      --code-bg: #f8f8f8;
-      --title-font: 'Noto Serif SC', serif;
-      --body-font: 'Inter', 'Noto Serif SC', sans-serif;
-    }
-    
-    /* 暗黑模式样式 */
-    .dark-mode {
-      --bg-color: #1e1e1e;
-      --text-color: #d4d4d4;
-      --sidebar-bg: #2d2d2d;
-      --sidebar-text: #ccc;
-      --code-bg: #252526;
-    }
-    
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--body-font);
-      font-size: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       line-height: 1.7;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    
-    .sidebar {
-      font-size: 14px;
-      background-color: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      transition: background-color 0.3s, color 0.3s;
-    }
-    
-    .content {
-      max-width: 900px;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
-    }
-    
-    /* 优化标题字体样式 */
-    h1, h2, h3 {
-      font-family: var(--title-font);
-      font-weight: 600;
-      line-height: 1.3;
-      margin-top: 1.8rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-top: 0;
-      background: linear-gradient(90deg, var(--theme-color), #4f46e5);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-    
-    h1:hover {
-      transform: translateY(-2px);
-      text-shadow: 0 3px 6px rgba(0,0,0,0.15);
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      color: #1e293b;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 0.3rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-      color: #334155;
-    }
-    ul li { margin: 0.3rem 0; }
-    
-    /* 代码块样式 */
-    pre, code {
-      background-color: var(--code-bg);
-      transition: background-color 0.3s;
-    }
-    
-    /* 彻底隐藏GitHub角落图标 */
-    .github-corner {
-      display: none !important;
-    }
-    
-    /* 返回顶部按钮样式 */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--theme-color);
-      color: white;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      z-index: 1000;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      font-size: 20px;
-      /* 可访问性优化 */
-      outline: none;
-      border: 2px solid transparent;
-    }
-    
-    .back-to-top:focus {
-      border-color: white;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
-    }
-    
-    /* 屏幕阅读器友好提示 */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-    
-    .back-to-top.visible {
-      opacity: 1;
-    }
-    
-    .back-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.4);
-    }
-    
-    /* 暗黑模式切换按钮 - 移至顶部导航栏区域 */
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      background-color: var(--theme-color);
-      color: white;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1001;
-      opacity: 0.8; /* 提高默认可见度 */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-    
-    /* 鼠标悬停时效果 */
-    .theme-toggle:hover {
-      opacity: 1;
-      transform: scale(1.1);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    
-    /* 响应式调整 */
-    @media screen and (max-width: 768px) {
-      .theme-toggle {
-        top: 12px;
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-      }
-    }
-    
-    /* 页面顶部样式 */
-    .site-header {
-      background-color: var(--bg-color);
-      border-bottom: 1px solid #eee;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: background-color 0.3s;
-    }
-    
-    .dark-mode .site-header {
-      border-bottom-color: #333;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    
-    .header-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .header-title h1 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--theme-color);
-      text-align: center;
-    }
-    
-    .header-search {
-      width: 100%;
-      max-width: 600px;
-    }
-    
-    .search-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    
-    #header-search-input {
-      width: 100%;
-      padding: 12px 50px 12px 16px;
-      border: 2px solid #e0e0e0;
-      border-radius: 25px;
-      font-size: 16px;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: all 0.3s ease;
-      outline: none;
-    }
-    
-    #header-search-input:focus {
-      border-color: var(--theme-color);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    
-    .dark-mode #header-search-input {
-      border-color: #444;
-      background-color: #2a2a2a;
-    }
-    
-    .dark-mode #header-search-input:focus {
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-    }
-    
-    #header-search-btn {
-      position: absolute;
-      right: 8px;
-      background: var(--theme-color);
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    #header-search-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
-    }
-    
-    #header-search-btn:active {
-      transform: scale(0.95);
-    }
-    
-    /* 搜索区域样式 */
-    .search-section {
-      background-color: var(--bg-color);
-      border-bottom: 1px solid #eee;
-      padding: 20px 0;
-      position: relative;
-      z-index: 990;
-      transition: background-color 0.3s;
-    }
-    
-    .dark-mode .search-section {
-      border-bottom-color: #333;
-    }
-    
-    .search-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* 搜索联想结果样式 */
-    .search-suggestions {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: var(--bg-color);
-      border: 1px solid #ddd;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-      max-height: 300px;
-      overflow-y: auto;
-      z-index: 980;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: none;
-      transition: all 0.3s ease;
-    }
-    
-    .dark-mode .search-suggestions {
-      border-color: #444;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    
-    .search-suggestion-item {
-      padding: 12px 16px;
-      cursor: pointer;
-      border-bottom: 1px solid #f0f0f0;
-      transition: background-color 0.2s;
-      display: flex;
-      align-items: center;
-    }
-    
-    .dark-mode .search-suggestion-item {
-      border-bottom-color: #333;
-    }
-    
-    .search-suggestion-item:last-child {
-      border-bottom: none;
-    }
-    
-    .search-suggestion-item:hover {
-      background-color: #f5f5f5;
-    }
-    
-    .dark-mode .search-suggestion-item:hover {
-      background-color: #2a2a2a;
-    }
-    
-    .search-suggestion-item.active {
-      background-color: #e3f2fd;
-    }
-    
-    .dark-mode .search-suggestion-item.active {
-      background-color: #1e3a8a;
-    }
-    
-    /* 响应式设计 */
-    @media screen and (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.5rem;
-      }
-      
-      h3 {
-        font-size: 1.2rem;
-      }
-      
-      .header-title h1 {
-        font-size: 20px;
-      }
-      
-      .search-section {
-        padding: 15px 0;
-      }
-      
-      #header-search-input {
-        font-size: 14px;
-        padding: 10px 45px 10px 12px;
-      }
-      
-      #header-search-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-      }
-      
-      /* 移动端暗黑模式按钮位置优化 */
-      .theme-toggle {
-        top: 15px;
-      }
-    }
-    
-    /* 阅读进度指示器 */
-    .reading-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      background-color: var(--theme-color);
-      z-index: 1002;
-      width: 0%;
-      transition: width 0.1s ease-out;
-    }
-    
-    /* 内容加载动画 */
-    .content-loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 200px;
-      font-size: 18px;
-      color: var(--theme-color);
-    }
-    
-    /* 页面过渡动画 */
-    .markdown-section {
-      animation: fadeIn 0.5s ease-in;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* 移动端适配优化 */
-    @media screen and (max-width: 768px) {
-      .content {
-        padding: 1rem;
-        max-width: 100%;
-      }
-      
-      .sidebar {
-        font-size: 13px;
-      }
+      color: #333;
+      background-color: #fff;
     }
   </style>
 </head>
 <body>
-  <!-- 页面顶部区域 -->
-  <header class="site-header">
-    <div class="header-content">
-      <div class="header-title">
-        <h1>国泰海通证券知识库</h1>
-      </div>
-    </div>
-  </header>
-  
+  <!-- 主容器 -->
   <div id="app"></div>
+  
+  <!-- docsify核心脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  
   <script>
-    // 初始化搜索功能（包含打字联想）
-    document.addEventListener('DOMContentLoaded', function() {
-      // 确保搜索元素存在再执行初始化
-      setTimeout(() => {
-        const searchInput = document.getElementById('header-search-input');
-        const searchBtn = document.getElementById('header-search-btn');
-        const suggestionsContainer = document.getElementById('search-suggestions');
-        
-        // 如果元素不存在，不执行后续代码
-        if (!searchInput || !searchBtn || !suggestionsContainer) {
-          return;
+    // 自定义插件函数
+    function customPlugins(hook) {
+      // 创建DOM元素的辅助函数
+      const createElement = (tag, className, content = '', attributes = {}) => {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (content) element.innerHTML = content;
+        Object.keys(attributes).forEach(key => {
+          element.setAttribute(key, attributes[key]);
+        });
+        return element;
+      };
+      
+      // 页面加载完成后执行的函数
+      hook.ready(function() {
+        // 添加页脚
+        if (!document.querySelector('footer.footer-custom')) {
+          const footer = createElement('footer', 'footer-custom', '<div class="footer-content">\n  <p>© 2024 国泰海通证券知识库 | <a href="https://www.gtsec.com" target="_blank">国泰海通证券官网</a></p>\n  <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>\n</div>');
+          Object.assign(footer.style, {
+            textAlign: 'center',
+            padding: '20px 0',
+            color: '#666',
+            fontSize: '14px',
+            borderTop: '1px solid #eee',
+            marginTop: '40px',
+            zIndex: '100'
+          });
+          document.body.appendChild(footer);
         }
         
-        // 等待DOM加载完成后初始化搜索功能
-        document.addEventListener('DOMContentLoaded', function() {
-          // 获取搜索相关元素
-          const searchInput = document.getElementById('header-search-input');
-          const searchBtn = document.getElementById('header-search-btn');
-          const suggestionsContainer = document.getElementById('search-suggestions');
-          
-          // 确保元素存在
-          if (!searchInput || !searchBtn || !suggestionsContainer) {
-            console.warn('Search elements not found');
-            return;
-          }
-          
-          // 预设的知识库常见搜索关键词，用于联想功能
-          const commonKeywords = [
-            'A股交易制度改革',
-            '全面注册制',
-            '上市规则',
-            '再融资新规',
-            '新能源行业',
-            '荀玉根',
-            '首席来了',
-            '投资顾问',
-            '资金运作',
-            '风险控制',
-            '市场分析',
-            '政策解读',
-            '投资策略',
-            '行业研究',
-            '公司资料',
-            'AI量价共振',
-            '北上资金动量',
-            '涨停因子',
-            '筹码集中度',
-            '缺口回补',
-            '港资融资双驱动',
-            '次新量能异动',
-            '行业个股α',
-            '可转债联动',
-            '量化择时'
-          ];
-          
-          // 获取搜索建议的函数
-          const getSuggestions = (query) => {
-            if (!query || query.trim().length < 1) return [];
-            
-            query = query.toLowerCase();
-            return commonKeywords.filter(keyword => 
-              keyword.toLowerCase().includes(query)
-            ).slice(0, 8); // 限制最多显示8个建议
-          };
-          
-          // 渲染搜索建议的函数
-          const renderSuggestions = (suggestions) => {
-            suggestionsContainer.innerHTML = '';
-            
-            if (suggestions.length === 0) {
-              suggestionsContainer.style.display = 'none';
-              return;
-            }
-            
-            suggestions.forEach(suggestion => {
-              const item = document.createElement('div');
-              item.className = 'search-suggestion-item';
-              item.textContent = suggestion;
-              
-              // 点击建议项时，填充到搜索框并执行搜索
-              item.addEventListener('click', () => {
-                searchInput.value = suggestion;
-                suggestionsContainer.style.display = 'none';
-                searchBtn.click();
-              });
-              
-              suggestionsContainer.appendChild(item);
-            });
-            
-            suggestionsContainer.style.display = 'block';
-          };
-          
-          // 搜索框输入事件（打字联想）
-          let searchTimeout;
-          searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            
-            searchTimeout = setTimeout(() => {
-              const query = this.value.trim();
-              const suggestions = getSuggestions(query);
-              renderSuggestions(suggestions);
-            }, 300); // 300ms防抖
+        // 添加返回顶部按钮
+        if (!document.querySelector('#back-to-top')) {
+          const backToTop = createElement('button', 'back-to-top', '↑', { id: 'back-to-top', title: '返回顶部' });
+          Object.assign(backToTop.style, {
+            position: 'fixed',
+            bottom: '30px',
+            right: '30px',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            backgroundColor: '#2563EB',
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'none',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+            zIndex: '1000'
           });
           
-          // 搜索按钮点击事件
-          searchBtn.addEventListener('click', function() {
-            const searchText = searchInput.value.trim();
-            if (searchText) {
-              // 隐藏建议框
-              suggestionsContainer.style.display = 'none';
-              
-              // 使用docsify的搜索API执行搜索
-              if (window.Docsify && window.Docsify.search) {
-                // docsify的搜索插件提供了直接搜索的方法
-                const searchEvent = new CustomEvent('docsify:search', {
-                  detail: {
-                    query: searchText,
-                    options: {
-                      hideOtherSidebarContent: true
-                    }
-                  }
-                });
-                document.dispatchEvent(searchEvent);
-              } else {
-                // 如果docsify搜索API不可用，使用备用方案
-                // 创建一个临时搜索框并触发搜索
-                const tempSearchInput = document.createElement('input');
-                tempSearchInput.type = 'search';
-                tempSearchInput.className = 'sidebar-nav search-input';
-                tempSearchInput.value = searchText;
-                tempSearchInput.style.display = 'none';
-                document.body.appendChild(tempSearchInput);
-                
-                // 触发搜索事件
-                const event = new KeyboardEvent('keydown', {
-                  bubbles: true,
-                  cancelable: true,
-                  key: 'Enter',
-                  which: 13,
-                  code: 'Enter'
-                });
-                tempSearchInput.dispatchEvent(event);
-                
-                // 移除临时输入框
-                setTimeout(() => {
-                  document.body.removeChild(tempSearchInput);
-                }, 100);
-              }
+          // 显示/隐藏返回顶部按钮
+          window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+              backToTop.style.display = 'block';
+            } else {
+              backToTop.style.display = 'none';
             }
           });
           
-          // 搜索框回车事件
-          searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              searchBtn.click();
-            }
-          });
-        });
-        
-          // 监听键盘导航事件
-          searchInput.addEventListener('keydown', function(e) {
-            const activeItem = suggestionsContainer.querySelector('.search-suggestion-item.active');
-            const allItems = suggestionsContainer.querySelectorAll('.search-suggestion-item');
-            
-            if (suggestionsContainer.style.display === 'block') {
-              if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                if (activeItem) {
-                  activeItem.classList.remove('active');
-                  const nextItem = activeItem.nextElementSibling;
-                  if (nextItem) {
-                    nextItem.classList.add('active');
-                    nextItem.scrollIntoView({ block: 'nearest' });
-                  } else {
-                    allItems[0].classList.add('active');
-                    allItems[0].scrollIntoView({ block: 'nearest' });
-                  }
-                } else if (allItems.length > 0) {
-                  allItems[0].classList.add('active');
-                  allItems[0].scrollIntoView({ block: 'nearest' });
-                }
-              } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (activeItem) {
-                  activeItem.classList.remove('active');
-                  const prevItem = activeItem.previousElementSibling;
-                  if (prevItem) {
-                    prevItem.classList.add('active');
-                    prevItem.scrollIntoView({ block: 'nearest' });
-                  } else {
-                    allItems[allItems.length - 1].classList.add('active');
-                    allItems[allItems.length - 1].scrollIntoView({ block: 'nearest' });
-                  }
-                } else if (allItems.length > 0) {
-                  allItems[allItems.length - 1].classList.add('active');
-                  allItems[allItems.length - 1].scrollIntoView({ block: 'nearest' });
-                }
-              } else if (e.key === 'Escape') {
-                suggestionsContainer.style.display = 'none';
-              }
-            }
+          // 点击返回顶部
+          backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           });
           
-          // 点击页面其他地方关闭建议框
-          document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && 
-                !suggestionsContainer.contains(e.target) && 
-                e.target !== searchBtn) {
-              suggestionsContainer.style.display = 'none';
-            }
-          });
-      }, 100); // 延迟100ms执行，确保DOM渲染完成
-    });
+          document.body.appendChild(backToTop);
+        }
+      });
+    }
+    
+    // 完整的docsify配置
     window.$docsify = {
       name: '国泰海通证券知识库',
       loadSidebar: true,
@@ -764,23 +102,25 @@
       coverpage: true,
       themeColor: '#2563EB',
       homepage: 'README.md',
+      loadNavbar: true,
+      // 移除可能导致文件访问问题的alias配置
+      alias: {},
+      // Markdown增强配置
+      markdown: {
+        smartypants: true,
+        breaks: true,
+        tables: true,
+        headerIds: true,
+        auto2top: true
+      },
       // 搜索插件配置
       search: {
-        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+        maxAge: 86400000,
         paths: 'auto',
         placeholder: '搜索知识库',
         noData: '没有找到相关内容',
-        depth: 6, // 搜索的标题层级深度
-        hideOtherSidebarContent: true, // 搜索结果显示时，隐藏其他侧边栏内容以提高专注度
-        pathNamespaces: ['/policy/', '/industry/', '/strategy/', '/risk/', '/国泰海通证券/', '/技术/'],
-        placeholder: {
-          '/policy/': '搜索政策文档',
-          '/industry/': '搜索行业研究',
-          '/strategy/': '搜索投资策略',
-          '/risk/': '搜索风险控制',
-          '/国泰海通证券/': '搜索公司资料',
-          '/技术/': '搜索技术文档'
-        }
+        depth: 6,
+        hideOtherSidebarContent: true
       },
       // 代码复制功能
       copyCode: {
@@ -788,222 +128,18 @@
         errorText: '错误',
         successText: '已复制'
       },
-      // 分页插件配置
-      pagination: {
-        previousText: '上一章',
-        nextText: '下一章',
-        crossChapter: true,
-        crossChapterText: true
-      },
-      // 导航栏配置
-      loadNavbar: true,
-      alias: {
-  "技术/热门指标公式集/": "技术/热门指标公式集/README.md",
-  "热门指标公式集/": "技术/热门指标公式集/README.md",
-  "技术/热门指标公式集/1. AI量价共振指标.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/10. 量化择时指标.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/2. 北上资金动量指标.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/3. 涨停因子+N指标.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/4. 筹码集中度指标.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/5. 缺口回补+趋势指标.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/6. 港资+融资双驱动指标.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/7. 次新+量能异动指标.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/8. 行业β+个股α指标.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/9. 可转债联动指标.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md"
-}
-    }
-    
-    // 自定义插件（模块化实现）
-    window.$docsify.plugins = [
-      function(hook) {
-        // 创建DOM元素的辅助函数
-        const createElement = (tag, className, content = '', attributes = {}) => {
-          const element = document.createElement(tag);
-          if (className) element.className = className;
-          if (content) element.innerHTML = content;
-          Object.keys(attributes).forEach(key => {
-            element.setAttribute(key, attributes[key]);
-          });
-          return element;
-        };
-        
-        // 页面加载完成后执行的函数
-        hook.ready(function() {
-          // 添加页脚
-          if (!document.querySelector('footer.footer-custom')) {
-            const footer = createElement('footer', 'footer-custom', 
-              '<p>© 2025 国泰海通证券知识库 | <a href="https://huashu.web.app/" target="_blank" style="color: var(--theme-color);">前往话术平台</a> | <a href="https://shouweizhe-lark.web.app/" target="_blank" style="color: var(--theme-color);">访问官网</a> | <a href="https://moni.10jqka.com.cn/" target="_blank" style="color: var(--theme-color);">模拟炒股平台</a> | <a href="https://t.me/anyu168168" target="_blank" style="color: var(--theme-color);">Telegram社区</a></p>'
-            );
-            Object.assign(footer.style, {
-              textAlign: 'center',
-              padding: '20px 0',
-              color: '#999',
-              fontSize: '14px',
-              borderTop: '1px solid #eee',
-              marginTop: '20px',
-              zIndex: '1'
-            });
-            document.body.appendChild(footer);
-          }
-          
-          // 添加返回顶部按钮
-          if (!document.querySelector('.back-to-top')) {
-            const backToTopBtn = createElement('div', 'back-to-top', '↑');
-            document.body.appendChild(backToTopBtn);
-            
-            // 返回顶部功能
-            backToTopBtn.addEventListener('click', function() {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-          }
-          
-          // 添加暗黑模式切换按钮
-          if (!document.querySelector('.theme-toggle')) {
-            const themeToggle = createElement('div', 'theme-toggle', '🌙');
-            document.body.appendChild(themeToggle);
-            
-            // 检查并应用用户主题偏好
-            const applyTheme = () => {
-              if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark-mode');
-                themeToggle.innerHTML = '☀️';
-              } else {
-                document.documentElement.classList.remove('dark-mode');
-                themeToggle.innerHTML = '🌙';
-              }
-            };
-            
-            // 初始化主题
-            applyTheme();
-            
-            // 切换主题
-            themeToggle.addEventListener('click', function() {
-              if (document.documentElement.classList.contains('dark-mode')) {
-                document.documentElement.classList.remove('dark-mode');
-                localStorage.theme = 'light';
-              } else {
-                document.documentElement.classList.add('dark-mode');
-                localStorage.theme = 'dark';
-              }
-              applyTheme();
-            });
-            
-            // 监听系统主题变化
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-              if (!('theme' in localStorage)) {
-                applyTheme();
-              }
-            });
-          }
-          
-          // 添加阅读进度指示器
-          if (!document.querySelector('.reading-progress')) {
-            const progressBar = createElement('div', 'reading-progress');
-            document.body.appendChild(progressBar);
-          }
-          
-          // 滚动事件处理
-          const handleScroll = () => {
-            // 控制返回顶部按钮显示/隐藏
-            const backToTopBtn = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-              backToTopBtn.classList.add('visible');
-            } else {
-              backToTopBtn.classList.remove('visible');
-            }
-            
-            // 更新阅读进度条
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector('.reading-progress').style.width = scrolled + '%';
-          };
-          
-          // 监听滚动事件（使用节流优化）
-          let lastScrollTime = 0;
-          window.addEventListener('scroll', function() {
-            const currentTime = Date.now();
-            if (currentTime - lastScrollTime > 100) { // 100ms节流
-              handleScroll();
-              lastScrollTime = currentTime;
-            }
-          });
-        });
-        
-        // 页面内容加载完成后执行
-        hook.doneEach(function() {
-          // 移除阅读时间统计功能，优化页面美观
-          
-          // 渲染数学公式
-          if (window.MathJax && MathJax.typesetPromise) {
-            MathJax.typesetPromise().catch((err) => {
-              console.warn('MathJax渲染错误:', err.message);
-            });
-          } else if (window.MathJax && MathJax.typeset) {
-            // 兼容旧版本MathJax
-            MathJax.typeset();
-          }
-          
-          // 优化图片加载体验
-          const optimizeImages = () => {
-            const images = document.querySelectorAll('.markdown-section img:not(.optimized)');
-            images.forEach(img => {
-              img.classList.add('optimized');
-              Object.assign(img.style, {
-                maxWidth: '100%',
-                height: 'auto',
-                transition: 'opacity 0.3s',
-                cursor: 'pointer'
-              });
-              
-              // 图片懒加载
-              if ('loading' in HTMLImageElement.prototype) {
-                img.loading = 'lazy';
-              }
-              
-              // 添加图片点击放大效果
-              img.addEventListener('click', function() {
-                if (img.classList.contains('expanded')) {
-                  img.classList.remove('expanded');
-                  Object.assign(img.style, {
-                    position: 'static',
-                    zIndex: '1',
-                    transform: 'none',
-                    boxShadow: 'none'
-                  });
-                } else {
-                  img.classList.add('expanded');
-                  Object.assign(img.style, {
-                    position: 'fixed',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: '1000',
-                    boxShadow: '0 0 20px rgba(0,0,0,0.5)'
-                  });
-                }
-              });
-            });
-          };
-          
-          // 执行图片优化
-          optimizeImages();
-        });
-      }
-    ]
+      // 集成自定义插件
+      plugins: [
+        customPlugins
+      ]
+    };
   </script>
-  <!-- 加载docsify核心脚本 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- 添加搜索插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  
+  <!-- 添加代码复制功能 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   
   <!-- 添加MathJax支持数学公式渲染 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -1014,61 +150,6 @@
         displayMath: [['$$', '$$'], ['\\[', '\\]']]
       }
     };
-  </script>
-  
-  <!-- 核心插件先加载 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  
-  <!-- 隐藏默认的侧边栏搜索框和阅读时间相关元素 -->
-  <style>
-    .sidebar-nav .search {
-      display: none !important;
-    }
-    
-    /* 隐藏阅读时间统计 */
-    .reading-time {
-      display: none !important;
-    }
-    
-    /* 隐藏字数统计 */
-    .docsify-count {
-      display: none !important;
-    }
-    
-    /* 隐藏页面底部可能出现的字数统计信息 */
-    .markdown-section > p:last-child {
-      display: none !important;
-    }
-  </style>
-  
-  <!-- 其他插件使用defer属性延迟加载以提升性能 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js" defer></script>
-  <!-- 先加载Prism核心库，再加载语言特定的脚本 -->
-  <script src="//cdn.jsdelivr.net/npm/prismjs/prism.min.js" defer></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js" defer></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js" defer></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js" defer></script>
-  
-  <!-- 功能插件 - 已移除重复加载的插件 -->
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js" defer></script>
-  <script src="//unpkg.com/docsify-count/dist/countable.min.js" defer></script>
-  
-  <!-- 页面加载完成后的性能优化 -->
-  <script>
-    // 优化页面加载速度
-    document.addEventListener('DOMContentLoaded', function() {
-      // 预加载下一个可能访问的页面资源
-      const preloadLinks = document.querySelectorAll('.sidebar-nav a');
-      if (preloadLinks.length > 0) {
-        for (let i = 0; i < Math.min(3, preloadLinks.length); i++) {
-          const link = document.createElement('link');
-          link.rel = 'prefetch';
-          link.href = preloadLinks[i].href;
-          document.head.appendChild(link);
-        }
-      }
-    });
   </script>
 </body>
 </html>
