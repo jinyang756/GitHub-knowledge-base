@@ -1,6 +1,9 @@
 import os
 import sys
-from docs.技术.knowledge_base_utils import KnowledgeBaseTools
+# 将docs/技术目录添加到Python路径
+sys.path.append(os.path.join(os.path.dirname(__file__), "docs", "技术"))
+# 导入KnowledgeBaseTools类
+from knowledge_base_utils import KnowledgeBaseTools
 
 """
 自动更新docsify知识库的alias配置脚本
