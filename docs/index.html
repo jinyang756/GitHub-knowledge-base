@@ -188,6 +188,25 @@
       overflow-y: auto;
       backdrop-filter: blur(5px);
       box-shadow: var(--shadow-light);
+      transform: translateX(0);
+      position: relative;
+    }
+
+    /* 侧边栏遮罩层 */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 29;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
     }
     
     /* 侧边栏层级设计 */
@@ -496,17 +515,17 @@
     
     @media (max-width: 768px) {
       .sidebar {
-        width: 0;
-        overflow: hidden;
+        transform: translateX(-100%);
         position: fixed;
         height: 100vh;
         left: 0;
         top: 0;
         box-shadow: var(--shadow-heavy);
+        width: 280px;
       }
       
       .sidebar.open {
-        width: 280px;
+        transform: translateX(0);
       }
       
       .main-content {
@@ -618,6 +637,22 @@
               setTimeout(() => {
                 toggleBtn.style.transform = 'scale(1)';
               }, 100);
+              
+              // 添加遮罩层（移动端）
+              if (window.innerWidth <= 768) {
+                let overlay = document.querySelector('.sidebar-overlay');
+                if (!overlay) {
+                  overlay = document.createElement('div');
+                  overlay.className = 'sidebar-overlay';
+                  overlay.onclick = () => {
+                    sidebar.classList.remove('open');
+                    toggleBtn.innerHTML = '≡';
+                    overlay.classList.remove('active');
+                  };
+                  document.body.appendChild(overlay);
+                }
+                overlay.classList.toggle('active', sidebar.classList.contains('open'));
+              }
             }
           };
           
@@ -647,12 +682,37 @@
       
       // 页面加载完成后执行的函数
       hook.ready(function() {
+        // 确保页面加载时正确设置侧边栏状态
+        setTimeout(() => {
+          const sidebar = document.querySelector('.sidebar');
+          const toggleBtn = document.querySelector('.sidebar-toggle');
+          
+          if (sidebar && toggleBtn) {
+            // 检查当前窗口大小，设置初始状态
+            if (window.innerWidth > 768) {
+              sidebar.classList.add('open');
+              toggleBtn.style.display = 'none';
+            } else {
+              sidebar.classList.remove('open');
+              toggleBtn.style.display = 'flex';
+            }
+          }
+        }, 100);
+        
         // 添加页脚
         if (!document.querySelector('footer.footer-custom')) {
           const footer = createElement('footer', 'footer-custom', `
             <div class="footer-content">
-              <p>© 2024 国泰海通证券知识库 | <a href="https://www.gtsec.com" target="_blank">国泰海通证券官网</a></p>
+              <p>© 2024 国泰海通证券知识库</p>
               <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
+              <p>
+                <a href="https://huashu.web.app/" target="_blank">话术平台</a> | 
+                <a href="#" target="_blank">模拟炒股平台</a> | 
+                <a href="https://shouweizhe-lark.web.app/" target="_blank">九州旗舰店</a> | 
+                <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a> | 
+                <a href="https://nicevoice.org/zh" target="_blank">语音服务</a> | 
+                <a href="https://pixelfox.ai/zh/video/subtitle-remover/edit?inviteCode=QjIvG2w9" target="_blank">字幕移除工具</a>
+              </p>
             </div>
           `);
           document.body.appendChild(footer);
@@ -711,7 +771,7 @@
       coverpage: true,
       themeColor: '#0F52BA',
       homepage: 'README.md',
-      loadNavbar: true,
+      loadNavbar: false,
       
       // 路径别名配置
       alias: {

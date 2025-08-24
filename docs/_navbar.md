@@ -11,3 +11,5 @@
   * [访问官网](https://shouweizhe-lark.web.app/ "访问官网")
   * [模拟炒股平台](https://moni.10jqka.com.cn/ "模拟炒股平台")
   * [Telegram社区](https://t.me/anyu168168 "Telegram社区")
+  * [语音服务](https://nicevoice.org/zh "NiceVoice语音服务")
+  * [字幕移除工具](https://pixelfox.ai/zh/video/subtitle-remover/edit?inviteCode=QjIvG2w9 "PixelFox字幕移除工具")
