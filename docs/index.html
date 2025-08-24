@@ -1,28 +1,556 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>国泰海通证券知识库</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="国泰海通证券知识库 - 提供政策文档、行业研究、投资策略、风险控制和技术文档等内容">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
-  <!-- 基础样式 -->
+  <!-- 基础样式 - 金融行业专业风格 -->
   <style>
+    /* CSS变量定义 */
+    :root {
+      /* 主色调 - 金融蓝 */
+      --primary-color: #0F52BA;
+      --primary-dark: #0A3D8A;
+      --primary-light: #3172D8;
+      
+      /* 辅助色 - 金色 */
+      --accent-color: #D4AF37;
+      --accent-light: #F0E68C;
+      --accent-dark: #B8860B;
+      
+      /* 背景层次 */
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7FA;
+      --bg-overlay: rgba(255, 255, 255, 0.95);
+      
+      /* 文本颜色 */
+      --text-primary: #1E293B;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      /* 边框颜色 */
+      --border-light: #E2E8F0;
+      --border-medium: #CBD5E1;
+      
+      /* 阴影 */
+      --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 暗黑模式支持 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #3172D8;
+        --primary-dark: #2563EB;
+        --primary-light: #60A5FA;
+        
+        --accent-color: #F0E68C;
+        --accent-light: #FFFACD;
+        --accent-dark: #DAA520;
+        
+        --bg-primary: #0F172A;
+        --bg-secondary: #1E293B;
+        --bg-overlay: rgba(15, 23, 42, 0.95);
+        
+        --text-primary: #F8FAFC;
+        --text-secondary: #CBD5E1;
+        --text-muted: #94A3B8;
+        
+        --border-light: #334155;
+        --border-medium: #475569;
+        
+        --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.2);
+        --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+        --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+    /* 全局样式重置 */
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      line-height: 1.7;
-      color: #333;
-      background-color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      margin: 0;
+      padding: 0;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* 底层背景渐变 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      z-index: -2;
+    }
+    
+    /* 几何纹理背景 - SVG生成 */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D4AF37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      z-index: -1;
+    }
+    
+    /* 主容器 */
+    #app {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* 页头氛围渐变图层 */
+    .header-ambience {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(15, 82, 186, 0.05), rgba(212, 175, 55, 0.08));
+      z-index: 10;
+      pointer-events: none;
+    }
+    
+    /* 顶部导航栏 */
+    .navbar {
+      position: relative;
+      z-index: 50;
+      background-color: var(--bg-overlay);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-light);
+      backdrop-filter: blur(5px);
+    }
+    
+    .navbar > div > a {
+      color: var(--primary-color);
+      margin-right: 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      text-decoration: none;
+    }
+    
+    .navbar > div > a:hover {
+      color: var(--accent-color);
+    }
+    
+    .navbar > div > a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar > div > a:hover:after {
+      width: 100%;
+    }
+    
+    /* 主内容区域布局 */
+    .main-layout {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+    
+    /* 侧边框架 */
+    .sidebar {
+      width: 280px;
+      background-color: var(--bg-overlay);
+      border-right: 1px solid var(--border-light);
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+      transition: all 0.3s ease;
+      z-index: 30;
+      overflow-y: auto;
+      backdrop-filter: blur(5px);
+      box-shadow: var(--shadow-light);
+    }
+    
+    /* 侧边栏层级设计 */
+    .sidebar-nav > ul > li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    .sidebar-nav > ul > li > a {
+      font-weight: 600;
+      color: var(--primary-color);
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      display: block;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      text-decoration: none;
+    }
+    
+    .sidebar-nav > ul > li > a:hover {
+      background-color: rgba(15, 82, 186, 0.08);
+      color: var(--accent-dark);
+      border-left-color: var(--accent-color);
+      transform: translateX(3px);
+    }
+    
+    /* 激活的侧边栏项目 */
+    .sidebar-nav > ul > li.active > a {
+      color: var(--accent-dark);
+      background-color: rgba(212, 175, 55, 0.1);
+      border-left-color: var(--accent-color);
+      font-weight: 700;
+    }
+    
+    /* 二级菜单样式 */
+    .sidebar-nav > ul > li > ul {
+      padding-left: 1.5rem;
+      margin-top: 0.25rem;
+      border-left: 2px dashed rgba(212, 175, 55, 0.3);
+    }
+    
+    .sidebar-nav > ul > li > ul > li > a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0.35rem 1rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      display: block;
+      text-decoration: none;
+    }
+    
+    .sidebar-nav > ul > li > ul > li > a:hover {
+      color: var(--accent-color);
+      background-color: rgba(212, 175, 55, 0.05);
+      transform: translateX(2px);
+    }
+    
+    /* 主框架内容区 */
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      min-height: 100vh;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    /* 内容卡片 */
+    .markdown-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: var(--bg-overlay);
+      border-radius: 8px;
+      box-shadow: var(--shadow-medium);
+      position: relative;
+    }
+    
+    /* 内容区装饰角 */
+    .markdown-section::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-top: 2px solid var(--accent-color);
+      border-right: 2px solid var(--accent-color);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    
+    /* Markdown 内容样式 */
+    .markdown-section h1, 
+    .markdown-section h2, 
+    .markdown-section h3 {
+      color: var(--primary-color);
+      position: relative;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .markdown-section h1 {
+      font-size: 2rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    .markdown-section h2 {
+      font-size: 1.5rem;
+      padding-bottom: 0.35rem;
+    }
+    
+    .markdown-section h1:after, 
+    .markdown-section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+    
+    .markdown-section h3 {
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+    }
+    
+    .markdown-section p {
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+    
+    .markdown-section a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-bottom: 1px dashed var(--accent-color);
+    }
+    
+    .markdown-section a:hover {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+      border-bottom-style: solid;
+    }
+    
+    /* 表格样式 */
+    .markdown-section table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .markdown-section table th {
+      background-color: rgba(15, 82, 186, 0.05);
+      color: var(--primary-color);
+      font-weight: 600;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    
+    .markdown-section table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .markdown-section table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .markdown-section table tr:hover {
+      background-color: rgba(212, 175, 55, 0.03);
+    }
+    
+    /* 标签样式 */
+    .markdown-section code {
+      background-color: rgba(15, 82, 186, 0.05);
+      color: var(--accent-dark);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+      border: 1px dashed var(--border-medium);
+    }
+    
+    .markdown-section pre code {
+      background-color: var(--bg-secondary);
+      border: none;
+      padding: 1rem;
+      display: block;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    
+    /* 页脚设计 */
+    .footer-custom {
+      position: relative;
+      background-color: var(--bg-overlay);
+      border-top: 1px solid var(--border-light);
+      padding: 2rem;
+      margin-top: 3rem;
+      z-index: 20;
+      box-shadow: var(--shadow-light);
+    }
+    
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .footer-content p {
+      margin: 0.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    .footer-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
+    }
+    
+    .footer-content a:hover {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+    }
+    
+    /* 页脚装饰线 */
+    .footer-custom:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), var(--primary-color), var(--accent-color), transparent);
+    }
+    
+    /* 侧边栏切换按钮 */
+    .sidebar-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 100;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .sidebar-toggle:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.05);
+    }
+    
+    /* 返回顶部按钮 */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-medium);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+    
+    #back-to-top:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.1);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 250px;
+      }
+      
+      .markdown-section {
+        padding: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 0;
+        overflow: hidden;
+        position: fixed;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        box-shadow: var(--shadow-heavy);
+      }
+      
+      .sidebar.open {
+        width: 280px;
+      }
+      
+      .main-content {
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+      }
+      
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .navbar > div > a {
+        margin-right: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .markdown-section {
+        padding: 1.25rem;
+      }
+      
+      .footer-custom {
+        padding: 1.5rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .sidebar.open {
+        width: 240px;
+      }
+      
+      .markdown-section {
+        padding: 1rem;
+      }
+      
+      .footer-content p {
+        font-size: 0.85rem;
+      }
     }
   </style>
-  
-  <!-- 高级视觉效果样式 -->
-  <link rel="stylesheet" href="styles/advanced-visuals.css">
-  <!-- 视觉优化增强样式 -->
-  <link rel="stylesheet" href="styles/visual-enhancements.css">
 </head>
 <body>
+  <!-- 页头氛围图层 -->
+  <div class="header-ambience"></div>
+  
   <!-- 主容器 -->
   <div id="app"></div>
   
@@ -43,46 +571,101 @@
         return element;
       };
       
+      // 侧边栏切换按钮功能
+      hook.mounted(function() {
+        // 设置侧边栏切换功能
+        function setupSidebarToggle() {
+          // 检查是否已存在切换按钮
+          let toggleBtn = document.querySelector('.sidebar-toggle');
+          
+          if (!toggleBtn) {
+            toggleBtn = document.createElement('button');
+            toggleBtn.className = 'sidebar-toggle';
+            toggleBtn.innerHTML = '≡';
+            toggleBtn.title = '切换菜单';
+            document.body.appendChild(toggleBtn);
+          }
+          
+          // 初始化布局
+          const initLayout = () => {
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            
+            if (sidebar && mainContent) {
+              if (window.innerWidth <= 768) {
+                sidebar.style.width = '0';
+                sidebar.style.position = 'fixed';
+                mainContent.style.marginLeft = '0';
+                toggleBtn.style.display = 'flex';
+              } else {
+                sidebar.style.width = '280px';
+                sidebar.style.position = 'relative';
+                mainContent.style.marginLeft = '0';
+                toggleBtn.style.display = 'none';
+              }
+            }
+          };
+          
+          // 点击事件处理
+          toggleBtn.onclick = function() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+              sidebar.classList.toggle('open');
+              toggleBtn.innerHTML = sidebar.classList.contains('open') ? '×' : '≡';
+              
+              // 点击按钮时的视觉反馈
+              toggleBtn.style.transform = 'scale(0.9)';
+              setTimeout(() => {
+                toggleBtn.style.transform = 'scale(1)';
+              }, 100);
+            }
+          };
+          
+          // 初始化
+          initLayout();
+          
+          // 监听窗口大小变化
+          window.addEventListener('resize', initLayout);
+          
+          // ESC键关闭侧边栏
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              const sidebar = document.querySelector('.sidebar');
+              if (sidebar && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                toggleBtn.innerHTML = '≡';
+              }
+            }
+          });
+          
+          return toggleBtn;
+        }
+        
+        // 初始化侧边栏切换按钮
+        setupSidebarToggle();
+      });
+      
       // 页面加载完成后执行的函数
       hook.ready(function() {
         // 添加页脚
         if (!document.querySelector('footer.footer-custom')) {
-          const footer = createElement('footer', 'footer-custom', '<div class="footer-content">\n  <p>© 2024 国泰海通证券知识库 | <a href="https://www.gtsec.com" target="_blank">国泰海通证券官网</a></p>\n  <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>\n</div>');
-          Object.assign(footer.style, {
-            textAlign: 'center',
-            padding: '20px 0',
-            color: '#666',
-            fontSize: '14px',
-            borderTop: '1px solid #eee',
-            marginTop: '40px',
-            zIndex: '100'
-          });
+          const footer = createElement('footer', 'footer-custom', `
+            <div class="footer-content">
+              <p>© 2024 国泰海通证券知识库 | <a href="https://www.gtsec.com" target="_blank">国泰海通证券官网</a></p>
+              <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
+            </div>
+          `);
           document.body.appendChild(footer);
         }
         
         // 添加返回顶部按钮
         if (!document.querySelector('#back-to-top')) {
-          const backToTop = createElement('button', 'back-to-top', '↑', { id: 'back-to-top', title: '返回顶部' });
-          Object.assign(backToTop.style, {
-            position: 'fixed',
-            bottom: '30px',
-            right: '30px',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            backgroundColor: '#2563EB',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'none',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-            zIndex: '1000'
-          });
+          const backToTop = createElement('button', '', '↑', { id: 'back-to-top', title: '返回顶部' });
           
           // 显示/隐藏返回顶部按钮
           window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-              backToTop.style.display = 'block';
+              backToTop.style.display = 'flex';
             } else {
               backToTop.style.display = 'none';
             }
@@ -95,6 +678,27 @@
           
           document.body.appendChild(backToTop);
         }
+        
+        // 确保主布局结构正确
+        const app = document.querySelector('#app');
+        if (app && !app.querySelector('.main-layout')) {
+          // 获取现有的内容
+          const existingContent = app.innerHTML;
+          
+          // 重建主布局结构
+          app.innerHTML = `
+            <div class="main-layout">
+              <aside class="sidebar">
+                <nav class="sidebar-nav">
+                  ${existingContent.includes('sidebar-nav') ? existingContent.match(/<nav class="sidebar-nav">[\s\S]*?<\/nav>/)?.[0] : ''}
+                </nav>
+              </aside>
+              <main class="main-content">
+                ${existingContent.includes('markdown-section') ? existingContent.match(/<div class="markdown-section">[\s\S]*?<\/div>/)?.[0] : ''}
+              </main>
+            </div>
+          `;
+        }
       });
     }
     
@@ -105,34 +709,36 @@
       subMaxLevel: 3,
       auto2top: true,
       coverpage: true,
-      themeColor: '#2563EB',
+      themeColor: '#0F52BA',
       homepage: 'README.md',
       loadNavbar: true,
-      // 移除可能导致文件访问问题的alias配置
+      
+      // 路径别名配置
       alias: {
-  "技术/热门指标公式集/": "技术/热门指标公式集/README.md",
-  "热门指标公式集/": "技术/热门指标公式集/README.md",
-  "技术/热门指标公式集/1. AI量价共振指标.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/10. 量化择时指标.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/2. 北上资金动量指标.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/3. 涨停因子+N指标.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/4. 筹码集中度指标.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/5. 缺口回补+趋势指标.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/6. 港资+融资双驱动指标.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/7. 次新+量能异动指标.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/8. 行业β+个股α指标.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/9. 可转债联动指标.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md",
-  "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md"
-},
+        "技术/热门指标公式集/": "技术/热门指标公式集/README.md",
+        "热门指标公式集/": "技术/热门指标公式集/README.md",
+        "技术/热门指标公式集/1. AI量价共振指标.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/1.%20AI%E9%87%8F%E4%BB%B7%E5%85%B1%E6%8C%AF%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/10. 量化择时指标.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/10.%20%E9%87%8F%E5%8C%96%E6%8B%A9%E6%97%B6%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/2. 北上资金动量指标.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/2.%20%E5%8C%97%E4%B8%8A%E8%B5%84%E9%87%91%E5%8A%A8%E9%87%8F%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/3. 涨停因子+N指标.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/3.%20%E6%B6%A8%E5%81%9C%E5%9B%A0%E5%AD%90%2BN%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/4. 筹码集中度指标.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/4.%20%E7%AD%B9%E7%A0%81%E9%9B%86%E4%B8%AD%E5%BA%A6%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/5. 缺口回补+趋势指标.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/5.%20%E7%BC%BA%E5%8F%A3%E5%9B%9E%E8%A1%A5%2B%E8%B6%8B%E5%8A%BF%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/6. 港资+融资双驱动指标.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/6.%20%E6%B8%AF%E8%B5%84%2B%E8%9E%8D%E8%B5%84%E5%8F%8C%E9%A9%B1%E5%8A%A8%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/7. 次新+量能异动指标.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/7.%20%E6%AC%A1%E6%96%B0%2B%E9%87%8F%E8%83%BD%E5%BC%82%E5%8A%A8%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/8. 行业β+个股α指标.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/8.%20%E8%A1%8C%E4%B8%9A%CE%B2%2B%E4%B8%AA%E8%82%A1%CE%B1%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/9. 可转债联动指标.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md",
+        "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md": "技术/热门指标公式集/9.%20%E5%8F%AF%E8%BD%AC%E5%80%BA%E8%81%94%E5%8A%A8%E6%8C%87%E6%A0%87.md"
+      },
+      
       // Markdown增强配置
       markdown: {
         smartypants: true,
@@ -141,6 +747,7 @@
         headerIds: true,
         auto2top: true
       },
+      
       // 搜索插件配置
       search: {
         maxAge: 86400000,
@@ -150,12 +757,14 @@
         depth: 6,
         hideOtherSidebarContent: true
       },
+      
       // 代码复制功能
       copyCode: {
         buttonText: '复制',
         errorText: '错误',
         successText: '已复制'
       },
+      
       // 集成自定义插件
       plugins: [
         customPlugins
@@ -179,10 +788,5 @@
       }
     };
   </script>
-  
-  <!-- 高级视觉效果脚本 -->
-  <script src="scripts/advanced-visuals.js"></script>
-  <!-- 视觉优化增强脚本 -->
-  <script src="scripts/visual-enhancements.js"></script>
 </body>
 </html>
