@@ -2,19 +2,34 @@
   "version": 2,
   "builds": [
     {
-      "src": "docs/index.html",
+      "src": "docs/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "^/(.*)",
       "dest": "docs/$1",
       "headers": {
-        "cache-control": "public, max-age=0, must-revalidate"
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
       }
+    },
+    {
+      "src": "^/技术/热门指标公式集$",
+      "dest": "docs/技术/热门指标公式集完整.md"
+    },
+    {
+      "src": "^/热门指标公式集$",
+      "dest": "docs/技术/热门指标公式集完整.md"
+    },
+    {
+      "src": "^/技术/热门指标公式集/$",
+      "dest": "docs/技术/热门指标公式集完整.md"
     }
   ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "caseSensitive": false
 }
