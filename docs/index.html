@@ -560,6 +560,39 @@
         font-size: 0.85rem;
       }
     }
+
+    /* 页脚样式 - 确保始终在底部 */
+    .footer-custom {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-top: 1px solid #e1e5e9;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      width: 100%;
+      clear: both;
+    }
+    
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .footer-content p {
+      margin: 0.5rem 0;
+      color: var(--text-color);
+    }
+    
+    .footer-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      margin: 0 0.5rem;
+    }
+    
+    .footer-content a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -817,22 +850,20 @@
           }
         }, 100);
         
-        // 添加页脚 - 增强版，确保只创建一个页脚
+        // 添加页脚 - 确保位于页面底部
         // 先检查是否已存在页脚元素
         let existingFooter = document.querySelector('footer.footer-custom');
         
-        // 如果存在，先移除所有重复的页脚元素
+        // 如果存在多个页脚，只保留第一个
         if (existingFooter) {
-          // 获取所有页脚元素
           const allFooters = document.querySelectorAll('footer');
-          // 只保留第一个页脚，移除其他所有页脚
           allFooters.forEach((footer, index) => {
             if (index > 0) {
               footer.remove();
             }
           });
         } else {
-          // 如果不存在，创建新的页脚
+          // 创建新的页脚
           const footer = createElement('footer', 'footer-custom', `
             <div class="footer-content">
               <p>© 2024 国泰海通证券知识库</p>
@@ -848,15 +879,12 @@
               </p>
             </div>
           `);
+          
+          // 直接添加到body，并设置样式确保在底部
           document.body.appendChild(footer);
-          // 确保页脚在DOM中的正确位置
-          setTimeout(() => {
-            const appElement = document.querySelector('#app');
-            if (appElement && footer && footer.parentNode === document.body) {
-              // 将页脚移到主容器之后
-              appElement.after(footer);
-            }
-          }, 100);
+          footer.style.position = 'relative';
+          footer.style.width = '100%';
+          footer.style.clear = 'both';
         }
         
         // 检查是否已存在返回顶部按钮容器
