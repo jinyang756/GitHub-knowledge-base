@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
   <!-- 基础样式 - 金融行业专业风格 -->
+  <!-- 添加Font Awesome图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* CSS变量定义 */
     :root {
@@ -215,6 +217,54 @@
       position: relative;
     }
     
+    /* 侧边栏图标样式 */
+    .sidebar-nav > ul > li > a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .sidebar-nav > ul > li > a::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+    }
+    
+    /* 为不同分类添加相应的图标 */
+    .sidebar-nav > ul > li:first-child > a::before {
+      content: '🏠';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(2) > a::before {
+      content: '📜';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(3) > a::before {
+      content: '📊';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(4) > a::before {
+      content: '🎯';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(5) > a::before {
+      content: '⚠️';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(6) > a::before {
+      content: '🔧';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(7) > a::before {
+      content: '🏢';
+    }
+    
+    .sidebar-nav > ul > li:nth-child(8) > a::before {
+      content: '👨‍🏫';
+    }
+
     .sidebar-nav > ul > li > a {
       font-weight: 600;
       color: var(--primary-color);
@@ -647,10 +697,49 @@
       transform: scale(1.1);
     }
     
-    /* 响应式设计 */
+    /* 主布局容器样式 */
+    .main-layout {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    /* 侧边栏样式修复 */
+    .sidebar {
+      transition: transform 0.3s ease, width 0.3s ease;
+      transform: translateX(0);
+      position: fixed;
+      height: 100vh;
+      width: 280px;
+      left: 0;
+      top: 0;
+      z-index: 99;
+      background-color: var(--sidebar-background);
+      overflow-y: auto;
+      box-shadow: var(--shadow-medium);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* 侧边栏打开/关闭状态 */
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    
+    /* 响应式设计 - 大屏幕 */
+    @media (min-width: 769px) {
+      .main-content {
+        margin-left: 280px; /* 与侧边栏宽度保持一致 */
+      }
+    }
+    
     @media (max-width: 1024px) {
       .sidebar {
         width: 250px;
+      }
+      
+      .main-content {
+        margin-left: 250px; /* 与侧边栏宽度保持一致 */
       }
       
       .markdown-section {
@@ -658,6 +747,7 @@
       }
     }
     
+    /* 响应式设计 - 小屏幕 */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
@@ -667,10 +757,23 @@
         top: 0;
         box-shadow: var(--shadow-heavy);
         width: 280px;
+        z-index: 100; /* 确保在内容上方显示 */
       }
       
       .sidebar.open {
         transform: translateX(0);
+      }
+      
+      /* 侧边栏打开时给主内容添加遮罩 */
+      .sidebar.open ~ .main-content::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99;
       }
       
       .main-content {
@@ -753,17 +856,30 @@
             const mainContent = document.querySelector('.main-content');
             
             if (sidebar && mainContent) {
+              // 统一设置侧边栏样式
+              sidebar.style.width = '280px';
+              sidebar.style.position = 'fixed';
+              sidebar.style.height = '100vh';
+              sidebar.style.top = '0';
+              sidebar.style.left = '0';
+              sidebar.style.zIndex = '99';
+              sidebar.style.overflowY = 'auto';
+              
               if (window.innerWidth <= 768) {
-                sidebar.style.width = '0';
-                sidebar.style.position = 'fixed';
                 mainContent.style.marginLeft = '0';
-                toggleBtn.style.display = 'flex';
+                // 在小屏幕上默认隐藏侧边栏
+                if (!sidebar.classList.contains('open')) {
+                  sidebar.style.transform = 'translateX(-100%)';
+                }
               } else {
-                sidebar.style.width = '280px';
-                sidebar.style.position = 'relative';
-                mainContent.style.marginLeft = '0';
-                toggleBtn.style.display = 'none';
+                mainContent.style.marginLeft = '280px'; // 与侧边栏宽度匹配
+                // 大屏幕上默认显示侧边栏
+                sidebar.classList.add('open');
+                sidebar.style.transform = 'translateX(0)';
               }
+              
+              // 始终显示侧边栏按钮
+              toggleBtn.style.display = 'flex';
             }
           };
           
@@ -833,10 +949,12 @@
             // 检查当前窗口大小，设置初始状态
             if (window.innerWidth > 768) {
               sidebar.classList.add('open');
-              toggleBtn.style.display = 'none';
+              toggleBtn.style.display = 'flex'; // 始终显示侧边栏按钮
+              sidebar.style.transform = 'translateX(0)';
             } else {
               sidebar.classList.remove('open');
               toggleBtn.style.display = 'flex';
+              sidebar.style.transform = 'translateX(-100%)';
             }
           }
         }, 100);
@@ -908,12 +1026,29 @@
         }
         
         // 确保侧边栏内容只加载一次
-        const sidebarNav = document.querySelector('.sidebar-nav');
-        if (sidebar && !sidebarNav) {
-          const nav = document.createElement('nav');
-          nav.className = 'sidebar-nav';
-          sidebar.appendChild(nav);
-        }
+    const sidebarNav = document.querySelector('.sidebar-nav');
+    if (sidebar && !sidebarNav) {
+      const nav = document.createElement('nav');
+      nav.className = 'sidebar-nav';
+      sidebar.appendChild(nav);
+    }
+    
+    // 增强侧边栏图标显示
+    setTimeout(() => {
+      const sidebarItems = document.querySelectorAll('.sidebar-nav > ul > li > a');
+      
+      // 使用Font Awesome图标替换emoji图标
+      if (sidebarItems.length >= 8) {
+        sidebarItems[0].innerHTML = '<i class="fas fa-home"></i> 首页';
+        sidebarItems[1].innerHTML = '<i class="fas fa-file-alt"></i> 核心内容分类';
+        sidebarItems[2].innerHTML = '<i class="fas fa-landmark"></i> 政策解读';
+        sidebarItems[3].innerHTML = '<i class="fas fa-chart-line"></i> 行业分析';
+        sidebarItems[4].innerHTML = '<i class="fas fa-chess"></i> 投资策略';
+        sidebarItems[5].innerHTML = '<i class="fas fa-exclamation-triangle"></i> 风险提示';
+        sidebarItems[6].innerHTML = '<i class="fas fa-tools"></i> 技术支持';
+        sidebarItems[7].innerHTML = '<i class="fas fa-star"></i> 特色内容';
+      }
+    }, 300);
       });
     }
     
