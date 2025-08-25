@@ -881,25 +881,38 @@
           document.body.appendChild(backToTop);
         }
         
-        // 确保主布局结构正确
+        // 优化布局处理，避免与docsify默认布局冲突
         const app = document.querySelector('#app');
-        if (app && !app.querySelector('.main-layout')) {
-          // 获取现有的内容
-          const existingContent = app.innerHTML;
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        // 仅当页面结构不完整时才进行修复
+        if (app && !sidebar && !mainContent) {
+          // 创建侧边栏和主内容区域，避免重复加载
+          const sidebarElement = document.createElement('aside');
+          sidebarElement.className = 'sidebar';
           
-          // 重建主布局结构
-          app.innerHTML = `
-            <div class="main-layout">
-              <aside class="sidebar">
-                <nav class="sidebar-nav">
-                  ${existingContent.includes('sidebar-nav') ? existingContent.match(/<nav class="sidebar-nav">[\s\S]*?<\/nav>/)?.[0] : ''}
-                </nav>
-              </aside>
-              <main class="main-content">
-                ${existingContent.includes('markdown-section') ? existingContent.match(/<div class="markdown-section">[\s\S]*?<\/div>/)?.[0] : ''}
-              </main>
-            </div>
-          `;
+          const mainContentElement = document.createElement('main');
+          mainContentElement.className = 'main-content';
+          
+          // 移动现有的markdown内容到主内容区域
+          const markdownContent = document.querySelector('.markdown-section');
+          if (markdownContent) {
+            mainContentElement.appendChild(markdownContent);
+          }
+          
+          // 清空并重建app内容
+          app.innerHTML = '';
+          app.appendChild(sidebarElement);
+          app.appendChild(mainContentElement);
+        }
+        
+        // 确保侧边栏内容只加载一次
+        const sidebarNav = document.querySelector('.sidebar-nav');
+        if (sidebar && !sidebarNav) {
+          const nav = document.createElement('nav');
+          nav.className = 'sidebar-nav';
+          sidebar.appendChild(nav);
         }
       });
     }
