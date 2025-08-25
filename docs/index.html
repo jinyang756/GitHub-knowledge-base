@@ -835,6 +835,28 @@
         return element;
       };
       
+      // 增强的设备检测函数
+      function detectDevice() {
+        const isMobile = (
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+          window.innerWidth <= 768 ||
+          window.matchMedia('(max-width: 768px)').matches
+        );
+        
+        const isTablet = (
+          !isMobile && 
+          window.innerWidth <= 1024 &&
+          window.matchMedia('(max-width: 1024px)').matches
+        );
+        
+        return {
+          isMobile, 
+          isTablet,
+          isDesktop: !isMobile && !isTablet,
+          orientation: window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'
+        };
+      }
+      
       // 侧边栏切换按钮功能
       hook.mounted(function() {
         // 设置侧边栏切换功能
@@ -850,12 +872,24 @@
             document.body.appendChild(toggleBtn);
           }
           
+          // 获取CSS动画兼容样式
+          function getTransformStyle(value) {
+            // IE11兼容性处理
+            return {
+              transform: value,
+              msTransform: value,
+              WebkitTransform: value
+            };
+          }
+          
           // 初始化布局
           const initLayout = () => {
             const sidebar = document.querySelector('.sidebar');
             const mainContent = document.querySelector('.main-content');
             
             if (sidebar && mainContent) {
+              const device = detectDevice();
+              
               // 统一设置侧边栏样式
               sidebar.style.width = '280px';
               sidebar.style.position = 'fixed';
@@ -865,17 +899,30 @@
               sidebar.style.zIndex = '99';
               sidebar.style.overflowY = 'auto';
               
-              if (window.innerWidth <= 768) {
+              // 根据设备类型和方向调整布局
+              if (device.isMobile) {
                 mainContent.style.marginLeft = '0';
-                // 在小屏幕上默认隐藏侧边栏
+                // 在移动设备上默认隐藏侧边栏
                 if (!sidebar.classList.contains('open')) {
-                  sidebar.style.transform = 'translateX(-100%)';
+                  Object.assign(sidebar.style, getTransformStyle('translateX(-100%)'));
+                }
+              } else if (device.isTablet) {
+                // 平板设备根据横竖屏调整
+                if (device.orientation === 'portrait') {
+                  mainContent.style.marginLeft = '0';
+                  if (!sidebar.classList.contains('open')) {
+                    Object.assign(sidebar.style, getTransformStyle('translateX(-100%)'));
+                  }
+                } else {
+                  mainContent.style.marginLeft = '280px';
+                  sidebar.classList.add('open');
+                  Object.assign(sidebar.style, getTransformStyle('translateX(0)'));
                 }
               } else {
-                mainContent.style.marginLeft = '280px'; // 与侧边栏宽度匹配
-                // 大屏幕上默认显示侧边栏
+                // 桌面设备显示侧边栏
+                mainContent.style.marginLeft = '280px';
                 sidebar.classList.add('open');
-                sidebar.style.transform = 'translateX(0)';
+                Object.assign(sidebar.style, getTransformStyle('translateX(0)'));
               }
               
               // 始终显示侧边栏按钮
@@ -886,18 +933,25 @@
           // 点击事件处理
           toggleBtn.onclick = function() {
             const sidebar = document.querySelector('.sidebar');
+            const device = detectDevice();
+            
             if (sidebar) {
               sidebar.classList.toggle('open');
               toggleBtn.innerHTML = sidebar.classList.contains('open') ? '×' : '≡';
               
-              // 点击按钮时的视觉反馈
-              toggleBtn.style.transform = 'scale(0.9)';
+              // 点击按钮时的视觉反馈 - 兼容性更强的实现
+              Object.assign(toggleBtn.style, getTransformStyle('scale(0.9)'));
               setTimeout(() => {
-                toggleBtn.style.transform = 'scale(1)';
+                Object.assign(toggleBtn.style, getTransformStyle('scale(1)'));
               }, 100);
               
-              // 添加遮罩层（移动端）
-              if (window.innerWidth <= 768) {
+              // 根据状态调整侧边栏位置
+              Object.assign(sidebar.style, getTransformStyle(
+                sidebar.classList.contains('open') ? 'translateX(0)' : 'translateX(-100%)'
+              ));
+              
+              // 添加遮罩层（移动设备和竖屏平板）
+              if (device.isMobile || (device.isTablet && device.orientation === 'portrait')) {
                 let overlay = document.querySelector('.sidebar-overlay');
                 if (!overlay) {
                   overlay = document.createElement('div');
@@ -905,6 +959,7 @@
                   overlay.onclick = () => {
                     sidebar.classList.remove('open');
                     toggleBtn.innerHTML = '≡';
+                    Object.assign(sidebar.style, getTransformStyle('translateX(-100%)'));
                     overlay.classList.remove('active');
                   };
                   document.body.appendChild(overlay);
@@ -917,17 +972,17 @@
           // 初始化
           initLayout();
           
-          // 监听窗口大小变化
+          // 监听窗口大小变化和方向变化
           window.addEventListener('resize', initLayout);
+          window.addEventListener('orientationchange', initLayout);
           
           // ESC键关闭侧边栏
           document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-              const sidebar = document.querySelector('.sidebar');
-              if (sidebar && sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-                toggleBtn.innerHTML = '≡';
-              }
+            const sidebar = document.querySelector('.sidebar');
+            if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+              sidebar.classList.remove('open');
+              toggleBtn.innerHTML = '≡';
+              Object.assign(sidebar.style, getTransformStyle('translateX(-100%)'));
             }
           });
           
@@ -1033,22 +1088,46 @@
       sidebar.appendChild(nav);
     }
     
-    // 增强侧边栏图标显示
+    // 增强侧边栏图标显示 - 保留原链接功能
     setTimeout(() => {
       const sidebarItems = document.querySelectorAll('.sidebar-nav > ul > li > a');
       
-      // 使用Font Awesome图标替换emoji图标
-      if (sidebarItems.length >= 8) {
-        sidebarItems[0].innerHTML = '<i class="fas fa-home"></i> 首页';
-        sidebarItems[1].innerHTML = '<i class="fas fa-file-alt"></i> 核心内容分类';
-        sidebarItems[2].innerHTML = '<i class="fas fa-landmark"></i> 政策解读';
-        sidebarItems[3].innerHTML = '<i class="fas fa-chart-line"></i> 行业分析';
-        sidebarItems[4].innerHTML = '<i class="fas fa-chess"></i> 投资策略';
-        sidebarItems[5].innerHTML = '<i class="fas fa-exclamation-triangle"></i> 风险提示';
-        sidebarItems[6].innerHTML = '<i class="fas fa-tools"></i> 技术支持';
-        sidebarItems[7].innerHTML = '<i class="fas fa-star"></i> 特色内容';
-      }
-    }, 300);
+      // 定义图标映射
+      const iconClasses = [
+        'fas fa-home',
+        'fas fa-file-alt',
+        'fas fa-landmark',
+        'fas fa-chart-line',
+        'fas fa-chess',
+        'fas fa-exclamation-triangle',
+        'fas fa-tools',
+        'fas fa-star'
+      ];
+      
+      // 逐个处理侧边栏项，保留原链接功能
+      sidebarItems.forEach((item, index) => {
+        if (index < iconClasses.length) {
+          // 获取原始文本内容
+          const originalText = item.textContent || item.innerText;
+          
+          // 移除可能存在的emoji图标
+          const cleanText = originalText.replace(/[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+          
+          // 创建新的图标元素
+          const iconElement = document.createElement('i');
+          iconElement.className = iconClasses[index];
+          
+          // 清空并重新构建元素内容，但保留原有属性和事件监听器
+          while (item.firstChild) {
+            item.removeChild(item.firstChild);
+          }
+          
+          item.appendChild(iconElement);
+          const textNode = document.createTextNode(' ' + cleanText);
+          item.appendChild(textNode);
+        }
+      });
+    }, 500); // 增加延迟时间，确保DOM完全加载
       });
     }
     

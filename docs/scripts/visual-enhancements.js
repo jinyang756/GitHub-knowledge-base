@@ -7,11 +7,41 @@
 window.addEventListener('DOMContentLoaded', function() {
   // ===== 1. 高级性能监控与自适应渲染 =====
   function initPerformanceMonitor() {
-    // 性能监控器
+    // 性能监控配置
+    const perfConfig = {
+      // 性能模式切换阈值（包含缓冲区域以避免频繁切换）
+      highToMediumThreshold: 45, // 从高性能降到中性能的阈值
+      mediumToHighThreshold: 55, // 从中性能升到高性能的阈值
+      mediumToLowThreshold: 25,  // 从中性能降到低性能的阈值
+      lowToMediumThreshold: 35   // 从低性能升到中性能的阈值
+    };
+    
+    // 性能监控器 - 增强版
     const perfMonitor = {
       frameCount: 0,
       lastTime: performance.now(),
-      fps: 60,
+      currentFps: 60,
+      smoothedFps: 60, // 平滑后的FPS值
+      fpsHistory: [],  // 存储最近的FPS值
+      historyLength: 5, // 历史记录长度
+      lastMode: 'high', // 上一次的性能模式
+      interactionDetected: false, // 是否检测到用户交互
+      interactionTimeout: null, // 交互超时定时器
+      
+      // 记录用户交互
+      recordInteraction() {
+        this.interactionDetected = true;
+        
+        // 清除之前的超时
+        if (this.interactionTimeout) {
+          clearTimeout(this.interactionTimeout);
+        }
+        
+        // 3秒后重置交互标记
+        this.interactionTimeout = setTimeout(() => {
+          this.interactionDetected = false;
+        }, 3000);
+      },
       
       update() {
         const now = performance.now();
@@ -19,43 +49,96 @@ window.addEventListener('DOMContentLoaded', function() {
         
         // 每秒计算一次FPS
         if (now - this.lastTime >= 1000) {
-          this.fps = this.frameCount;
+          this.currentFps = this.frameCount;
           this.frameCount = 0;
           this.lastTime = now;
           
-          // 根据FPS动态调整效果
+          // 添加到历史记录并保持固定长度
+          this.fpsHistory.push(this.currentFps);
+          if (this.fpsHistory.length > this.historyLength) {
+            this.fpsHistory.shift();
+          }
+          
+          // 计算平滑FPS（排除最高和最低值后的平均值）
+          this.calculateSmoothedFps();
+          
+          // 根据平滑后的FPS调整效果
           this.adjustEffectsBasedOnPerformance();
         }
       },
       
-      adjustEffectsBasedOnPerformance() {
-        const body = document.body;
+      // 计算平滑后的FPS值（排除极端值）
+      calculateSmoothedFps() {
+        if (this.fpsHistory.length === 0) return;
         
-        // 高性能模式 (>50 FPS)
-        if (this.fps > 50) {
-          body.classList.remove('medium-performance', 'low-performance');
-          body.classList.add('high-performance');
+        // 创建副本并排序
+        const sortedHistory = [...this.fpsHistory].sort((a, b) => a - b);
+        
+        // 排除最高和最低值（如果有足够的数据点）
+        let trimmedHistory = sortedHistory;
+        if (sortedHistory.length > 3) {
+          trimmedHistory = sortedHistory.slice(1, -1);
         }
-        // 中等性能模式 (30-50 FPS)
-        else if (this.fps > 30) {
-          body.classList.remove('high-performance', 'low-performance');
-          body.classList.add('medium-performance');
+        
+        // 计算平均值
+        const sum = trimmedHistory.reduce((acc, val) => acc + val, 0);
+        this.smoothedFps = Math.round(sum / trimmedHistory.length);
+      },
+      
+      adjustEffectsBasedOnPerformance() {
+        // 在用户交互期间不进行模式切换
+        if (this.interactionDetected) {
+          return;
         }
-        // 低性能模式 (<=30 FPS)
-        else {
-          body.classList.remove('high-performance', 'medium-performance');
-          body.classList.add('low-performance');
+        
+        const body = document.body;
+        let newMode = this.lastMode;
+        
+        // 根据平滑后的FPS和当前模式决定新模式（加入滞后效应避免频繁切换）
+        if (this.lastMode === 'high' && this.smoothedFps <= perfConfig.highToMediumThreshold) {
+          newMode = 'medium';
+        } else if (this.lastMode === 'medium' && this.smoothedFps >= perfConfig.mediumToHighThreshold) {
+          newMode = 'high';
+        } else if (this.lastMode === 'medium' && this.smoothedFps <= perfConfig.mediumToLowThreshold) {
+          newMode = 'low';
+        } else if (this.lastMode === 'low' && this.smoothedFps >= perfConfig.lowToMediumThreshold) {
+          newMode = 'medium';
+        }
+        
+        // 只有当模式发生变化时才更新
+        if (newMode !== this.lastMode) {
+          // 移除所有模式类
+          body.classList.remove('high-performance', 'medium-performance', 'low-performance');
+          
+          // 添加新模式类
+          if (newMode === 'high') {
+            body.classList.add('high-performance');
+          } else if (newMode === 'medium') {
+            body.classList.add('medium-performance');
+          } else if (newMode === 'low') {
+            body.classList.add('low-performance');
+          }
+          
+          this.lastMode = newMode;
         }
       }
     };
     
-    // 将性能监控集成到动画循环
-    function monitorLoop() {
+    // 添加用户交互监听
+    ['mousedown', 'mousemove', 'keydown', 'touchstart', 'wheel'].forEach(eventType => {
+      window.addEventListener(eventType, () => {
+        perfMonitor.recordInteraction();
+      }, { passive: true });
+    });
+    
+    // 将性能监控集成到动画循环 - 使用requestAnimationFrame的时间戳
+    function monitorLoop(timestamp) {
       perfMonitor.update();
       requestAnimationFrame(monitorLoop);
     }
     
-    monitorLoop();
+    // 启动性能监控
+    requestAnimationFrame(monitorLoop);
     window.perfMonitor = perfMonitor;
   }
   
