@@ -284,6 +284,151 @@
       position: relative;
     }
     
+    /* 首页特定样式 */
+    .markdown-section.home-page {
+      /* 确保首页内容完全显示 */
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+    
+    /* 首页搜索区域样式增强 */
+    .markdown-section.home-page .search-section {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .markdown-section.home-page .search-container {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .markdown-section.home-page .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .markdown-section.home-page #header-search-input {
+      width: 100%;
+      padding: 0.75rem 3rem 0.75rem 1rem;
+      border: 2px solid var(--border-medium);
+      border-radius: 50px;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    
+    .markdown-section.home-page #header-search-input:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+    
+    .markdown-section.home-page #header-search-btn {
+      position: absolute;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .markdown-section.home-page #header-search-btn:hover {
+      color: var(--accent-color);
+    }
+    
+    .markdown-section.home-page .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-overlay);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 1000;
+      box-shadow: var(--shadow-heavy);
+      display: none;
+    }
+    
+    /* 首页核心内容样式优化 */
+    .markdown-section.home-page h1 {
+      font-size: 2.25rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .markdown-section.home-page h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+    
+    .markdown-section.home-page h2 {
+      margin-top: 2.5rem;
+    }
+    
+    .markdown-section.home-page .tag {
+      background-color: rgba(15, 82, 186, 0.1);
+      color: var(--primary-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      border: 1px solid rgba(15, 82, 186, 0.2);
+    }
+    
+    .markdown-section.home-page .data-number {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+    
+    /* 快速导航样式增强 */
+    .markdown-section.home-page .quick-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .markdown-section.home-page .quick-navigation a {
+      background-color: rgba(15, 82, 186, 0.05);
+      color: var(--primary-color);
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(15, 82, 186, 0.2);
+      border-bottom: none;
+      font-weight: 500;
+    }
+    
+    .markdown-section.home-page .quick-navigation a:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+    
     /* 内容区装饰角 */
     .markdown-section::before {
       content: '';
@@ -765,7 +910,7 @@
       loadSidebar: true,
       subMaxLevel: 3,
       auto2top: true,
-      coverpage: true,
+      coverpage: false, // 禁用封面页，使用README.md作为首页
       themeColor: '#0F52BA',
       homepage: 'README.md',
       loadNavbar: false,
@@ -778,7 +923,10 @@
         "技术/热门指标公式集/": "技术/热门指标公式集完整.md",
         "热门指标公式集/": "技术/热门指标公式集完整.md",
         "技术/热门指标公式集": "技术/热门指标公式集完整.md",
-        "热门指标公式集": "技术/热门指标公式集完整.md"
+        "热门指标公式集": "技术/热门指标公式集完整.md",
+        // 添加更多通用别名确保路径匹配
+        "README": "README.md",
+        "readme": "README.md"
       },
       
       // Markdown增强配置
@@ -809,7 +957,22 @@
       
       // 集成自定义插件
       plugins: [
-        customPlugins
+        customPlugins,
+        // 增强首页显示的自定义插件
+        function(hook) {
+          hook.ready(function() {
+            // 确保首页内容完全加载后应用样式
+            setTimeout(function() {
+              const homeContent = document.querySelector('.markdown-section');
+              if (homeContent && window.location.pathname === '/' || 
+                  window.location.pathname.endsWith('/') || 
+                  window.location.pathname.includes('README')) {
+                // 为首页添加额外的样式类
+                homeContent.classList.add('home-page');
+              }
+            }, 100);
+          });
+        }
       ]
     };
   </script>
