@@ -817,83 +817,77 @@
           }
         }, 100);
         
-        // 添加页脚 - 彻底修复版，确保只创建一个页脚且位置正确
-        // 使用闭包和单例模式确保页脚生成逻辑只执行一次
+        // 直接添加静态页脚
         (function() {
           // 检查是否已经执行过
           if (window.footerCreated) return;
           window.footerCreated = true;
           
-          // 在DOM完全加载后执行
+          // 立即执行，确保在DOM早期阶段就设置好布局
+          function setupFooterLayout() {
+            // 首先设置body为flex容器，确保后续元素能正确布局
+            if (document.body) {
+              Object.assign(document.body.style, {
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+                margin: '0',
+                padding: '0'
+              });
+            }
+            
+            // 确保#app容器占据剩余空间
+            const appElement = document.querySelector('#app');
+            if (appElement) {
+              Object.assign(appElement.style, {
+                flex: '1',
+                display: 'flex',
+                flexDirection: 'column'
+              });
+            }
+          }
+          
+          // 先设置好布局基础
+          setupFooterLayout();
+          
+          // 然后创建页脚并添加到正确位置
           function createFooter() {
             // 先移除所有可能存在的页脚元素
             const allFooters = document.querySelectorAll('footer');
             allFooters.forEach(footer => footer.remove());
             
-            // 创建新的页脚
-            const footer = createElement('footer', 'footer-custom', `
-              <div class="footer-content">
-                <p>© 2024 国泰海通证券知识库</p>
-                <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
-                <p>
-                  <a href="https://huashu.web.app/" target="_blank">话术平台</a> | 
-                  <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a> | 
-                  <a href="#" target="_blank">九州旗舰店</a> | 
-                  <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a> | 
-                  <a href="https://nicevoice.org/zh" target="_blank">语音服务</a> | 
-                  <a href="#" target="_blank">字幕移除工具</a> |
-                  <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
-                </p>
-              </div>
-            `);
+            // 直接添加静态页脚HTML
+            const footerHtml = `
+              <footer class="footer-custom" style="clear: both; width: 100%; background-color: rgba(255, 255, 255, 0.95); border-top: 1px solid rgb(225, 229, 233); padding: 1.5rem 0px; text-align: center; box-shadow: rgba(0, 0, 0, 0.05) 0px -2px 10px; z-index: 50;">
+                <div class="footer-content">
+                  <p>© 2024 国泰海通证券知识库</p>
+                  <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
+                  <p>
+                    <a href="https://huashu.web.app/" target="_blank">话术平台</a> | 
+                    <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a> | 
+                    <a href="#" target="_blank">九州旗舰店</a> | 
+                    <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a> | 
+                    <a href="https://nicevoice.org/zh" target="_blank">语音服务</a> | 
+                    <a href="#" target="_blank">字幕移除工具</a> |
+                    <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
+                  </p>
+                </div>
+              </footer>
+            `;
             
-            // 实现真正的页脚定位 - 固定在页面底部但不跟随滚动
-            // 使用flex布局确保页脚始终在页面底部
-            if (document.body) {
-              // 设置body为flex容器
-              Object.assign(document.body.style, {
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-                margin: '0'
-              });
-            }
+            // 将页脚添加到页面
+            const footerContainer = document.createElement('div');
+            footerContainer.innerHTML = footerHtml;
+            const footer = footerContainer.firstElementChild;
             
-            // 设置#app容器占据剩余空间
-            const appElement = document.querySelector('#app');
-            if (appElement) {
-              Object.assign(appElement.style, {
-                flex: '1'
-              });
-            }
+            // 确保页脚始终添加到document.body的末尾
+            document.body.appendChild(footer);
             
-            // 页脚样式
-            Object.assign(footer.style, {
-              clear: 'both',
-              width: '100%',
-              backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              borderTop: '1px solid #e1e5e9',
-              padding: '1.5rem 0',
-              textAlign: 'center',
-              boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.05)',
-              zIndex: '50'
-            });
-            
-            // 确保页脚始终添加在正确的位置（app元素之后）
-            if (appElement) {
-              // 确保将页脚添加到app元素之后
-              if (appElement.nextSibling) {
-                document.body.insertBefore(footer, appElement.nextSibling);
-              } else {
-                document.body.appendChild(footer);
-              }
-            } else {
-              document.body.appendChild(footer);
-            }
+            console.log('页脚已添加到body末尾');
           }
           
-          // 增加延迟确保DOM完全加载
-          setTimeout(createFooter, 1000);
+          // 增加较小延迟确保DOM基本结构形成，但不过晚
+          setTimeout(createFooter, 100);
         })();
         
         // 检查是否已存在返回顶部按钮容器
