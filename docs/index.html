@@ -9,6 +9,90 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- 网站加密脚本 - 放置在docsify加载前 -->
+  <script>
+    // 配置项
+    const ACCESS_CODES = ["夜风", "yefeng"]; // 支持中英文暗号
+    const STORAGE_KEY = "kt_verified";       // 验证状态存储键
+    const ERROR_COUNT_KEY = "kt_error_cnt";  // 错误次数存储键
+    const MAX_ERRORS = 5;                    // 最大错误次数
+    const VALID_DURATION = 86400000;         // 验证有效期（24小时，单位：毫秒）
+
+    // 检查是否已被锁定
+    function isLocked() {
+      const errorCount = parseInt(localStorage.getItem(ERROR_COUNT_KEY) || "0");
+      return errorCount >= MAX_ERRORS;
+    }
+
+    // 检查是否已通过验证
+    function isVerified() {
+      return ACCESS_CODES.includes(localStorage.getItem(STORAGE_KEY));
+    }
+  </script>
+
+  <!-- 配置Tailwind自定义颜色和字体 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'mystic-red': '#9b2226',
+            'mystic-blue': '#0f172a',
+            'mystic-purple': '#4c1d95',
+            'glass': 'rgba(15, 23, 42, 0.6)',
+            'glass-light': 'rgba(155, 34, 38, 0.3)',
+          },
+          fontFamily: {
+            'occult': ['Garamond', 'Georgia', 'serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 0 8px rgba(155, 34, 38, 0.7);
+      }
+      .glow-border {
+        box-shadow: 0 0 10px rgba(155, 34, 38, 0.5), 
+                    0 0 20px rgba(15, 23, 42, 0.3);
+      }
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .bg-gradient-mystic {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(76, 29, 149, 0.7) 50%, rgba(155, 34, 38, 0.7) 100%);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .animate-shake {
+        animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+      }
+      @keyframes shake {
+        10%, 90% { transform: translateX(-1px); }
+        20%, 80% { transform: translateX(2px); }
+        30%, 50%, 70% { transform: translateX(-3px); }
+        40%, 60% { transform: translateX(3px); }
+      }
+    }
+  </style>
+
   <!-- 自定义CSS样式 -->
   <style>
     /* CSS变量定义 - 方便主题调整 */
@@ -572,9 +656,442 @@
     }
   </style>
 </head>
-<body>
-  <!-- 主容器 -->
-  <div id="app"></div>
+<body class="min-h-screen overflow-hidden font-occult">
+  <!-- 如果已验证通过，则显示正常内容 -->
+  <div id="normalContent" class="hidden">
+    <!-- 主容器 -->
+    <div id="app"></div>
+  </div>
+  
+  <!-- 如果未验证，则显示验证界面 -->
+  <div id="verificationScreen" class="">
+    <!-- 背景图与渐变覆盖层 -->
+    <div class="fixed inset-0 z-0">
+      <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/3372683a8e2d497dba89c9c8bd7f90e5.png~tplv-a9rns2rl98-24:720:720.png?rk3s=1fb89129&x-expires=1757093018&x-signature=hSc%2BVQXazL8xQPDI8IfM3QKdtLg%3D" 
+           alt="神秘风格背景图，带有深色纹理和神秘符号" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-mystic"></div>
+    </div>
+
+    <!-- 装饰性元素 -->
+    <div class="fixed inset-0 z-10 pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-mystic-red/20 blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-mystic-blue/30 blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="relative z-20 min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <!-- 标题 -->
+      <div class="mb-12 text-center animate-float">
+        <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-4 text-shadow tracking-wider">
+          国泰海通证券知识库
+        </h1>
+        <p class="text-gray-300 text-[clamp(1rem,2vw,1.25rem)] max-w-lg mx-auto">
+          唯有知晓暗语者，方能窥见其中奥秘
+        </p>
+      </div>
+
+      <!-- 验证卡片 -->
+      <div class="w-full max-w-md glass-effect rounded-2xl p-8 glow-border transition-all duration-500 hover:glow-border hover:shadow-lg hover:shadow-mystic-red/20">
+        <form id="accessForm" class="space-y-6">
+          <div class="space-y-2">
+            <label for="passphrase" class="block text-white text-lg">请输入验证暗语</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                <i class="fa fa-key"></i>
+              </span>
+              <input 
+                type="text" 
+                id="passphrase" 
+                class="w-full pl-10 pr-4 py-3 bg-transparent border border-gray-600 rounded-lg focus:border-mystic-red focus:ring-1 focus:ring-mystic-red text-white transition-all duration-300"
+                placeholder="输入暗语..."
+                required
+              >
+            </div>
+          </div>
+
+          <!-- 错误提示 -->
+          <div id="errorMessage" class="hidden text-mystic-red text-center py-2"></div>
+
+          <!-- 按钮 -->
+          <button 
+            type="submit" 
+            class="w-full bg-gradient-to-r from-mystic-blue to-mystic-red hover:opacity-90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+          >
+            <span>识别进入</span>
+            <i class="fa fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <!-- 尝试次数提示 -->
+        <div class="mt-6 text-center text-gray-400 text-sm">
+          <span id="attemptsRemaining">剩余尝试次数: 5</span>
+        </div>
+      </div>
+
+      <!-- 页脚 -->
+      <div class="mt-16 text-gray-500 text-sm">
+        <p>神秘知识只向有缘人敞开</p>
+      </div>
+    </div>
+
+    <!-- 锁定提示模态框 -->
+    <div id="lockModal" class="fixed inset-0 z-50 hidden items-center justify-center">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      <div class="relative glass-effect rounded-xl p-8 max-w-md w-full mx-4 glow-border">
+        <h2 class="text-2xl font-bold text-mystic-red mb-4 text-center">访问已锁定</h2>
+        <p class="text-gray-300 text-center mb-6">
+          多次验证失败，IP已被临时锁定。请稍后再试。
+        </p>
+        <div class="text-center">
+          <button id="closeLockModal" class="px-6 py-2 bg-mystic-red/80 hover:bg-mystic-red text-white rounded-lg transition-all">
+            关闭
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 验证逻辑脚本 -->
+  <script>
+    // 获取DOM元素
+    const verificationScreen = document.getElementById('verificationScreen');
+    const normalContent = document.getElementById('normalContent');
+    const accessForm = document.getElementById('accessForm');
+    const passphraseInput = document.getElementById('passphrase');
+    const errorMessage = document.getElementById('errorMessage');
+    const attemptsRemaining = document.getElementById('attemptsRemaining');
+    const lockModal = document.getElementById('lockModal');
+    const closeLockModal = document.getElementById('closeLockModal');
+    
+    // 更新剩余尝试次数显示
+    function updateAttemptsDisplay() {
+      const errorCount = parseInt(localStorage.getItem(ERROR_COUNT_KEY) || "0");
+      const remaining = MAX_ERRORS - errorCount;
+      attemptsRemaining.textContent = `剩余尝试次数: ${remaining}`;
+    }
+    
+    // 显示错误消息
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.remove('hidden');
+      
+      // 添加抖动动画
+      passphraseInput.classList.add('animate-shake');
+      setTimeout(() => {
+        passphraseInput.classList.remove('animate-shake');
+      }, 500);
+    }
+    
+    // 隐藏错误消息
+    function hideError() {
+      errorMessage.classList.add('hidden');
+    }
+    
+    // 锁定访问
+    function lockAccess() {
+      lockModal.style.display = 'flex';
+      accessForm.reset();
+      accessForm.classList.add('hidden');
+    }
+    
+    // 验证通过后的处理
+    function onVerificationSuccess(input) {
+      localStorage.setItem(STORAGE_KEY, input);          // 记录验证状态
+      localStorage.removeItem(ERROR_COUNT_KEY);          // 重置错误次数
+      // 有效期后自动清除验证状态
+      setTimeout(() => localStorage.removeItem(STORAGE_KEY), VALID_DURATION);
+      
+      // 显示正常内容，隐藏验证界面
+      verificationScreen.classList.add('hidden');
+      normalContent.classList.remove('hidden');
+      
+      // 初始化docsify
+      initDocsify();
+    }
+    
+    // 初始化docsify
+    function initDocsify() {
+      // 仅当验证通过时加载完整配置
+      window.$docsify = {
+        name: '国泰海通证券知识库',
+        loadSidebar: true,
+        subMaxLevel: 3,
+        auto2top: true,
+        coverpage: false, // 禁用封面页，使用README.md作为首页
+        themeColor: '#1E3A8A', // 匹配项目"深空蓝"主色调
+        homepage: 'README.md',
+        loadNavbar: false,
+        loadFooter: true, // 启用docsify静态页脚
+        
+      // 避免缓存问题
+      noCache: true,
+      
+      // 路径别名配置 - 增强版
+      alias: {
+        "技术/热门指标公式集/": "技术/热门指标公式集完整.md",
+        "热门指标公式集/": "技术/热门指标公式集完整.md",
+        "技术/热门指标公式集": "技术/热门指标公式集完整.md",
+        "热门指标公式集": "技术/热门指标公式集完整.md",
+        // 添加更多通用别名确保路径匹配
+        "README": "README.md",
+        "readme": "README.md"
+      },
+      
+      // 外部链接处理配置
+      externalLinkTarget: '_blank',
+      externalLinkRel: ['noopener', 'noreferrer'],
+      
+      // 路由模式配置 - 使用哈希模式确保兼容性
+      routerMode: 'hash',
+      
+      // 确保链接解析正确
+      subMaxLevel: 6,
+      
+      // Markdown增强配置
+      markdown: {
+        smartypants: true,
+        breaks: true,
+        tables: true,
+        headerIds: true,
+        auto2top: true
+      },
+      
+      // 搜索插件配置
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索知识库',
+        noData: '没有找到相关内容',
+        depth: 6,
+        hideOtherSidebarContent: true
+      },
+      
+      // 代码复制功能
+      copyCode: {
+        buttonText: '复制',
+        errorText: '错误',
+        successText: '已复制'
+      },
+      
+      // 集成自定义插件
+      plugins: [
+        customPlugins,
+        // 增强首页显示的自定义插件
+        function(hook) {
+          hook.ready(function() {
+            // 确保首页内容完全加载后应用样式
+            setTimeout(function() {
+              const homeContent = document.querySelector('.markdown-section');
+              if (homeContent && (window.location.pathname === '/' || 
+                  window.location.pathname.endsWith('/') || 
+                  window.location.pathname.includes('README'))) {
+                // 为首页添加额外的样式类
+                homeContent.classList.add('home-page');
+              }
+            }, 100);
+          });
+        },
+
+        // 修复链接点击问题的插件
+        function(hook) {
+          hook.doneEach(function() {
+            // 修复内部链接
+            const internalLinks = document.querySelectorAll('a[href]:not([href^="http"]):not([href^="#"]):not([href^="/"])');
+            internalLinks.forEach(link => {
+              const href = link.getAttribute('href');
+              
+              // 确保链接有正确的格式
+              if (!href.endsWith('.md') && !href.includes('#')) {
+                if (href.includes('.')) {
+                  // 保留文件扩展名
+                  link.setAttribute('href', href);
+                } else {
+                  // 为目录添加斜杠
+                  link.setAttribute('href', href + '/');
+                }
+              }
+              
+              // 确保链接点击事件正常工作
+              link.onclick = function(e) {
+                e.preventDefault();
+                const targetHref = this.getAttribute('href');
+                console.log('处理链接点击:', targetHref);
+                
+                // 使用docsify的路由系统进行导航
+                if (window.location.hash === '#/' + targetHref) {
+                  // 如果点击的是当前页面的链接，刷新页面内容
+                  window.location.reload();
+                } else {
+                  // 否则导航到目标页面
+                  window.location.hash = '#/' + targetHref;
+                }
+              };
+            });
+            
+            // 修复外部链接
+            const externalLinks = document.querySelectorAll('a[href^="http"]');
+            externalLinks.forEach(link => {
+              // 确保外部链接有正确的target属性
+              if (!link.hasAttribute('target')) {
+                link.setAttribute('target', '_blank');
+              }
+              if (!link.hasAttribute('rel')) {
+                link.setAttribute('rel', 'noopener noreferrer');
+              }
+            });
+            
+            console.log('链接修复完成，共修复内部链接:', internalLinks.length, '个，外部链接:', externalLinks.length, '个');
+          });
+        }
+      ]
+    };
+    
+    // 动态加载docsify脚本
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/docsify@4';
+    script.onload = function() {
+      // 依次加载其他必要的插件脚本
+      loadPlugins();
+    };
+    document.head.appendChild(script);
+  }
+  
+  // 加载docsify插件
+  function loadPlugins() {
+    // 添加搜索插件
+    const searchScript = document.createElement('script');
+    searchScript.src = '//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js';
+    document.head.appendChild(searchScript);
+    
+    // 添加代码复制功能
+    const copyCodeScript = document.createElement('script');
+    copyCodeScript.src = '//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js';
+    document.head.appendChild(copyCodeScript);
+    
+    // 添加MathJax支持数学公式渲染
+    const mathJaxScript = document.createElement('script');
+    mathJaxScript.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    document.head.appendChild(mathJaxScript);
+    
+    // 加载链接点击调试代码
+    loadDebugScript();
+  }
+  
+  // 加载链接点击调试代码
+  function loadDebugScript() {
+    const debugScript = document.createElement('script');
+    debugScript.innerHTML = `
+      // 调试链接点击事件
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('页面加载完成，开始监听链接点击事件');
+        
+        // 捕获所有链接点击事件
+        document.addEventListener('click', function(e) {
+          const target = e.target.closest('a');
+          if (target) {
+            console.log('链接被点击:', target.href);
+            console.log('链接属性:', {
+              href: target.href,
+              target: target.target,
+              rel: target.rel,
+              pathname: window.location.pathname
+            });
+            
+            // 如果是内部链接，额外记录信息
+            if (!target.href.startsWith('http')) {
+              console.log('内部链接被点击，检查docsify路由状态');
+            }
+          }
+        }, true);
+        
+        // 监听docsify路由变化
+        window.addEventListener('hashchange', function() {
+          console.log('路由哈希变化:', window.location.hash);
+        });
+        
+        // 监控可能的JavaScript错误
+        window.addEventListener('error', function(e) {
+          console.error('JavaScript错误:', e.error.message, '发生在:', e.filename, '行号:', e.lineno);
+        });
+        
+        console.log('docsify配置:', window.$docsify);
+      });
+    `;
+    document.head.appendChild(debugScript);
+  }
+  
+  // 表单提交处理
+  accessForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideError();
+    
+    const input = passphraseInput.value.trim();
+    const currentErrors = parseInt(localStorage.getItem(ERROR_COUNT_KEY) || "0");
+    
+    if (ACCESS_CODES.includes(input)) {
+      // 验证成功
+      onVerificationSuccess(input);
+    } else {
+      // 验证失败
+      const newErrorCount = currentErrors + 1;
+      localStorage.setItem(ERROR_COUNT_KEY, newErrorCount);
+      updateAttemptsDisplay();
+      
+      if (newErrorCount >= MAX_ERRORS) {
+        lockAccess();
+        return;
+      }
+      
+      // 根据失败次数显示不同的错误消息
+      if (newErrorCount === 1) {
+        showError('输入错误，请重新输入');
+      } else {
+        const remaining = MAX_ERRORS - newErrorCount;
+        showError(`输入错误，剩余 ${remaining} 次验证机会。识别次数内未验证，将会锁定IP访问`);
+      }
+      
+      // 清空输入框并聚焦
+      passphraseInput.value = '';
+      passphraseInput.focus();
+    }
+  });
+  
+  // 关闭锁定模态框
+  closeLockModal.addEventListener('click', function() {
+    lockModal.style.display = 'none';
+  });
+  
+  // 添加输入动画效果
+  passphraseInput.addEventListener('focus', function() {
+    this.parentElement.classList.add('scale-105');
+    this.parentElement.style.transition = 'transform 0.3s ease';
+  });
+  
+  passphraseInput.addEventListener('blur', function() {
+    this.parentElement.classList.remove('scale-105');
+  });
+  
+  // 页面加载时检查验证状态
+  document.addEventListener('DOMContentLoaded', function() {
+    // 初始化尝试次数显示
+    updateAttemptsDisplay();
+    
+    // 如果已锁定，直接拦截
+    if (isLocked()) {
+      lockAccess();
+      return;
+    }
+    
+    // 如果已验证，直接放行
+    if (isVerified()) {
+      onVerificationSuccess(localStorage.getItem(STORAGE_KEY));
+    }
+    
+    // 聚焦输入框
+    passphraseInput.focus();
+  });
+  </script>
   
   <!-- 定义docsify配置和插件 -->
   <script>
@@ -868,20 +1385,20 @@
             const allFooters = document.querySelectorAll('footer');
             allFooters.forEach(footer => footer.remove());
             
-            // 直接添加静态页脚HTML
+            // 直接添加静态页脚HTML - 调整样式使其更加明显
             const footerHtml = `
-              <footer class="footer-custom" style="clear: both; width: 100%; background-color: rgba(255, 255, 255, 0.95); border-top: 1px solid rgb(225, 229, 233); padding: 1.5rem 0px; text-align: center; box-shadow: rgba(0, 0, 0, 0.05) 0px -2px 10px; z-index: 50;">
+              <footer class="footer-custom" style="clear: both; width: 100%; background-color: rgba(15, 23, 42, 0.9); border-top: 2px solid #06B6D4; padding: 1.5rem 0px; text-align: center; box-shadow: rgba(0, 0, 0, 0.2) 0px -2px 10px; z-index: 999; position: relative;">
                 <div class="footer-content">
-                  <p>© 2024 国泰海通证券知识库</p>
-                  <p>免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
-                  <p>
-                    <a href="https://huashu.web.app/" target="_blank">话术平台</a> | 
-                    <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a> | 
-                    <a href="#" target="_blank">九州旗舰店</a> | 
-                    <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a> | 
-                    <a href="https://nicevoice.org/zh" target="_blank">语音服务</a> | 
-                    <a href="#" target="_blank">字幕移除工具</a> |
-                    <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
+                  <p style="color: #e2e8f0; font-size: 16px; margin-bottom: 8px;">© 2024 国泰海通证券知识库</p>
+                  <p style="color: #94a3b8; font-size: 14px; margin-bottom: 12px;">免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
+                  <p style="font-size: 14px;">
+                    <a href="https://huashu.web.app/" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">话术平台</a> | 
+                    <a href="https://moni.10jqka.com.cn/" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">模拟炒股平台</a> | 
+                    <a href="#" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">九州旗舰店</a> | 
+                    <a href="https://t.me/anyu168168" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">Telegram社区</a> | 
+                    <a href="https://nicevoice.org/zh" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">语音服务</a> | 
+                    <a href="#" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">字幕移除工具</a> |
+                    <a href="https://convertio.co/zh/" target="_blank" style="color: #06B6D4; text-decoration: none; margin: 0 8px;">Convertio文件转换工具</a>
                   </p>
                 </div>
               </footer>
@@ -1062,16 +1579,18 @@
       });
     }
     
-    // 完整的docsify配置
-    window.$docsify = {
-      name: '国泰海通证券知识库',
-      loadSidebar: true,
-      subMaxLevel: 3,
-      auto2top: true,
-      coverpage: false, // 禁用封面页，使用README.md作为首页
-      themeColor: '#0F52BA',
-      homepage: 'README.md',
-      loadNavbar: false,
+    // 仅当验证通过时加载完整配置
+    if (isVerified()) {
+      window.$docsify = {
+        name: '国泰海通证券知识库',
+        loadSidebar: true,
+        subMaxLevel: 3,
+        auto2top: true,
+        coverpage: false, // 禁用封面页，使用README.md作为首页
+        themeColor: '#1E3A8A', // 匹配项目"深空蓝"主色调
+        homepage: 'README.md',
+        loadNavbar: false,
+        loadFooter: true, // 启用docsify静态页脚
       
       // 避免缓存问题
       noCache: true,
@@ -1141,6 +1660,7 @@
             }, 100);
           });
         },
+
         // 修复链接点击问题的插件
         function(hook) {
           hook.doneEach(function() {
@@ -1194,46 +1714,10 @@
         }
       ]
     };
+    }
   </script>
   
-  <!-- 添加链接点击调试代码 -->
-  <script>
-    // 调试链接点击事件
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('页面加载完成，开始监听链接点击事件');
-      
-      // 捕获所有链接点击事件
-      document.addEventListener('click', function(e) {
-        const target = e.target.closest('a');
-        if (target) {
-          console.log('链接被点击:', target.href);
-          console.log('链接属性:', {
-            href: target.href,
-            target: target.target,
-            rel: target.rel,
-            pathname: window.location.pathname
-          });
-          
-          // 如果是内部链接，额外记录信息
-          if (!target.href.startsWith('http')) {
-            console.log('内部链接被点击，检查docsify路由状态');
-          }
-        }
-      }, true);
-      
-      // 监听docsify路由变化
-      window.addEventListener('hashchange', function() {
-        console.log('路由哈希变化:', window.location.hash);
-      });
-      
-      // 监控可能的JavaScript错误
-      window.addEventListener('error', function(e) {
-        console.error('JavaScript错误:', e.error.message, '发生在:', e.filename, '行号:', e.lineno);
-      });
-      
-      console.log('docsify配置:', window.$docsify);
-    });
-  </script>
+
   
   <!-- docsify核心脚本 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
@@ -1246,6 +1730,110 @@
   
   <!-- 添加MathJax支持数学公式渲染 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- docsify页脚样式 -->
+  <style>
+    /* docsify页脚容器样式 */
+    :root {
+      --footer-height: 120px;
+    }
+    
+    .app-container {
+      min-height: 100vh;
+      padding-bottom: var(--footer-height);
+      position: relative;
+    }
+    
+    /* docsify静态页脚样式 */
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(15, 23, 42, 0.95);
+      border-top: 2px solid #06B6D4;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      height: var(--footer-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer p {
+      color: #e2e8f0;
+      margin: 0 0 8px 0;
+    }
+    
+    .footer .disclaimer {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    
+    .footer-links a {
+      color: #06B6D4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #38BDF8;
+    }
+    
+    .footer-links span {
+      color: #94a3b8;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      :root {
+        --footer-height: 150px;
+      }
+      
+      .footer-links {
+        font-size: 14px;
+      }
+    }
+  </style>
+  
+  <!-- 静态页脚内容 - docsify会自动识别和处理 -->
+  <div id="footer" class="footer">
+    <div class="footer-content">
+      <p>© 2024 国泰海通证券知识库</p>
+      <p class="disclaimer">免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
+      <div class="footer-links">
+        <a href="https://huashu.web.app/" target="_blank">话术平台</a>
+        <span>|</span>
+        <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a>
+        <span>|</span>
+        <a href="#" target="_blank">九州旗舰店</a>
+        <span>|</span>
+        <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a>
+        <span>|</span>
+        <a href="https://nicevoice.org/zh" target="_blank">语音服务</a>
+        <span>|</span>
+        <a href="#" target="_blank">字幕移除工具</a>
+        <span>|</span>
+        <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
+      </div>
+    </div>
+  </div>
 
   </body>
 </html>

@@ -78,13 +78,13 @@
 ## 快速导航
 
 <div class="quick-navigation">
-  <a href="policy/">政策解读</a>
-  <a href="industry/">行业分析</a>
-  <a href="strategy/">投资策略</a>
-  <a href="risk/">风险提示</a>
-  <a href="国泰海通证券/">国泰海通证券</a>
-  <a href="名师合集/荀玉根合集/">荀玉根合集</a>
-  <a href="技术/">技术支持</a>
+  <a href="/policy/">政策解读</a>
+  <a href="/industry/">行业分析</a>
+  <a href="/strategy/">投资策略</a>
+  <a href="/risk/">风险提示</a>
+  <a href="/国泰海通证券/">国泰海通证券</a>
+  <a href="/名师合集/荀玉根合集/">荀玉根合集</a>
+  <a href="/技术/">技术支持</a>
 </div>
 
 ## 使用指南
