@@ -813,16 +813,16 @@
     // 初始化docsify
     function initDocsify() {
       // 仅当验证通过时加载完整配置
-      window.$docsify = {
-        name: '国泰海通证券知识库',
-        loadSidebar: true,
-        subMaxLevel: 3,
-        auto2top: true,
-        coverpage: false, // 禁用封面页，使用README.md作为首页
-        themeColor: '#1E3A8A', // 匹配项目"深空蓝"主色调
-        homepage: 'README.md',
-        loadNavbar: false,
-        loadFooter: true, // 启用docsify静态页脚
+    window.$docsify = {
+      name: '国泰海通证券知识库',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      coverpage: false, // 禁用封面页，使用README.md作为首页
+      themeColor: '#1E3A8A', // 匹配项目"深空蓝"主色调
+      homepage: 'README.md',
+      loadNavbar: true, // 启用_navbar.md
+      loadFooter: true, // 启用docsify静态页脚
         
       // 避免缓存问题
       noCache: true,
@@ -880,16 +880,18 @@
         // 增强首页显示的自定义插件
         function(hook) {
           hook.ready(function() {
-            // 确保首页内容完全加载后应用样式
-            setTimeout(function() {
+            // 优化：使用MutationObserver替代setTimeout，确保样式及时应用
+            const observer = new MutationObserver((mutations) => {
               const homeContent = document.querySelector('.markdown-section');
               if (homeContent && (window.location.pathname === '/' || 
                   window.location.pathname.endsWith('/') || 
                   window.location.pathname.includes('README'))) {
-                // 为首页添加额外的样式类
                 homeContent.classList.add('home-page');
+                observer.disconnect(); // 生效后停止监听
               }
-            }, 100);
+            });
+            // 监听文档变化，确保内容加载完成
+            observer.observe(document.body, { childList: true, subtree: true });
           });
         },
 
@@ -1331,7 +1333,7 @@
           const toggleBtn = document.querySelector('.sidebar-toggle');
           
           if (sidebar && toggleBtn) {
-            // 检查当前窗口大小，设置初始状态
+            // 优化：根据屏幕尺寸动态设置侧边栏状态
             if (window.innerWidth > 768) {
               sidebar.classList.add('open');
               toggleBtn.style.display = 'flex'; // 始终显示侧边栏按钮
@@ -1381,13 +1383,16 @@
           
           // 然后创建页脚并添加到正确位置
           function createFooter() {
+            // 优化：添加唯一标识避免多次创建
+            if (document.getElementById('custom-footer')) return;
+            
             // 先移除所有可能存在的页脚元素
             const allFooters = document.querySelectorAll('footer');
             allFooters.forEach(footer => footer.remove());
             
             // 直接添加静态页脚HTML - 调整样式使其更加明显
             const footerHtml = `
-              <footer class="footer-custom" style="clear: both; width: 100%; background-color: rgba(15, 23, 42, 0.9); border-top: 2px solid #06B6D4; padding: 1.5rem 0px; text-align: center; box-shadow: rgba(0, 0, 0, 0.2) 0px -2px 10px; z-index: 999; position: relative;">
+              <footer id="custom-footer" class="footer-custom" style="clear: both; width: 100%; background-color: rgba(15, 23, 42, 0.9); border-top: 2px solid #06B6D4; padding: 1.5rem 0px; text-align: center; box-shadow: rgba(0, 0, 0, 0.2) 0px -2px 10px; z-index: 999; position: relative;">
                 <div class="footer-content">
                   <p style="color: #e2e8f0; font-size: 16px; margin-bottom: 8px;">© 2024 国泰海通证券知识库</p>
                   <p style="color: #94a3b8; font-size: 14px; margin-bottom: 12px;">免责声明：本知识库内容仅供参考，不构成任何投资建议</p>
@@ -1589,7 +1594,7 @@
         coverpage: false, // 禁用封面页，使用README.md作为首页
         themeColor: '#1E3A8A', // 匹配项目"深空蓝"主色调
         homepage: 'README.md',
-        loadNavbar: false,
+        loadNavbar: true, // 启用_navbar.md
         loadFooter: true, // 启用docsify静态页脚
       
       // 避免缓存问题
@@ -1648,16 +1653,18 @@
         // 增强首页显示的自定义插件
         function(hook) {
           hook.ready(function() {
-            // 确保首页内容完全加载后应用样式
-            setTimeout(function() {
+            // 优化：使用MutationObserver替代setTimeout，确保样式及时应用
+            const observer = new MutationObserver((mutations) => {
               const homeContent = document.querySelector('.markdown-section');
               if (homeContent && (window.location.pathname === '/' || 
                   window.location.pathname.endsWith('/') || 
                   window.location.pathname.includes('README'))) {
-                // 为首页添加额外的样式类
                 homeContent.classList.add('home-page');
+                observer.disconnect(); // 生效后停止监听
               }
-            }, 100);
+            });
+            // 监听文档变化，确保内容加载完成
+            observer.observe(document.body, { childList: true, subtree: true });
           });
         },
 
