@@ -363,13 +363,13 @@ button:hover::before {
 
 /* ===== 页脚样式增强 ===== */
 .footer-custom {
-  background: rgba(15, 23, 42, 0.8) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #94a3b8 !important;
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
 }
 
 .footer-custom a {
-  color: #06B6D4 !important;
+  color: #06B6D4;
   transition: all 0.3s ease;
 }
 
