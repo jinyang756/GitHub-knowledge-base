@@ -208,7 +208,7 @@ def extract_footnote(reference_id):
     """提取脚注内容"""
     # 这里简化处理，实际docx库不直接支持脚注提取
     # 在实际应用中，可能需要使用更复杂的XML解析方式
-    return f"[脚注 {reference_id}]
+    return f"[脚注 {reference_id}]"
 
 # 处理文档内容
 previous_paragraph_type = 'normal'
