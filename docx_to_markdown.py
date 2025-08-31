@@ -1,325 +1,347 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-文档格式转换工具：将DOCX文件转换为Markdown格式
-
-使用方法:
-    python docx_to_markdown.py 输入文件.docx [输出文件.md]
-
-如果不指定输出文件，默认使用与输入文件同名的.md文件
-"""
 
 import os
-import sys
 import re
-from docx import Document
-from docx.shared import Inches
+import argparse
+import zipfile
 import shutil
-import uuid
 from datetime import datetime
 
+# 确保中文显示正常
+import sys
+import docx
+from docx.shared import Inches
 
-def convert_docx_to_markdown(input_file, output_file=None):
-    """
-    将DOCX文件转换为Markdown格式，并自动适配项目文档规范
-    
-    Args:
-        input_file (str): 输入的DOCX文件路径
-        output_file (str, optional): 输出的Markdown文件路径
-    
-    Returns:
-        str: 生成的Markdown文件路径
-    """
-    # 检查输入文件是否存在
-    if not os.path.exists(input_file):
-        print(f"错误：找不到输入文件 '{input_file}'")
-        sys.exit(1)
-    
-    # 检查文件扩展名是否为docx
-    if not input_file.lower().endswith('.docx'):
-        print(f"错误：输入文件必须是.docx格式")
-        sys.exit(1)
-    
-    # 如果未指定输出文件，则使用输入文件的名称，将扩展名改为.md
-    if output_file is None:
-        output_file = os.path.splitext(input_file)[0] + '.md'
-    
-    # 创建图片目录
-    output_dir = os.path.dirname(output_file)
-    if not output_dir:
-        output_dir = os.getcwd()
-    
-    images_dir = os.path.join(output_dir, 'images')
-    os.makedirs(images_dir, exist_ok=True)
-    
-    # 初始化脚注存储
-    footnotes = {}
-    
-    try:
-        # 读取DOCX文件
-        doc = Document(input_file)
-        
-        # 创建Markdown内容
-        markdown_content = []
-        
-        # 标记是否在代码块内
-        in_code_block = False
-        
-        for para in doc.paragraphs:
-            # 跳过空段落
-            if not para.text.strip():
-                markdown_content.append('')
-                continue
-            
-            try:
-                # 获取段落文本，检查是否包含脚注引用
-                para_text = para.text
-                
-                # 检查并提取脚注（简化处理，实际可能需要更复杂的解析）
-                # 这里假设脚注格式为 [^数字]
-                if '[' in para_text and ']' in para_text:
-                    footnotes_refs = re.findall(r'\[\^(\d+)\]', para_text)
-                    for ref in footnotes_refs:
-                        if ref not in footnotes:
-                            # 生成一个简单的脚注内容（实际应该从文档中提取）
-                            footnotes[ref] = f"脚注{ref}：请参考原始文档获取详细注释"
-            except Exception:
-                para_text = para.text
-            
-            try:
-                # 处理标题
-                if para.style and para.style.name and para.style.name.startswith('Heading'):
-                    # 提取标题级别（1-9）
-                    try:
-                        level = int(para.style.name.replace('Heading ', ''))
-                        if 1 <= level <= 6:  # Markdown最多支持6级标题
-                            # 处理标题文本，添加data-number标记
-                            titled_text = add_data_number_markers(para_text)
-                            markdown_content.append(f"{'#' * level} {titled_text}")
-                        else:
-                            # 级别超过6的标题，使用普通段落并添加data-number标记
-                            markdown_content.append(add_data_number_markers(para_text))
-                    except ValueError:
-                        # 无法解析标题级别，作为普通段落处理并添加data-number标记
-                        markdown_content.append(add_data_number_markers(para_text))
-                
-                # 处理列表（项目符号和编号）
-                elif para.style and para.style.name and para.style.name.startswith('List Bullet'):
-                    # 处理列表项文本，添加data-number标记
-                    list_text = add_data_number_markers(para_text)
-                    markdown_content.append(f"* {list_text}")
-                elif para.style and para.style.name and para.style.name.startswith('List Number'):
-                    # 简化处理，所有编号列表都使用1. 作为前缀
-                    # 处理列表项文本，添加data-number标记
-                    list_text = add_data_number_markers(para_text)
-                    markdown_content.append(f"1. {list_text}")
-                
-                # 处理引用
-                elif para.style and para.style.name and para.style.name.startswith('Quote'):
-                    # 处理引用文本，添加data-number标记
-                    quote_text = add_data_number_markers(para_text)
-                    markdown_content.append(f"> {quote_text}")
-                
-                # 处理代码块
-                elif para.style and para.style.name and 'code' in para.style.name.lower():
-                    if not in_code_block:
-                        markdown_content.append('```')
-                        in_code_block = True
-                    # 代码块中的内容不添加data-number标记
-                    markdown_content.append(para_text)
-                
-                # 普通段落
-                else:
-                    # 如果之前在代码块内，现在应该结束代码块
-                    if in_code_block:
-                        markdown_content.append('```')
-                        in_code_block = False
-                    
-                    # 处理普通段落文本，添加data-number标记
-                    para_text_with_markers = add_data_number_markers(para_text)
-                    markdown_content.append(para_text_with_markers)
-            except Exception as e:
-                # 任何异常都作为普通段落处理，并添加错误信息
-                error_msg = f"[转换警告：段落处理出错 - {str(e)}]"
-                markdown_content.append(add_data_number_markers(para.text) + error_msg)
-        
-        # 如果最后还在代码块内，添加结束标记
-        if in_code_block:
-            markdown_content.append('```')
-        
-        # 处理表格 - 增强版
-        for table_idx, table in enumerate(doc.tables):
-            try:
-                # 添加一个空行分隔表格和前后内容
-                markdown_content.append('')
-                
-                # 为复杂表格添加注释
-                if len(table.rows) > 10 or len(table.columns) > 5:
-                    markdown_content.append(f"<!-- 复杂表格{table_idx+1}：可能需要手动调整格式 -->")
-                
-                # 处理表头
-                headers = []
-                for cell in table.rows[0].cells:
-                    # 处理表头单元格文本，添加data-number标记
-                    header_text = add_data_number_markers(cell.text.strip())
-                    headers.append(header_text)
-                markdown_content.append('| ' + ' | '.join(headers) + ' |')
-                
-                # 添加分隔线
-                separators = ['---'] * len(headers)
-                markdown_content.append('| ' + ' | '.join(separators) + ' |')
-                
-                # 处理表格内容
-                for row in table.rows[1:]:
-                    cells = []
-                    for cell in row.cells:
-                        # 处理表格单元格文本，添加data-number标记
-                        cell_text = add_data_number_markers(cell.text.strip())
-                        cells.append(cell_text)
-                    markdown_content.append('| ' + ' | '.join(cells) + ' |')
-                
-                # 添加一个空行
-                markdown_content.append('')
-            except Exception as e:
-                # 表格处理出错时添加错误信息
-                error_msg = f"[转换警告：表格{table_idx+1}处理出错 - {str(e)}]"
-                markdown_content.append(error_msg)
-        
-        # 处理图片
-        image_count = 0
-        for rel in doc.part.rels.values():
-            if "image" in rel.target_ref:
-                try:
-                    # 获取图片数据
-                    image_part = rel.target_part
-                    image_bytes = image_part._blob
-                    
-                    # 确定图片格式
-                    content_type = image_part.content_type
-                    if content_type == 'image/png':
-                        ext = '.png'
-                    elif content_type == 'image/jpeg':
-                        ext = '.jpg'
-                    elif content_type == 'image/gif':
-                        ext = '.gif'
-                    else:
-                        ext = '.png'  # 默认使用PNG格式
-                    
-                    # 生成唯一的图片文件名
-                    image_name = f"image_{uuid.uuid4().hex[:8]}{ext}"
-                    image_path = os.path.join(images_dir, image_name)
-                    
-                    # 保存图片
-                    with open(image_path, 'wb') as f:
-                        f.write(image_bytes)
-                    
-                    # 在Markdown中添加图片引用
-                    rel_path = os.path.relpath(image_path, output_dir)
-                    markdown_content.append(f"![图片{image_count+1}]({rel_path})\n")
-                    image_count += 1
-                except Exception as e:
-                    # 图片处理出错时添加错误信息
-                    error_msg = f"[转换警告：图片处理出错 - {str(e)}]"
-                    markdown_content.append(error_msg)
-        
-        # 添加脚注
-        if footnotes:
-            markdown_content.append('')
-            markdown_content.append('## 注释')
-            for ref, content in sorted(footnotes.items(), key=lambda x: int(x[0])):
-                markdown_content.append(f"[^ref{ref}]: {content}")
-        
-        # 添加文档元数据和规范说明
-        markdown_content.insert(0, f"<!-- 文档转换自: {os.path.basename(input_file)} -->")
-        markdown_content.insert(1, f"<!-- 转换时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} -->")
-        markdown_content.insert(2, "<!-- 提示: 文档中的关键数据已使用data-number类标记 -->")
-        markdown_content.insert(3, '')
-        
-        # 合并所有内容并写入文件
-        try:
-            with open(output_file, 'w', encoding='utf-8') as f:
-                f.write('\n'.join(markdown_content))
-            
-            print(f"成功将 '{input_file}' 转换为 '{output_file}'")
-            if image_count > 0:
-                print(f"  - 成功提取并保存了 {image_count} 张图片")
-            if footnotes:
-                print(f"  - 识别并处理了 {len(footnotes)} 个脚注引用")
-            print("  - 已自动为关键数据添加 data-number 标记")
-            return output_file
-        except IOError as e:
-            print(f"写入输出文件时发生错误: {str(e)}")
-            sys.exit(1)
-    
-    except Exception as e:
-        print(f"转换过程中发生错误: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+# 解析命令行参数
+parser = argparse.ArgumentParser(description='将DOCX文件转换为Markdown格式')
+parser.add_argument('input_file', help='输入的DOCX文件路径')
+parser.add_argument('-o', '--output_dir', help='输出目录，默认与输入文件同目录')
+parser.add_argument('--image_dir', help='图片保存目录，默认在输出目录下的images文件夹')
+parser.add_argument('--verbose', action='store_true', help='显示详细转换过程')
 
-def add_data_number_markers(text):
-    """
-    为文本中的关键数据（数字、百分比等）添加data-number类标记
+args = parser.parse_args()
+
+# 输入文件路径
+input_file = os.path.abspath(args.input_file)
+
+# 检查输入文件是否存在
+if not os.path.exists(input_file):
+    print(f"错误：文件 '{input_file}' 不存在")
+    sys.exit(1)
+
+# 检查文件扩展名
+file_ext = os.path.splitext(input_file)[1].lower()
+if file_ext != '.docx':
+    print(f"错误：仅支持 .docx 格式文件，当前文件格式为 {file_ext}")
+    sys.exit(1)
+
+# 设置输出目录
+if args.output_dir:
+    output_dir = os.path.abspath(args.output_dir)
+else:
+    output_dir = os.path.dirname(input_file)
+
+# 确保输出目录存在
+os.makedirs(output_dir, exist_ok=True)
+
+# 设置图片保存目录
+if args.image_dir:
+    image_dir = os.path.abspath(args.image_dir)
+else:
+    image_dir = os.path.join(output_dir, 'images')
+
+# 确保图片目录存在
+os.makedirs(image_dir, exist_ok=True)
+
+# 输出文件路径
+base_name = os.path.splitext(os.path.basename(input_file))[0]
+output_file = os.path.join(output_dir, f'{base_name}.md')
+
+# 记录开始转换时间
+start_time = datetime.now()
+print(f"开始转换 '{input_file}' 到 '{output_file}'")
+
+# 加载文档
+try:
+    doc = docx.Document(input_file)
+except Exception as e:
+    print(f"加载文档时出错：{e}")
+    sys.exit(1)
+
+# 存储Markdown内容
+markdown_content = []
+
+# 存储脚注
+footnotes = []
+
+# 图片计数
+image_count = 0
+
+# 段落格式处理函数
+
+def get_paragraph_style(paragraph):
+    """获取段落样式"""
+    if paragraph.style.name.startswith('Heading') or paragraph.style.name.startswith('标题'):
+        # 提取标题级别
+        level_match = re.search(r'\d+', paragraph.style.name)
+        if level_match:
+            level = int(level_match.group())
+            return {'type': 'heading', 'level': min(level, 6)}  # 最多支持6级标题
+    elif paragraph.style.name.startswith('List') or paragraph.style.name.startswith('列表'):
+        return {'type': 'list', 'ordered': paragraph.style.name.find('编号') != -1}
+    elif paragraph.style.name.startswith('Quote') or paragraph.style.name.startswith('引用'):
+        return {'type': 'quote'}
+    elif paragraph.style.name.startswith('Code') or paragraph.style.name.startswith('代码'):
+        return {'type': 'code'}
     
-    Args:
-        text (str): 输入文本
-        
-    Returns:
-        str: 添加了data-number标记的文本
-    """
-    if not text:
-        return text
+    # 检查是否是无序列表（通过段落前的符号判断）
+    if paragraph.text.startswith(('• ', '● ', '○ ', '□ ', '- ', '* ')):
+        return {'type': 'list', 'ordered': False}
     
-    # 定义需要标记的模式：数字、百分比、货币金额等
-    # 排除代码块中的内容和已经被标记的内容
-    if '```' not in text and '<span class="data-number">' not in text:
-        # 匹配：
-        # 1. 整数或小数（可能带正负号）
-        # 2. 百分比
-        # 3. 带单位的数值
-        patterns = [
-            # 匹配数字：整数、小数、科学计数法，可能带正负号
-            r'([+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)',
-            # 匹配百分比
-            r'(\d+(?:\.\d+)?%)',
-            # 匹配带常见单位的数值
-            r'(\d+(?:\.\d+)?\s*(?:万元|亿元|亿美元|人民币|美元|欧元|日元|英镑|公斤|吨|米|公里|平方米|公顷))'
-        ]
-        
-        # 合并所有模式
-        combined_pattern = '|'.join(patterns)
-        
-        # 使用正则表达式替换，为匹配的数字添加data-number标记
-        def replace_with_marker(match):
-            # 获取匹配的内容
-            matched_text = match.group(0)
-            # 返回添加了标记的内容
-            return f'<span class="data-number">{matched_text}</span>'
-        
-        # 应用替换，但避免重复标记
-        result = re.sub(combined_pattern, replace_with_marker, text)
-        return result
+    # 检查是否是有序列表（通过段落前的数字判断）
+    if re.match(r'^\d+\.?\s+', paragraph.text):
+        return {'type': 'list', 'ordered': True}
+    
+    return {'type': 'normal'}
+
+def extract_hyperlinks(paragraph):
+    """提取段落中的超链接"""
+    text = paragraph.text
+    # 这里简化处理，实际docx库不直接支持超链接提取
+    # 在实际应用中，可能需要使用更复杂的XML解析方式
+    return text
+
+def process_run(run):
+    """处理文本运行（Run）"""
+    text = run.text
+    
+    # 处理特殊字符
+    text = text.replace('\u200b', '')  # 零宽空格
+    text = text.replace('\u00a0', ' ')  # 非断行空格
+    
+    # 处理格式
+    if run.bold:
+        text = f'**{text}**'
+    if run.italic:
+        text = f'*{text}*'
+    if run.underline:
+        text = f'__{text}__'
     
     return text
 
-
-def show_help():
-    """显示帮助信息"""
-    print("文档格式转换工具：将DOCX文件转换为Markdown格式")
-    print("\n使用方法:")
-    print("    python docx_to_markdown.py 输入文件.docx [输出文件.md]")
-    print("\n选项:")
-    print("    -h, --help    显示此帮助信息")
-
-
-if __name__ == "__main__":
-    # 检查命令行参数
-    if len(sys.argv) < 2 or len(sys.argv) > 3 or sys.argv[1] in ['-h', '--help']:
-        show_help()
-        sys.exit(0)
+def extract_images(paragraph, image_dir, base_name):
+    """提取段落中的图片"""
+    global image_count
+    images = []
     
-    input_file = sys.argv[1]
-    output_file = sys.argv[2] if len(sys.argv) == 3 else None
+    for rel in doc.part.rels.values():
+        if "image" in rel.target_ref:
+            image_count += 1
+            # 获取图片数据
+            image_data = rel.target_part._blob
+            # 确定图片格式
+            content_type = rel.target_part.content_type
+            if 'png' in content_type:
+                ext = '.png'
+            elif 'jpeg' in content_type:
+                ext = '.jpg'
+            elif 'gif' in content_type:
+                ext = '.gif'
+            else:
+                ext = '.png'  # 默认使用png格式
+            
+            # 保存图片
+            image_filename = f'{base_name}_image_{image_count}{ext}'
+            image_path = os.path.join(image_dir, image_filename)
+            
+            try:
+                with open(image_path, 'wb') as f:
+                    f.write(image_data)
+                
+                # 构建Markdown图片引用路径
+                # 使用相对路径引用图片
+                relative_image_path = os.path.relpath(image_path, output_dir)
+                # 确保路径使用正斜杠
+                relative_image_path = relative_image_path.replace('\\', '/')
+                
+                images.append(f'![图片 {image_count}]({relative_image_path})')
+                
+                if args.verbose:
+                    print(f"  提取图片: {image_filename}")
+            except Exception as e:
+                if args.verbose:
+                    print(f"  提取图片失败: {e}")
+                images.append(f'[图片 {image_count} (提取失败)]')
     
-    # 执行转换
-    convert_docx_to_markdown(input_file, output_file)
+    return images
+
+def process_table(table):
+    """处理表格"""
+    markdown_table = []
+    
+    # 获取表格的行数和列数
+    rows_count = len(table.rows)
+    if rows_count == 0:
+        return ''
+    
+    cols_count = len(table.rows[0].cells)
+    
+    # 处理表头
+    header_cells = table.rows[0].cells
+    header = '| ' + ' | '.join([cell.text.strip() for cell in header_cells]) + ' |'
+    markdown_table.append(header)
+    
+    # 添加分隔线
+    separator = '| ' + ' | '.join(['---'] * cols_count) + ' |'
+    markdown_table.append(separator)
+    
+    # 处理表格内容
+    for row in table.rows[1:]:
+        cells = row.cells
+        row_content = '| ' + ' | '.join([cell.text.strip() for cell in cells]) + ' |'
+        markdown_table.append(row_content)
+    
+    return '\n'.join(markdown_table)
+
+def extract_footnote(reference_id):
+    """提取脚注内容"""
+    # 这里简化处理，实际docx库不直接支持脚注提取
+    # 在实际应用中，可能需要使用更复杂的XML解析方式
+    return f"[脚注 {reference_id}]
+
+# 处理文档内容
+previous_paragraph_type = 'normal'
+
+for i, paragraph in enumerate(doc.paragraphs):
+    # 跳过空段落
+    if not paragraph.text.strip():
+        if previous_paragraph_type != 'empty':  # 避免连续的空行
+            markdown_content.append('')
+            previous_paragraph_type = 'empty'
+        continue
+    
+    # 获取段落样式
+    style_info = get_paragraph_style(paragraph)
+    
+    # 处理段落文本
+    paragraph_text = ''
+    for run in paragraph.runs:
+        paragraph_text += process_run(run)
+    
+    # 去除多余的空白字符
+    paragraph_text = re.sub(r'\s+', ' ', paragraph_text).strip()
+    
+    # 根据样式处理段落
+    if style_info['type'] == 'heading':
+        # 标题处理
+        level = style_info['level']
+        markdown_content.append(f"{'#' * level} {paragraph_text}")
+    elif style_info['type'] == 'list':
+        # 列表处理
+        if style_info['ordered']:
+            # 有序列表，保留原始编号
+            ordered_match = re.match(r'(\d+\.?\s+)(.*)', paragraph_text)
+            if ordered_match:
+                number = ordered_match.group(1)
+                content = ordered_match.group(2)
+                # 确保编号对齐，使用数字+点+空格格式
+                normalized_number = re.search(r'\d+', number).group() + '. '
+                markdown_content.append(f"{normalized_number}{content}")
+            else:
+                markdown_content.append(f"1. {paragraph_text}")
+        else:
+            # 无序列表
+            # 移除段落前的符号
+            content = re.sub(r'^[•●○□-*]\s+', '', paragraph_text)
+            markdown_content.append(f"- {content}")
+    elif style_info['type'] == 'quote':
+        # 引用处理
+        markdown_content.append(f"> {paragraph_text}")
+    elif style_info['type'] == 'code':
+        # 代码块处理
+        # 检查前一行是否已经是代码块开始
+        if markdown_content and not markdown_content[-1].startswith('```'):
+            markdown_content.append('```')
+        markdown_content.append(paragraph_text)
+        # 标记下一行可能需要结束代码块
+        needs_code_end = True
+    else:
+        # 普通段落处理
+        # 检查是否需要结束代码块
+        if 'needs_code_end' in locals() and needs_code_end:
+            markdown_content.append('```')
+            del needs_code_end
+        
+        # 添加普通段落
+        markdown_content.append(paragraph_text)
+    
+    # 提取并处理图片
+    images = extract_images(paragraph, image_dir, base_name)
+    if images:
+        markdown_content.extend(images)
+    
+    previous_paragraph_type = style_info['type']
+
+# 处理表格
+for table in doc.tables:
+    table_content = process_table(table)
+    if table_content:
+        markdown_content.append('')
+        markdown_content.append(table_content)
+        markdown_content.append('')
+
+# 处理脚注
+if footnotes:
+    markdown_content.append('')
+    markdown_content.append('## 脚注')
+    for i, footnote in enumerate(footnotes, 1):
+        markdown_content.append(f'[{i}]: {footnote}')
+
+# 最后检查是否需要结束代码块
+if 'needs_code_end' in locals() and needs_code_end:
+    markdown_content.append('```')
+
+# 清理多余的分隔符和格式问题
+cleaned_content = []
+for line in markdown_content:
+    # 移除多余的分隔符（超过5个连字符的行）
+    if re.match(r'^-{5,}$', line):
+        continue
+    
+    # 移除行尾的多余空格
+    line = line.rstrip()
+    
+    # 添加清理后的行
+    cleaned_content.append(line)
+
+# 合并处理后的内容
+final_content = '\n'.join(cleaned_content)
+
+# 保存Markdown文件
+try:
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(final_content)
+    print(f"转换完成，已保存到 '{output_file}'")
+    
+    if image_count > 0:
+        print(f"共提取 {image_count} 张图片到 '{image_dir}'")
+        
+    # 计算转换时间
+    end_time = datetime.now()
+    duration = (end_time - start_time).total_seconds()
+    print(f"转换耗时: {duration:.2f} 秒")
+except Exception as e:
+    print(f"保存文件时出错：{e}")
+    sys.exit(1)
+
+# 输出转换统计信息
+print(f"\n转换统计：")
+print(f"- 原文档：{input_file}")
+print(f"- 输出文件：{output_file}")
+print(f"- 段落数：{len(doc.paragraphs)}")
+print(f"- 表格数：{len(doc.tables)}")
+print(f"- 提取图片数：{image_count}")
+
+# 提示用户检查转换结果
+print(f"\n请检查转换结果，可能需要手动调整一些格式问题。特别是对于复杂的表格、脚注和特殊格式。")
