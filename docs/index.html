@@ -17,41 +17,12 @@
 
   <!-- 初始化docsify -->
   <script>
-    // 侧边栏切换按钮功能实现
+    // 移除自定义的侧边栏切换按钮功能，使用docsify默认的侧边栏切换
     window.addEventListener('DOMContentLoaded', function() {
-      // 检查是否已存在切换按钮容器
-      let toggleContainer = document.querySelector('.sidebar-toggle-container');
-      let toggleBtn = document.querySelector('.sidebar-toggle');
-      let toggleText = document.querySelector('.toggle-text');
-      
-      // 如果没有容器，创建容器
-      if (!toggleContainer) {
-        toggleContainer = document.createElement('div');
-        toggleContainer.className = 'sidebar-toggle-container';
-        document.body.appendChild(toggleContainer);
-      }
-      
-      // 如果没有按钮，创建按钮并添加到容器
-      if (!toggleBtn) {
-        toggleBtn = document.createElement('button');
-        toggleBtn.className = 'sidebar-toggle';
-        toggleBtn.innerHTML = '≡';
-        toggleBtn.title = '切换菜单';
-        toggleContainer.appendChild(toggleBtn);
-      } else if (toggleBtn.parentNode !== toggleContainer) {
-        // 如果按钮存在但不在容器中，移动到容器
-        toggleContainer.appendChild(toggleBtn);
-      }
-      
-      // 如果没有文字说明，创建并添加到容器
-      if (!toggleText) {
-        toggleText = document.createElement('div');
-        toggleText.className = 'toggle-text';
-        toggleText.textContent = '目录菜单';
-        toggleContainer.appendChild(toggleText);
-      } else if (toggleText.parentNode !== toggleContainer) {
-        // 如果文字说明存在但不在容器中，移动到容器
-        toggleContainer.appendChild(toggleText);
+      // 移除自定义的侧边栏切换容器（如果存在）
+      const customToggle = document.querySelector('.sidebar-toggle-container');
+      if (customToggle) {
+        customToggle.remove();
       }
     });
     
@@ -68,7 +39,7 @@
       name: '金融知识库',
       repo: '',
       loadSidebar: true,
-      subMaxLevel: 3,
+      subMaxLevel: 4,
       auto2top: true,
       coverpage: true,
       homepage: 'README.md',
@@ -79,6 +50,12 @@
         noData: '没有找到结果',
         depth: 6
       },
+      // 侧边栏配置优化
+      loadNavbar: true,
+      loadFooter: false,
+      mergeNavbar: true,
+      onlyCover: false,
+      themeColor: '#4285f4',
       pagination: {
         previousText: '上一章节',
         nextText: '下一章节',
