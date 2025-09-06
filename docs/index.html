@@ -89,26 +89,6 @@
         buttonText: '复制',
         errorText: '错误',
         successText: '已复制'
-      },
-      // 更新alias配置，使用更标准的docsify格式
-      alias: {
-        '/policy/': '/policy/README.md',
-        '/industry/': '/industry/README.md',
-        '/strategy/': '/strategy/README.md',
-        '/risk/': '/risk/README.md',
-        '/国泰海通证券/': '/国泰海通证券/README.md',
-        '/名师合集/荀玉根传/': '/名师合集/荀玉根传/README.md',
-        '/技术/': '/技术/README.md',
-        '/暗域/': '/暗域/README.md',
-        // 额外添加常见路径的完整映射
-        '/policy': '/policy/README.md',
-        '/industry': '/industry/README.md',
-        '/strategy': '/strategy/README.md',
-        '/risk': '/risk/README.md',
-        '/国泰海通证券': '/国泰海通证券/README.md',
-        '/名师合集/荀玉根传': '/名师合集/荀玉根传/README.md',
-        '/技术': '/技术/README.md',
-        '/暗域': '/暗域/README.md'
       }
     };
   </script>
@@ -132,26 +112,9 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
   <!-- MathJax支持 -->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <!-- 静态页脚内容 - docsify会自动识别和处理 -->
-  <div id="footer" class="footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="https://huashu.web.app/" target="_blank">话术平台</a>
-        <span>|</span>
-        <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a>
-        <span>|</span>
-        <a href="#" target="_blank">九州旗舰店</a>
-        <span>|</span>
-        <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a>
-        <span>|</span>
-        <a href="https://nicevoice.org/zh" target="_blank">语音服务</a>
-        <span>|</span>
-        <a href="#" target="_blank">字幕移除工具</a>
-        <span>|</span>
-        <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
-      </div>
-    </div>
-  </div>
-
+  
+  <!-- div自由拉升功能 -->
+  <script src="./scripts/div-resizer.js"></script>
+  
   </body>
 </html>
