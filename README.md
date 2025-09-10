@@ -23,58 +23,112 @@
 ### 核心目录结构说明
 
 ```
+├── .github/            # GitHub配置目录
+│   └── workflows/      # GitHub Actions工作流
+│       └── financial_analysis.yml
+├── .gitignore         # Git忽略配置
+├── .venv/             # Python虚拟环境
+├── README.md          # 项目说明文件（当前文件）
+├── ai_services/       # AI服务模块
+│   ├── .gitignore
+│   ├── README.md
+│   ├── __init__.py
+│   ├── api_clients/   # API客户端
+│   ├── config.example.json
+│   ├── example_app.py
+│   ├── kg/            # 知识图谱模块
+│   ├── main.py
+│   ├── nlp/           # 自然语言处理模块
+│   ├── requirements.txt
+│   ├── setup.py
+│   ├── simple_test.py
+│   ├── start.sh
+│   ├── test_basic.py
+│   ├── test_import.py
+│   ├── utils/         # 工具函数
+│   └── vector_store/  # 向量存储模块
+├── automatic_market_update.py # 市场自动更新脚本
+├── automatic_trading_analysis.py # 自动交易分析脚本
+├── create_ai_dirs.py  # 创建AI目录结构脚本
 ├── docs/              # Docsify文档根目录
+│   ├── .ai_cache/     # AI缓存目录
 │   ├── .nojekyll      # 阻止GitHub Pages忽略下划线开头的文件
+│   ├── .vector_store/ # 向量存储目录
+│   ├── 404.html       # 404页面
 │   ├── README.md      # 主页内容
 │   ├── _coverpage.md  # 封面页配置
 │   ├── _navbar.md     # 导航栏配置
 │   ├── _sidebar.md    # 侧边栏导航配置
+│   ├── ai_tools/      # AI工具相关文档
 │   ├── index.html     # Docsify主配置文件
-│   ├── policy/        # 政策解读相关文档
+│   ├── index.md       # 首页内容
 │   ├── industry/      # 行业分析相关文档
-│   ├── strategy/      # 投资策略相关文档
+│   │   ├── A股交易制度改革潜在影响分析.md
+│   │   ├── A股牛市深度研究：把握市场方向与散户投资行为分析.md
+│   │   ├── README.md
+│   │   ├── 《A股全面注册制下上市规则与审核要点解析》.md
+│   │   ├── 《A股再融资新规对上市公司资金运作与投资者收益的影响》.md
+│   │   ├── 大A市场百年不变规律.md
+│   │   └── 新能源行业发展现状与投资机遇分析.md
+│   ├── policy/        # 政策解读相关文档
+│   │   ├── README.md
+│   │   ├── 实时金融市场分析 - 2025年09月10日.md
+│   │   ├── 实时金融市场分析（2025年8月20日）.md
+│   │   ├── 实时金融市场分析（2025年8月21日）.md
+│   │   ├── 实时金融市场分析（2025年8月22日）.md
+│   │   ├── 实时金融市场分析（2025年8月25日）.md
+│   │   └── 实盘/
 │   ├── risk/          # 风险管理相关文档
+│   │   └── README.md
+│   ├── scripts/       # JavaScript脚本文件
+│   │   ├── advanced-visuals.js  # 高级视觉效果脚本
+│   │   ├── div-resizer.js       # 分区调整脚本
+│   │   └── visual-enhancements.js # 视觉优化增强脚本
+│   ├── server.js      # 服务器配置文件
+│   ├── strategy/      # 投资策略相关文档
+│   │   └── README.md
+│   ├── styles/        # CSS样式文件
+│   │   ├── advanced-visuals.css  # 高级视觉效果样式
+│   │   ├── visual-enhancements.css  # 视觉优化增强样式
+│   │   └── 图片使用指南.md
+│   ├── theme.css      # 主题样式
+│   ├── 名师合集/       # 知名分析师研究报告合集
+│   │   ├── 夜老师传/
+│   │   └── 荀玉根传/
+│   ├── 国泰海通证券/    # 国泰海通证券相关报告与信息
+│   │   ├── 2025国泰海通证券财富领航《首席来了》全面分析报告.md
+│   │   ├── README.md
+│   │   ├── 国泰海通证券合并整合风险控制策略.md
+│   │   ├── 国泰海通证券投资顾问信息表.md
+│   │   ├── 国泰海通证券股份有限公司全面深度调研报告.md
+│   │   └── 国泰海通证券高管信息.md
 │   ├── 技术/          # 技术支持相关文档
 │   │   ├── KDJ小技巧.md
 │   │   ├── KDJ指标详解：短线指标之王的实战应用.md
 │   │   ├── Python.md
 │   │   ├── README.md
+│   │   ├── images/
 │   │   ├── knowledge_base_utils.py
 │   │   └── 热门指标公式集完整.md
-│   ├── 国泰海通证券/    # 国泰海通证券相关报告与信息
-│   │   ├── 2025国泰海通证券财富领航《首席来了》全面分析报告.md
-│   │   ├── A股散户社群100个小号角色设计方案.md
-│   │   ├── README.md
-│   │   ├── 国泰海通证券投资顾问信息表.md
-│   │   ├── 国泰海通证券股份有限公司全面深度调研报告.md
-│   │   └── 国泰海通证券高管信息.md
-│   ├── 名师合集/       # 知名分析师研究报告合集
-│   │   ├── 夜老师传/
-│   │   └── 荀玉根合集/
-│   ├── 荀玉根合集/     # 荀玉根分析师专题合集
-│   ├── 暗域/           # 受限访问内容，需要密码验证
-│   │   ├── README.md
-│   │   └── 极客专用高效提示词与指令手册.md
-│   ├── scripts/       # JavaScript脚本文件
-│   │   ├── advanced-visuals.js  # 高级视觉效果脚本
-│   │   ├── dark-domain-access.js  # 暗域访问控制脚本
-│   │   ├── footer-debug.js  # 页脚调试脚本
-│   │   └── visual-enhancements.js  # 视觉优化增强脚本
-│   ├── styles/        # CSS样式文件
-│   │   ├── advanced-visuals.css  # 高级视觉效果样式
-│   │   ├── visual-enhancements.css  # 视觉优化增强样式
-│   │   └── 图片使用指南.md
-│   ├── server.js      # 服务器配置文件
-│   ├── images/        # 图片资源目录
-│   └── 页脚链接维护指南.md  # 页脚维护相关文档
-├── .gitignore         # Git忽略配置
-├── DOCX_TO_MARKDOWN_README.md # DOCX转MD工具说明
-├── README.md          # 项目说明文件（当前文件）
-├── compliance_checker.py # 合规检查工具
-├── convert_doc_to_docx.py # DOC转DOCX工具
+│   └── 暗域/           # 受限访问内容，需要密码验证
+│       ├── AI工具高效使用指南.md
+│       ├── README.md
+│       ├── 极客专用高效提示词与指令手册.md
+│       ├── 豆包润色指令与Trae NC润色指令深度对比研究报告.md
+│       └── 高级提示词与指令速查表.md
 ├── docx_to_markdown.py # DOCX转MD工具
+├── requirements.txt   # 项目依赖
+├── service_monitor.py # 服务监控脚本
+├── start_service_monitor.bat # 启动服务监控批处理
+├── start_trading_analysis.bat # 启动交易分析批处理
+├── test_trading_analysis.py # 交易分析测试脚本
 ├── update_alias_config.py # 别名配置更新工具
+├── 完全自动化运行指南.md # 自动化运行指南
+├── 市场分析自动更新模块智能化升级方案.md # 市场分析升级方案
+├── 智能化升级方案.md   # 智能化升级方案
+├── 智能数据处理机制设计方案.md # 数据处理设计方案
 ├── 更新指定目录Alias配置.bat # 批量更新别名配置脚本
+├── 自动更新金融市场分析.bat # 自动更新市场分析批处理
 └── 转换DOCX到MD.bat   # 批量转换DOCX到MD脚本
 ```
 
@@ -301,6 +355,20 @@
   - **功能特点**：自动扫描指定目录并更新alias配置
   - **使用方法**：可通过`更新指定目录Alias配置.bat`批量执行
 
+### AI服务模块
+
+项目包含`ai_services`模块，提供以下功能：
+- 自然语言处理（NLP）功能
+- 向量存储和检索
+- 知识图谱构建
+- 与LLM模型的API集成
+- 辅助金融分析和内容生成
+
+要使用AI服务模块，可参考以下步骤：
+1. 安装依赖：`pip install -e ai_services`
+2. 配置API密钥（参考`config.example.json`）
+3. 运行示例：`python ai_services/example_app.py`
+
 ### 批量处理脚本
 
 - **转换DOCX到MD.bat**: 批量处理多个DOCX文件转换
@@ -309,6 +377,15 @@
 
 - **更新指定目录Alias配置.bat**: 批量更新特定目录的别名配置
   - **使用方式**：双击运行，按照提示输入要更新的目录路径
+
+- **自动更新金融市场分析.bat**: 定期自动更新金融市场分析报告
+  - **使用方式**：双击运行或配置为定时任务
+
+- **start_trading_analysis.bat**: 启动交易分析系统
+  - **使用方式**：双击运行
+
+- **start_service_monitor.bat**: 启动服务监控系统
+  - **使用方式**：双击运行
 
 
 
