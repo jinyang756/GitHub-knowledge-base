@@ -39,7 +39,7 @@
       name: '金融知识库',
       repo: '',
       loadSidebar: true,
-      subMaxLevel: 4,
+      subMaxLevel: 2, // 降低子标题级别，减少侧边栏分栏数量
       auto2top: true,
       coverpage: true,
       homepage: 'README.md',
@@ -56,6 +56,9 @@
       mergeNavbar: true,
       onlyCover: false,
       themeColor: '#4285f4',
+      // 侧边栏自动折叠设置
+      auto2top: true,
+      autoHeader: true,
       pagination: {
         previousText: '上一章节',
         nextText: '下一章节',
@@ -92,6 +95,9 @@
   
   <!-- div自由拉升功能 -->
   <script src="./scripts/div-resizer.js"></script>
+  
+  <!-- 侧边栏优化功能 -->
+  <script src="./scripts/sidebar-optimizations.js"></script>
   
   </body>
 </html>
