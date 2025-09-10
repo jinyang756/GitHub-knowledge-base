@@ -2,13 +2,21 @@ name: 金融市场分析自动化
 
 on:
   schedule:
-    # 每天早上8点运行（北京时间）
+    # 每天早上8点运行（北京时间） - 注意：GitHub Actions使用UTC时区，北京时间=UTC+8
     - cron: '0 0 * * *'
   workflow_dispatch:
+    inputs:
+      debug: 
+        description: 'Run with debug mode'
+        required: false
+        default: 'false'
 
 jobs:
   run_market_analysis:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       
@@ -30,17 +38,33 @@ jobs:
           echo "Files in directory: $(ls -la)"
           echo "Python version: $(python --version)"
           echo "Pip version: $(pip --version)"
+          echo "GitHub Actor: ${{ github.actor }}"
+          echo "Workflow trigger: ${{ github.event_name }}"
+          echo "Current date: $(date)"
+          echo "Debug mode: ${{ github.event.inputs.debug || 'false' }}" 
+          echo "Checking permissions..."
+          git config --list
+          echo "Creating test file to verify write permissions..."
+          touch test_write_permission.txt
+          echo "Test content" > test_write_permission.txt
+          cat test_write_permission.txt
       
-      - name: Run market analysis with error handling
+      - name: Run market analysis with error handling and increased verbosity
+        env:
+          DEBUG: ${{ github.event.inputs.debug || 'false' }}
         run: |
-          set -e
+          set -x  # 启用详细输出
+          echo "Running market analysis script..."
           python automatic_market_update.py once || {
             echo "Market analysis failed, checking logs..."
             if [ -f market_update.log ]; then
               cat market_update.log
             fi
+            # 检查是否有Python错误输出
+            echo "Checking Python traceback..."
             exit 1
           }
+          set +x
       
       - name: Check if today is trading day
         id: trading_day
@@ -64,24 +88,38 @@ jobs:
             exit 1
           }
       
-      - name: Commit and push changes with retry
+      - name: Commit and push changes with detailed logging
         run: |
+          set -x  # 启用详细输出
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+          echo "显示当前分支..."
+          git branch -a
+          echo "显示远程仓库配置..."
+          git remote -v
           # 检查是否有变更需要提交
+          git status
           if [ -n "$(git status -s)" ]; then
-            echo "有变更需要提交..."
+            echo "有变更需要提交，准备添加文件..."
             git add .
+            echo "显示添加的文件..."
+            git status
             git commit -m '自动更新金融市场分析报告'
-            # 尝试推送，包含重试机制
+            echo "提交成功，准备推送..."
+            # 尝试推送，包含重试机制和更详细的错误信息
             for i in {1..3}; do
-              git push && break || {
-                echo "推送失败，等待5秒后重试 ($i/3)..."
+              echo "尝试推送 (尝试 $i/3)..."
+              git push origin HEAD:main || {
+                echo "推送失败，错误码: $?"
+                echo "检查远程连接..."
+                git ls-remote origin
+                echo "等待5秒后重试..."
                 sleep 5
               }
             done
           else
             echo "没有检测到变更，跳过提交和推送步骤"
           fi
+          set +x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
