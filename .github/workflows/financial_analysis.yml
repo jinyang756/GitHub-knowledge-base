@@ -88,37 +88,78 @@ jobs:
             exit 1
           }
       
-      - name: Commit and push changes with detailed logging
+      - name: Commit and push changes with enhanced auto-push
         run: |
           set -x  # 启用详细输出
+          # 配置Git用户信息
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+          
+          # 详细的Git环境检查
+          echo "=== Git环境详细检查 ==="
+          echo "当前目录: $(pwd)"
           echo "显示当前分支..."
           git branch -a
           echo "显示远程仓库配置..."
           git remote -v
+          echo "显示Git配置..."
+          git config --list
+          
           # 检查是否有变更需要提交
+          echo "=== 检查文件变更 ==="
           git status
-          if [ -n "$(git status -s)" ]; then
-            echo "有变更需要提交，准备添加文件..."
-            git add .
-            echo "显示添加的文件..."
-            git status
-            git commit -m '自动更新金融市场分析报告'
-            echo "提交成功，准备推送..."
-            # 尝试推送，包含重试机制和更详细的错误信息
-            for i in {1..3}; do
-              echo "尝试推送 (尝试 $i/3)..."
-              git push origin HEAD:main || {
+          
+          # 确保所有文件都有正确的权限
+          echo "=== 检查文件权限 ==="
+          ls -la docs/policy/
+          
+          # 添加所有变更文件
+          git add .
+          echo "显示添加到暂存区的文件..."
+          git status
+          
+          # 检查是否真的有变更要提交
+          if [ -z "$(git diff --staged)" ]; then
+            echo "没有检测到实质性变更，跳过提交和推送步骤"
+          else
+            # 提交变更，包含更详细的提交信息
+            COMMIT_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+            git commit -m "自动更新金融市场分析报告 - $COMMIT_DATE"
+            echo "提交成功，提交ID: $(git rev-parse HEAD)"
+            
+            # 配置安全的推送URL（关键改进）
+            echo "=== 配置推送URL ==="
+            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+            echo "更新后的远程仓库配置..."
+            git remote -v
+            
+            # 增强的推送重试机制
+            echo "=== 开始推送变更 ==="
+            PUSH_SUCCESS=false
+            for i in {1..5}; do
+              echo "尝试推送 (尝试 $i/5)..."
+              if git push origin main; then
+                echo "推送成功！"
+                PUSH_SUCCESS=true
+                break
+              else
                 echo "推送失败，错误码: $?"
                 echo "检查远程连接..."
-                git ls-remote origin
-                echo "等待5秒后重试..."
-                sleep 5
-              }
+                git ls-remote origin || echo "远程连接检查失败"
+                echo "等待8秒后重试..."
+                sleep 8
+              fi
             done
-          else
-            echo "没有检测到变更，跳过提交和推送步骤"
+            
+            # 最终状态检查
+            if [ "$PUSH_SUCCESS" = "false" ]; then
+              echo "错误：所有推送尝试都失败了！"
+              echo "检查GitHub Actions权限设置..."
+              echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+              echo "GITHUB_ACTOR: $GITHUB_ACTOR"
+              # 这个步骤失败不应导致整个工作流失败
+              echo "::warning::推送失败，但工作流将继续执行"
+            fi
           fi
           set +x
         env:
