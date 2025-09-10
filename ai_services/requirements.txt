@@ -1,0 +1,23 @@
+# 基础依赖
+numpy>=1.20.0
+networkx>=2.6.0
+
+# OpenAI API支持
+openai>=0.27.0
+
+# 向量存储
+faiss-cpu>=1.7.3
+# 如需GPU支持，请使用以下行替代上面的faiss-cpu
+# faiss-gpu>=1.7.3
+
+# NLP工具
+jieba>=0.42.1
+scikit-learn>=1.0.0
+
+# 可选依赖
+pyyaml>=6.0  # 用于YAML配置文件支持
+
+# 开发依赖（可选）
+pytest>=7.0.0
+black>=22.0.0
+isort>=5.0.0

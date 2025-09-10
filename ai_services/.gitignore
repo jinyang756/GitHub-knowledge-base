@@ -1,0 +1,59 @@
+# 虚拟环境
+venv/
+.env/
+.env
+
+# 依赖
+__pycache__/
+.pytest_cache/
+.cache/
+
+# 配置文件
+config.json
+*.local.json
+
+# 日志
+logs/
+*.log
+
+# 数据存储
+vector_stores/
+knowledge_graphs/
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# IDE配置
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 构建输出
+build/
+dist/
+*.egg-info/
+
+# Python编译文件
+*.pyc
+*.pyo
+*.pyd
+
+# 测试覆盖率
+.coverage
+coverage.xml
+
+# 导出数据
+export/
+data/

@@ -12,6 +12,7 @@
   --sidebar-width: 280px;
   --footer-height: 80px;
   --glass-effect: rgba(255, 255, 255, 0.9);
+  --heading-color: #1e293b; /* 添加缺失的标题颜色变量 */
 }
 
 /* 全局样式重置 */
@@ -409,6 +410,125 @@ body {
 .sidebar-toggle:hover {
   background-color: #1d4ed8 !important;
   color: white !important;
+}
+
+/* 侧边栏导航容器样式 */
+.sidebar-nav {
+  padding: 1rem 0;
+  width: 100%;
+}
+
+/* 侧边栏链接基础样式 - 确保完整的可点击区域 */
+.sidebar-nav a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-nav a:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--primary-color);
+  transform: translateX(3px);
+}
+
+/* 侧边栏章节标题样式 */
+.sidebar-nav .section-link {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.sidebar-nav .section-link:hover {
+  background-color: rgba(37, 99, 235, 0.15);
+}
+
+/* 侧边栏列表样式重置 */
+.sidebar-nav ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-nav li {
+  list-style: none;
+  width: 100%;
+}
+
+/* 侧边栏子菜单样式优化 */
+.sidebar-nav > ul > li > ul {
+  padding-left: 0;
+}
+
+/* 嵌套链接缩进和样式 - 确保层次清晰 */
+.sidebar-nav li li a {
+  padding-left: 2.5rem;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.sidebar-nav li li a:before {
+  content: '•';
+  position: absolute;
+  left: 1.5rem;
+  color: var(--primary-color);
+}
+
+.sidebar-nav li li li a {
+  padding-left: 3.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
+}
+
+.sidebar-nav li li li a:before {
+  content: '◦';
+  left: 2.5rem;
+}
+
+/* 确保侧边栏和主内容区域正确定位 */
+.app {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  overflow-y: auto;
+  background-color: var(--background-color);
+}
+
+.markdown-section {
+  position: relative;
+  z-index: 1;
+  margin-left: var(--sidebar-width);
+}
+
+/* 修复docsify默认样式可能引起的冲突 */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* 确保标题元素的可点击性 */
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+  position: relative;
+  z-index: 1;
 }
 
 /* 返回顶部按钮容器 */

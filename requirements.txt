@@ -3,17 +3,51 @@
 python-dateutil>=2.8.2
 pytz>=2023.3
 
-# 可能需要的金融数据处理库
+# 金融数据处理库
 pandas>=1.5.0
 numpy>=1.23.0
 requests>=2.28.0
 
-# 可能需要的解析和格式化库
+# 解析和格式化库
 beautifulsoup4>=4.11.0
 jinja2>=3.1.0
+python-docx>=0.8.11  # DOCX文档处理
+pdfplumber>=0.9.0    # PDF文档处理
+pytesseract>=0.3.10  # OCR文字识别
 
-# 可能需要的调度库
+# 调度库
 schedule>=1.1.0
+APScheduler>=3.10.0  # 高级调度器
 
-# 确保中文正常显示
+# 中文显示
 fonttools>=4.38.0
+
+# AI与NLP相关库
+transformers>=4.30.0  # 深度学习模型库
+sentence-transformers>=2.2.2  # 句子嵌入模型
+openai>=0.27.0  # OpenAI API客户端
+qianfan>=0.3.0  # 百度文心一言API客户端
+tongyi>=0.1.0   # 阿里云通义千问API客户端
+
+# 知识图谱相关
+networkx>=3.1   # 图论库
+neo4j-driver>=5.9.0  # Neo4j图数据库驱动
+py2neo>=2021.2.3  # Python-Neo4j集成库
+
+# 向量数据库
+faiss-cpu>=1.7.4  # 高效向量搜索库
+pinecone-client>=2.2.1  # Pinecone向量数据库客户端
+
+# 数据可视化
+matplotlib>=3.7.0
+seaborn>=0.12.0
+echarts-python>=0.1.5  # ECharts可视化
+
+# 开发工具
+pytest>=7.3.0  # 测试框架
+black>=23.3.0  # 代码格式化
+mypy>=1.2.0    # 静态类型检查
+
+# 性能优化
+numba>=0.57.0  # JIT编译器
+cython>=0.29.34  # C扩展
