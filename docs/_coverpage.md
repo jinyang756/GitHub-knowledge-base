@@ -8,10 +8,6 @@
 <div class="footer-links">
   <a href="https://huashu.web.app/" target="_blank">话术平台</a>
   <span>|</span>
-  <a href="https://moni.10jqka.com.cn/" target="_blank">模拟炒股平台</a>
-  <span>|</span>
-  <a href="#" target="_blank">九州旗舰店</a>
-  <span>|</span>
   <a href="https://t.me/anyu168168" target="_blank">Telegram社区</a>
   <span>|</span>
   <a href="https://nicevoice.org/zh" target="_blank">语音服务</a>
@@ -19,6 +15,8 @@
   <a href="#" target="_blank">字幕移除工具</a>
   <span>|</span>
   <a href="https://convertio.co/zh/" target="_blank">Convertio文件转换工具</a>
+  <span>|</span>
+  <a href="https://app.shanjian.tv/" target="_blank">闪剪AI</a>
 </div>
 
 <!-- 自定义封面样式 -->
