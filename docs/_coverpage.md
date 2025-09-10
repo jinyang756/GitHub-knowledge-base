@@ -54,6 +54,6 @@
     width: 0.8rem;
     height: 0.8rem;
     background-color: #2563EB;
-    border-radius: 50%;
+    border-radius: [投资比例建议];
   }
 </style>

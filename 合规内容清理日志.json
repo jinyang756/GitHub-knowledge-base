@@ -1,0 +1,966 @@
+{
+  "timestamp": "2025-09-11T04:36:20.489617",
+  "root_dir": "C:\\Users\\Administrator\\Desktop\\GitHub知识库",
+  "dry_run": false,
+  "processed_files": [
+    {
+      "file_path": "docs\\_coverpage.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 1,
+          "unique_matches": [
+            "50%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\_sidebar.md",
+      "changes": {
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 1,
+          "unique_matches": [
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\AI宝藏库\\Windows冗余文件处理提示词列表.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 2,
+          "unique_matches": [
+            "100%",
+            "50%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\A股交易制度改革潜在影响分析.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 18,
+          "unique_matches": [
+            "12%",
+            "26%",
+            "70%",
+            "15%",
+            "50%",
+            "8%",
+            "20%",
+            "5%",
+            "44%",
+            "28%",
+            "2%",
+            "10%",
+            "67%",
+            "6%",
+            "68%",
+            "76%",
+            "32%",
+            "30%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 5,
+          "unique_matches": [
+            "买入",
+            "卖出",
+            "建仓",
+            "止盈",
+            "止损"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\A股牛市深度研究：把握市场方向与散户投资行为分析.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 48,
+          "unique_matches": [
+            "90%",
+            "12%",
+            "15%",
+            "24%",
+            "60%",
+            "68%",
+            "08%",
+            "34%",
+            "2%",
+            "27%",
+            "21%",
+            "3141%",
+            "51%",
+            "38%",
+            "29%",
+            "28%",
+            "300%",
+            "47%",
+            "76%",
+            "3%",
+            "70%",
+            "25%",
+            "8%",
+            "5成",
+            "20%",
+            "1%",
+            "53%",
+            "41%",
+            "62%",
+            "78%",
+            "06%",
+            "09%",
+            "40%",
+            "73%",
+            "99%",
+            "13%",
+            "45%",
+            "26%",
+            "9%",
+            "63%",
+            "50%",
+            "71%",
+            "5%",
+            "7%",
+            "6%",
+            "39%",
+            "22%",
+            "30%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 5,
+          "unique_matches": [
+            "买入",
+            "卖出",
+            "建仓",
+            "止盈",
+            "止损"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 7,
+          "unique_matches": [
+            "25%",
+            "50%",
+            "75%",
+            "35%",
+            "40%",
+            "32%",
+            "45%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\《A股全面注册制下上市规则与审核要点解析》.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 4,
+          "unique_matches": [
+            "28.88",
+            "19.38",
+            "73.6",
+            "80.23"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 13,
+          "unique_matches": [
+            "83%",
+            "15%",
+            "24%",
+            "50%",
+            "63%",
+            "8%",
+            "72%",
+            "5%",
+            "60%",
+            "10%",
+            "02%",
+            "4%",
+            "30%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\《A股再融资新规对上市公司资金运作与投资者收益的影响》.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 3,
+          "unique_matches": [
+            "11.49",
+            "22",
+            "5.7"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 28,
+          "unique_matches": [
+            "90%",
+            "12%",
+            "14%",
+            "15%",
+            "24%",
+            "60%",
+            "4%",
+            "120%",
+            "65%",
+            "21%",
+            "30%",
+            "95%",
+            "18%",
+            "25%",
+            "8%",
+            "33%",
+            "1%",
+            "20%",
+            "53%",
+            "45%",
+            "26%",
+            "50%",
+            "71%",
+            "200%",
+            "140%",
+            "39%",
+            "137%",
+            "80%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 2,
+          "unique_matches": [
+            "买入",
+            "卖出"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\大A市场百年不变规律.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 8,
+          "unique_matches": [
+            "70%",
+            "50%",
+            "71%",
+            "60%",
+            "10%",
+            "55%",
+            "30%",
+            "65%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 5,
+          "unique_matches": [
+            "买入",
+            "卖出",
+            "建仓",
+            "止盈",
+            "止损"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\industry\\新能源行业发展现状与投资机遇分析.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 17,
+          "unique_matches": [
+            "90%",
+            "25%",
+            "85%",
+            "38%",
+            "15%",
+            "80%",
+            "8%",
+            "30%",
+            "20%",
+            "5%",
+            "95%",
+            "60%",
+            "10%",
+            "6%",
+            "55%",
+            "35%",
+            "45%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\policy\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 7,
+          "unique_matches": [
+            "15%",
+            "30%",
+            "20%",
+            "5%",
+            "28%",
+            "10%",
+            "45%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\policy\\实时金融市场分析（2025年8月20日）.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 1,
+          "unique_matches": [
+            "7.18"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 17,
+          "unique_matches": [
+            "3%",
+            "12%",
+            "21%",
+            "46%",
+            "3062%",
+            "50%",
+            "00%",
+            "5%",
+            "69%",
+            "56%",
+            "4%",
+            "02%",
+            "17%",
+            "7480%",
+            "0255%",
+            "59%",
+            "7%"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 1,
+          "unique_matches": [
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\policy\\实时金融市场分析（2025年8月21日）.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 2,
+          "unique_matches": [
+            "7.18",
+            "7.17"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 17,
+          "unique_matches": [
+            "89%",
+            "38%",
+            "24%",
+            "23%",
+            "04%",
+            "29%",
+            "31%",
+            "75%",
+            "58%",
+            "00%",
+            "50%",
+            "60%",
+            "67%",
+            "4%",
+            "59%",
+            "08%",
+            "2%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\policy\\实时金融市场分析（2025年8月22日）.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 2,
+          "unique_matches": [
+            "7.18",
+            "7.17"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 17,
+          "unique_matches": [
+            "24%",
+            "23%",
+            "04%",
+            "29%",
+            "75%",
+            "2%",
+            "58%",
+            "07%",
+            "1%",
+            "4%",
+            "60%",
+            "64%",
+            "67%",
+            "19%",
+            "08%",
+            "36%",
+            "45%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\policy\\实时金融市场分析（2025年8月25日）.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 13,
+          "unique_matches": [
+            "2537%",
+            "85%",
+            "05%",
+            "71%",
+            "5%",
+            "07%",
+            "10%",
+            "02%",
+            "40%",
+            "09%",
+            "36%",
+            "22%",
+            "45%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\risk\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 7,
+          "unique_matches": [
+            "12%",
+            "70%",
+            "130%",
+            "45%",
+            "30%",
+            "40%",
+            "2%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\strategy\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 9,
+          "unique_matches": [
+            "25%",
+            "15%",
+            "8%",
+            "75%",
+            "28%",
+            "5%",
+            "10%",
+            "32%",
+            "2%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\名师合集\\夜老师传\\日常问题回复参考.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 2,
+          "unique_matches": [
+            "分批次介入",
+            "金字塔建仓"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 9,
+          "unique_matches": [
+            "买入",
+            "牛股",
+            "买入信号",
+            "卖出",
+            "建仓",
+            "止盈",
+            "抄底牛股",
+            "金叉",
+            "止损"
+          ]
+        },
+        "real_names": {
+          "description": "真实人物姓名",
+          "match_count": 2,
+          "unique_matches": [
+            "吕平波",
+            "但斌"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\名师合集\\荀玉根传\\荀玉根第三天接粉话术.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 4,
+          "unique_matches": [
+            "3%",
+            "40%",
+            "80%",
+            "50%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\名师合集\\荀玉根传\\荀玉根第二天接粉话术.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 3,
+          "unique_matches": [
+            "25%",
+            "40%",
+            "80%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 2,
+          "unique_matches": [
+            "牛股",
+            "金叉"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\名师合集\\荀玉根传\\荀玉根维护第一天话术内容.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 5,
+          "unique_matches": [
+            "25%",
+            "70%",
+            "20%",
+            "40%",
+            "80%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 1,
+          "unique_matches": [
+            "买入"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\名师合集\\荀玉根传\\荀玉根：中国资本市场研究领域的_七冠王_分析师.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 22,
+          "unique_matches": [
+            "89%",
+            "15%",
+            "66%",
+            "80%",
+            "98%",
+            "4%",
+            "2%",
+            "92%",
+            "17%",
+            "100%",
+            "76%",
+            "8%",
+            "94%",
+            "1%",
+            "13%",
+            "0%",
+            "85%",
+            "50%",
+            "5%",
+            "7%",
+            "6%",
+            "30%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 1,
+          "unique_matches": [
+            "买入"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 3,
+          "unique_matches": [
+            "国泰君安",
+            "海通证券",
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\2025国泰海通证券财富领航《首席来了》全面分析报告.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 12,
+          "unique_matches": [
+            "92%",
+            "25%",
+            "15%",
+            "42%",
+            "50%",
+            "8%",
+            "20%",
+            "1%",
+            "60%",
+            "10%",
+            "212%",
+            "30%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 4,
+          "unique_matches": [
+            "卖出",
+            "止盈",
+            "买入",
+            "止损"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 3,
+          "unique_matches": [
+            "国泰君安",
+            "海通证券",
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 1,
+          "unique_matches": [
+            "12%"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 1,
+          "unique_matches": [
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\国泰海通证券合并整合风险控制策略.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 1,
+          "unique_matches": [
+            "52%"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 3,
+          "unique_matches": [
+            "国泰君安",
+            "海通证券",
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\国泰海通证券投资顾问信息表.md",
+      "changes": {
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 1,
+          "unique_matches": [
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\国泰海通证券股份有限公司全面深度调研报告.md",
+      "changes": {
+        "price": {
+          "description": "价格信息",
+          "match_count": 3,
+          "unique_matches": [
+            "1.39",
+            "26.35",
+            "1.16"
+          ]
+        },
+        "position": {
+          "description": "仓位建议",
+          "match_count": 70,
+          "unique_matches": [
+            "90%",
+            "83%",
+            "89%",
+            "14%",
+            "15%",
+            "195%",
+            "98%",
+            "52%",
+            "81%",
+            "60%",
+            "02%",
+            "4%",
+            "54%",
+            "08%",
+            "36%",
+            "34%",
+            "2%",
+            "65%",
+            "21%",
+            "46%",
+            "38%",
+            "96%",
+            "58%",
+            "30%",
+            "69%",
+            "49%",
+            "300%",
+            "18%",
+            "17%",
+            "82%",
+            "74%",
+            "87%",
+            "100%",
+            "03%",
+            "3%",
+            "70%",
+            "25%",
+            "8%",
+            "94%",
+            "23%",
+            "84%",
+            "1%",
+            "33%",
+            "91%",
+            "86%",
+            "41%",
+            "78%",
+            "88%",
+            "09%",
+            "40%",
+            "45%",
+            "99%",
+            "0%",
+            "32%",
+            "85%",
+            "9%",
+            "75%",
+            "31%",
+            "93%",
+            "5%",
+            "97%",
+            "178%",
+            "200%",
+            "7%",
+            "48%",
+            "6%",
+            "39%",
+            "59%",
+            "22%",
+            "80%"
+          ]
+        },
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 3,
+          "unique_matches": [
+            "国泰君安",
+            "海通证券",
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\国泰海通证券\\国泰海通证券高管信息.md",
+      "changes": {
+        "institution_name": {
+          "description": "机构名称",
+          "match_count": 3,
+          "unique_matches": [
+            "国泰君安",
+            "海通证券",
+            "国泰海通证券"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\技术\\KDJ小技巧.md",
+      "changes": {
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 3,
+          "unique_matches": [
+            "卖出",
+            "买入信号",
+            "买入"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\技术\\KDJ指标详解：短线指标之王的实战应用.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 8,
+          "unique_matches": [
+            "90%",
+            "70%",
+            "85%",
+            "3%",
+            "1%",
+            "5%",
+            "100%",
+            "2%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 7,
+          "unique_matches": [
+            "买入",
+            "买入信号",
+            "卖出",
+            "建仓",
+            "止盈",
+            "金叉",
+            "止损"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\技术\\README.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 4,
+          "unique_matches": [
+            "25%",
+            "60%",
+            "20%",
+            "95%"
+          ]
+        }
+      }
+    },
+    {
+      "file_path": "docs\\技术\\热门指标公式集完整.md",
+      "changes": {
+        "position": {
+          "description": "仓位建议",
+          "match_count": 9,
+          "unique_matches": [
+            "90%",
+            "15%",
+            "50%",
+            "20%",
+            "5%",
+            "2%",
+            "1%",
+            "10%",
+            "30%"
+          ]
+        },
+        "investment_guidance": {
+          "description": "投资引导性语言",
+          "match_count": 6,
+          "unique_matches": [
+            "买入",
+            "买入信号",
+            "卖出",
+            "建仓",
+            "金叉",
+            "止损"
+          ]
+        }
+      }
+    }
+  ],
+  "cleanup_summary": {
+    "position": 28,
+    "institution_name": 9,
+    "investment_guidance": 12,
+    "price": 6,
+    "real_names": 1
+  }
+}

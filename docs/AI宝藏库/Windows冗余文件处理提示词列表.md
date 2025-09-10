@@ -100,7 +100,7 @@ function copyToClipboard(button) {
 .prompt-item {
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: [投资比例建议];
 }
 
 .prompt-item code {
@@ -108,15 +108,15 @@ function copyToClipboard(button) {
     padding: 5px 10px;
     border-radius: 4px;
     display: inline-block;
-    width: calc(100% - 80px);
+    width: calc([投资比例建议] - 80px);
     word-wrap: break-word;
 }
 
 .copy-btn {
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: [投资比例建议];
+    transform: translateY(-[投资比例建议]);
     background-color: #4CAF50;
     color: white;
     border: none;

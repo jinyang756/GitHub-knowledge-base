@@ -80,7 +80,7 @@ function serveFile(filePath, res) {
     // 设置响应头
     const headers = {
       'Content-Type': contentType,
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'http://localhost:3000', // 限制为本地开发域名，生产环境应改为实际域名
       'Cache-Control': 'public, max-age=86400' // 缓存一天(86400秒)，之前是一年，现在缩短为一天
     };
 

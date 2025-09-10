@@ -2,7 +2,7 @@
 
 ## 核心观点摘要
 
-2025 年 A 股市场已进入结构性牛市阶段，上证指数自 4 月以来累计涨幅超 21%，A 股市值突破 100 万亿元大关。在这一背景下，市场呈现出明显的结构性特征，科技、金融与消费板块轮动明显。散户投资者数量已突破 2.4 亿，其中个人投资者占比高达 99.76%，但投资行为仍存在明显痛点：**90% 的散户账户存在高频交易行为，仅 12% 的散户跑赢指数**[(27)](https://xueqiu.com/8691105491/328965265)。新增投资者中，00 后占比高达 52.9%，彻底颠覆了 A 股传统 "老龄化" 结构[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。本报告深入分析了当前市场趋势与散户行为特征，为投资者提供把握牛市机会的策略建议。
+2025 年 A 股市场已进入结构性牛市阶段，上证指数自 4 月以来累计涨幅超 [投资比例建议]，A 股市值突破 100 万亿元大关。在这一背景下，市场呈现出明显的结构性特征，科技、金融与消费板块轮动明显。散户投资者数量已突破 2.4 亿，其中个人投资者占比高达 99.[投资比例建议]，但投资行为仍存在明显痛点：**[投资比例建议] 的散户账户存在高频交易行为，仅 [投资比例建议] 的散户跑赢指数**[(27)](https://xueqiu.com/8691105491/328965265)。新增投资者中，00 后占比高达 52.[投资比例建议]，彻底颠覆了 A 股传统 "老龄化" 结构[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。本报告深入分析了当前市场趋势与散户行为特征，为投资者提供把握牛市机会的策略建议。
 
 ## 一、A 股市场趋势分析：结构性牛市特征明显
 
@@ -12,15 +12,15 @@
 
 
 
-*   上证指数收于 3883.56 点，涨幅 1.51%，续创近十年新高
+*   上证指数收于 3883.56 点，涨幅 1.[投资比例建议]，续创近十年新高
 
-*   创业板指收于 2762.99 点，涨幅 2.99%，表现最为强势
+*   创业板指收于 2762.99 点，涨幅 2.[投资比例建议]，表现最为强势
 
-*   沪深 300 指数收于 4469.22 点，涨幅 2.08%，表现稳健
+*   沪深 300 指数收于 4469.22 点，涨幅 2.[投资比例建议]，表现稳健
 
-*   深证成指收于 12441.07 点，涨幅 2.26%，交投活跃
+*   深证成指收于 12441.07 点，涨幅 2.[投资比例建议]，交投活跃
 
-市场交投持续活跃，成交量连续 8 个交易日超过 2 万亿元，刷新连续 2 万亿元以上成交额的最长纪录。本周日均成交额为 25875 亿元，较上周上升 4855.89 亿元；日均换手率为 2.3141%，较上周上升 0.36 个百分点[(1)](http://m.toutiao.com/group/7542312139587879464/?upstream_biz=doubao)。
+市场交投持续活跃，成交量连续 8 个交易日超过 2 万亿元，刷新连续 2 万亿元以上成交额的最长纪录。本周日均成交额为 25875 亿元，较上周上升 4855.89 亿元；日均换手率为 2.[投资比例建议]，较上周上升 0.36 个百分点[(1)](http://m.toutiao.com/group/7542312139587879464/?upstream_biz=doubao)。
 
 ### 1.2 板块轮动特征明显，科技与消费交替领先
 
@@ -32,15 +32,15 @@
 
 *   **科技板块**：通信、电子行业延续强势，在本周涨幅排名中依然位列前两位，综合、计算机、美容护理等行业表现靠前[(1)](http://m.toutiao.com/group/7542312139587879464/?upstream_biz=doubao)。电子板块市值已达 11.32 万亿元，与银行业 11.37 万亿元仅相差 500 亿元，展现出强劲的发展势头[(8)](http://m.toutiao.com/group/7542068122115752448/?upstream_biz=doubao)。
 
-*   **金融板块**：银行股表现出色，农业银行、邮储银行等创出历史新高，发挥了护盘作用[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。银行（+10.09%）受益于高股息避险属性强化，存款利率下行利好息差修复[(3)](https://xueqiu.com/4694591834/347324736)。
+*   **金融板块**：银行股表现出色，农业银行、邮储银行等创出历史新高，发挥了护盘作用[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。银行（+10.[投资比例建议]）受益于高股息避险属性强化，存款利率下行利好息差修复[(3)](https://xueqiu.com/4694591834/347324736)。
 
-*   **消费板块**：美容护理、零售、化肥等板块接力补涨[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。白酒板块大涨逾 3.7%，创今年 3 月中旬以来最大单日涨幅[(2)](http://m.toutiao.com/group/7540653317538546226/?upstream_biz=doubao)。
+*   **消费板块**：美容护理、零售、化肥等板块接力补涨[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。白酒板块大涨逾 3.[投资比例建议]，创今年 3 月中旬以来最大单日涨幅[(2)](http://m.toutiao.com/group/7540653317538546226/?upstream_biz=doubao)。
 
 **2. 高位调整板块**：
 
 
 
-*   高位科技题材股如液冷服务器 (-3.7%)、CPO、光模块等大幅回调，资金获利了结迹象明显[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。
+*   高位科技题材股如液冷服务器 (-3.[投资比例建议])、CPO、光模块等大幅回调，资金获利了结迹象明显[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。
 
 *   科技硬件与成长股如消费电子、医疗器械、通信设备等延续调整，部分个股跌幅较大[(6)](https://mobile.aigupiao.com/lives/usermsg/id/5098781)。
 
@@ -104,9 +104,9 @@
 
 
 
-*   **个人投资者占绝对主导**：2024 年底自然人投资者数量达 23623.58 万人，占比超过 99.76%；非自然人（机构）投资者仅 56.76 万人，占比不足 0.24%[(13)](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)。
+*   **个人投资者占绝对主导**：2024 年底自然人投资者数量达 23623.58 万人，占比超过 99.[投资比例建议]；非自然人（机构）投资者仅 56.76 万人，占比不足 0.[投资比例建议][(13)](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)。
 
-*   **新增投资者结构**：2025 年上半年新增开户中个人占比达 99.63%，机构投资者占比不足 0.24% 且新增数量逐年下降[(13)](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)。
+*   **新增投资者结构**：2025 年上半年新增开户中个人占比达 99.[投资比例建议]，机构投资者占比不足 0.[投资比例建议] 且新增数量逐年下降[(13)](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)。
 
 *   **信用账户持续扩容**：2024 年底达 720.38 万户，2025 年上半年新增近 25 万户，个人两融投资者稳步增长[(13)](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)。
 
@@ -116,9 +116,9 @@
 
 
 
-*   **30-40 岁的股民占比 38%**，是炒股的主力军[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
+*   **30-40 岁的股民占比 [投资比例建议]**，是炒股的主力军[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
 
-*   **50 岁以上群体占比 29%**，较 2024 年增长了 3%，"银发股民" 规模正加速扩张，年增幅达到 3%[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
+*   **50 岁以上群体占比 [投资比例建议]**，较 2024 年增长了 [投资比例建议]，"银发股民" 规模正加速扩张，年增幅达到 [投资比例建议][(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
 
 *   **青年投资者增速放缓**，与 "银发股民" 的快速增长形成鲜明对比[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
 
@@ -126,9 +126,9 @@
 
 
 
-*   2025 年 7 月数据显示，**00 后在新开户股民中占比高达 52.9%**，彻底颠覆了 A 股传统的 "老龄化" 结构[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
+*   2025 年 7 月数据显示，**00 后在新开户股民中占比高达 52.[投资比例建议]**，彻底颠覆了 A 股传统的 "老龄化" 结构[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
-*   在基金投资用户中，18-25 岁的年轻投资者占比达 20%，而 25-35 岁群体占比 40%，Z 世代合计占据基金投资用户的 60%，成为推动市场增长的核心力量[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
+*   在基金投资用户中，18-25 岁的年轻投资者占比达 [投资比例建议]，而 25-35 岁群体占比 [投资比例建议]，Z 世代合计占据基金投资用户的 [投资比例建议]，成为推动市场增长的核心力量[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
 ### 2.3 投资者地域与学历分布
 
@@ -136,23 +136,23 @@
 
 
 
-*   广东股民占比 14.3%，位居全国第一
+*   广东股民占比 14.[投资比例建议]，位居全国第一
 
-*   江苏以 7.6% 紧随其后，浙江占比 7.2%，这三个省份位居前三
+*   江苏以 7.[投资比例建议] 紧随其后，浙江占比 7.[投资比例建议]，这三个省份位居前三
 
-*   西藏股民占比最低，仅为 0.1%[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
+*   西藏股民占比最低，仅为 0.[投资比例建议][(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
 
 **学历分布特征**：
 
 
 
-*   87.2% 接受大专及以上教育
+*   87.[投资比例建议] 接受大专及以上教育
 
-*   本科及以上学历股民占比 34%（较前一年 + 3%）
+*   本科及以上学历股民占比 [投资比例建议]（较前一年 + [投资比例建议]）
 
 *   高学历股民的占比在持续提升，本科群体成为新股民的重要来源[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
 
-值得注意的是，学历高低并非决定投资收益的关键，真正的核心差异在于信息的处理逻辑与决策方式。调研数据显示，在高中及以下学历的投资者中，超过 60% 的决策依赖于 "熟人介绍" 或 "小道消息"[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
+值得注意的是，学历高低并非决定投资收益的关键，真正的核心差异在于信息的处理逻辑与决策方式。调研数据显示，在高中及以下学历的投资者中，超过 [投资比例建议] 的决策依赖于 "熟人介绍" 或 "小道消息"[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
 
 ### 2.4 投资者资金规模与交易行为
 
@@ -160,9 +160,9 @@
 
 
 
-*   10 万元以下账户占比 51%，较之前下降了 7%
+*   10 万元以下账户占比 [投资比例建议]，较之前下降了 [投资比例建议]
 
-*   50 万元以上账户的交易贡献比突破了 70%
+*   50 万元以上账户的交易贡献比突破了 [投资比例建议]
 
 *   小市值账户占比有所回落，但仍超过半数，头部账户（50 万以上）的交易集中度进一步强化，"二八效应" 加剧[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
 
@@ -170,13 +170,13 @@
 
 
 
-*   牛市期间散户日均换手率高达 8.3%，是熊市的 3.2 倍[(27)](https://xueqiu.com/8691105491/328965265)。
+*   牛市期间散户日均换手率高达 8.[投资比例建议]，是熊市的 3.2 倍[(27)](https://xueqiu.com/8691105491/328965265)。
 
 *   00 后股民平均持股时间不超过 1 周，热衷追逐热点板块[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
-*   40-50 岁的群体是加杠杆最猛的群体，有 41% 在用杠杆，可盈利的只有 27%[(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
+*   40-50 岁的群体是加杠杆最猛的群体，有 [投资比例建议] 在用杠杆，可盈利的只有 [投资比例建议][(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
 
-*   2024 年新开信用账户中 00 后占比超 50%，有人导致 "一周亏光本金还倒欠银行"[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
+*   2024 年新开信用账户中 00 后占比超 [投资比例建议]，有人导致 "一周亏光本金还倒欠银行"[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
 ## 三、散户投资者痛点深度分析
 
@@ -190,11 +190,11 @@
 
 
 
-*   **消息依赖症**：某券商 APP 统计显示，牛市期间 "龙虎榜" 资讯浏览量激增 300%，但跟随游资炒作的投资者胜率不足 25%[(33)](https://xueqiu.com/8691105491/327832195)。
+*   **消息依赖症**：某券商 APP 统计显示，牛市期间 "龙虎榜" 资讯浏览量激增 [投资比例建议]，但跟随游资炒作的投资者胜率不足 [投资比例建议][(33)](https://xueqiu.com/8691105491/327832195)。
 
-*   **羊群效应**：87.2% 接受大专及以上教育的高学历投资者中，仍有相当一部分存在盲目跟风的行为特征[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
+*   **羊群效应**：87.[投资比例建议] 接受大专及以上教育的高学历投资者中，仍有相当一部分存在盲目跟风的行为特征[(20)](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)。
 
-*   **锚定效应**：投资者常将买入价作为心理锚点。当股价突破前期高点时，68% 的人会选择减仓，而不是继续持有[(27)](https://xueqiu.com/8691105491/328965265)。
+*   **锚定效应**：投资者常将[买入]价作为心理锚点。当股价突破前期高点时，[投资比例建议] 的人会选择减仓，而不是继续持有[(27)](https://xueqiu.com/8691105491/328965265)。
 
 **选股能力与收益的关系**：
 
@@ -206,21 +206,21 @@
 
 
 
-*   **损失厌恶**：行为金融学研究表明，投资者对亏损的敏感度是盈利的 2.5 倍。当账户浮盈达到 15% 时，73% 的散户会选择止盈，而面对 5% 的回调就慌忙止损[(27)](https://xueqiu.com/8691105491/328965265)。
+*   **损失厌恶**：行为金融学研究表明，投资者对亏损的敏感度是盈利的 2.5 倍。当账户浮盈达到 [投资比例建议] 时，[投资比例建议] 的散户会选择[止盈]，而面对 [投资比例建议] 的回调就慌忙[止损][(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   **过早止盈**：这种 "过早下车" 的操作，让投资者在茅台、宁德时代等 10 倍股上平均仅赚到 28%[(27)](https://xueqiu.com/8691105491/328965265)。
+*   **过早[止盈]**：这种 "过早下车" 的操作，让投资者在茅台、宁德时代等 10 倍股上平均仅赚到 [投资比例建议][(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   **赌场效应**：如同赌徒赚了钱却不离开赌桌，投资者常将浮盈视为 "利润弹药" 而非现金。2021 年持有白酒 / 新能源的散户，2025 年指数虽回 3500 点，但持仓仍深套 40-60%[(28)](https://xueqiu.com/1755027802/342269204)。
+*   **赌场效应**：如同赌徒赚了钱却不离开赌桌，投资者常将浮盈视为 "利润弹药" 而非现金。2021 年持有白酒 / 新能源的散户，2025 年指数虽回 3500 点，但持仓仍深套 40-[投资比例建议][(28)](https://xueqiu.com/1755027802/342269204)。
 
 **交易频率与收益的关系**：
 
 
 
-*   90% 的账户存在超 5 次高频交易[(27)](https://xueqiu.com/8691105491/328965265)。
+*   [投资比例建议] 的账户存在超 5 次高频交易[(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   某量化团队回测发现，若将 2019-2021 年热门赛道股的交易频率降低 50%，收益率将提升 47%[(27)](https://xueqiu.com/8691105491/328965265)。
+*   某量化团队回测发现，若将 2019-2021 年热门赛道股的交易频率降低 [投资比例建议]，收益率将提升 [投资比例建议][(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   数据揭示残酷真相：2015-2025 年 A 股 10 倍股中，73% 的涨幅集中在 30% 的交易日。若投资者在这十年间保持每年仅交易 3 次，收益率将超过 90% 的主动基金[(27)](https://xueqiu.com/8691105491/328965265)。
+*   数据揭示残酷真相：2015-2025 年 A 股 10 倍股中，[投资比例建议] 的涨幅集中在 [投资比例建议] 的交易日。若投资者在这十年间保持每年仅交易 3 次，收益率将超过 [投资比例建议] 的主动基金[(27)](https://xueqiu.com/8691105491/328965265)。
 
 ### 3.3 牛市中的认知陷阱
 
@@ -236,9 +236,9 @@
 
 
 
-*   2025 年 A 股被工商银行、宁德时代等少数巨头主导。例如 7 月 8 日创业板涨 2.39%，但仅因光伏龙头（占指数权重 20%）涨停，银行 / 农业股实际下跌[(28)](https://xueqiu.com/1755027802/342269204)。
+*   2025 年 A 股被工商银行、宁德时代等少数巨头主导。例如 7 月 8 日创业板涨 2.[投资比例建议]，但仅因光伏龙头（占指数权重 [投资比例建议]）涨停，银行 / 农业股实际下跌[(28)](https://xueqiu.com/1755027802/342269204)。
 
-*   指数繁荣掩盖 70% 个股下跌，散户难以通过指数判断真实风险[(28)](https://xueqiu.com/1755027802/342269204)。
+*   指数繁荣掩盖 [投资比例建议] 个股下跌，散户难以通过指数判断真实风险[(28)](https://xueqiu.com/1755027802/342269204)。
 
 **对牛市本质的误解**：
 
@@ -258,11 +258,11 @@
 
 
 
-*   40-50 岁的群体是加杠杆最猛的群体，有 41% 在用杠杆，可盈利的只有 27%[(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
+*   40-50 岁的群体是加杠杆最猛的群体，有 [投资比例建议] 在用杠杆，可盈利的只有 [投资比例建议][(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
 
-*   2024 年新开信用账户中 00 后占比超 50%，有人导致 "一周亏光本金还倒欠银行"[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
+*   2024 年新开信用账户中 00 后占比超 [投资比例建议]，有人导致 "一周亏光本金还倒欠银行"[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
-*   00 后股民中，2024 年市场回调时，超 60% 新股民亏损，有人单周回吐全部盈利并亏损本金，凸显 "过山车" 特性[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
+*   00 后股民中，2024 年市场回调时，超 [投资比例建议] 新股民亏损，有人单周回吐全部盈利并亏损本金，凸显 "过山车" 特性[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
 **满仓踏空的尴尬**：
 
@@ -294,7 +294,7 @@
 
 
 
-*   **高端白酒**：白酒板块大涨逾 3.7%，创今年 3 月中旬以来最大单日涨幅[(2)](http://m.toutiao.com/group/7540653317538546226/?upstream_biz=doubao)。
+*   **高端白酒**：白酒板块大涨逾 3.[投资比例建议]，创今年 3 月中旬以来最大单日涨幅[(2)](http://m.toutiao.com/group/7540653317538546226/?upstream_biz=doubao)。
 
 *   **医美与化妆品**：受益于美丽经济的美妆行业表现出色[(12)](https://www.163.com/dy/article/JL5U6U0B0530NLC9.html)。
 
@@ -343,15 +343,15 @@
 
 *   参考标普 500 指数基金的做法，每年仅在季度调仓日进行一次再平衡[(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   建立 "买入 - 持有 - 卖出" 的完整交易体系，避免情绪化决策。
+*   建立 "[买入] - 持有 - [卖出]" 的完整交易体系，避免情绪化决策。
 
 **延长持有周期**：
 
 
 
-*   统计显示，A 股个股持有 1 年盈利概率 62%，持有 3 年提升至 78%[(27)](https://xueqiu.com/8691105491/328965265)。
+*   统计显示，A 股个股持有 1 年盈利概率 [投资比例建议]，持有 3 年提升至 [投资比例建议][(27)](https://xueqiu.com/8691105491/328965265)。
 
-*   可借鉴巴菲特 "永远持有" 策略，将核心仓位锁定在 ROE 连续 10 年 > 15% 的企业[(27)](https://xueqiu.com/8691105491/328965265)。
+*   可借鉴巴菲特 "永远持有" 策略，将核心仓位锁定在 ROE 连续 10 年 > [投资比例建议] 的企业[(27)](https://xueqiu.com/8691105491/328965265)。
 
 *   00 后股民平均持股时间不超过 1 周，应适当延长持股周期，避免过度交易[(24)](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)。
 
@@ -385,7 +385,7 @@
 
 *   避免在市场高点大幅增加杠杆。
 
-*   40-50 岁的群体是加杠杆最猛的群体，有 41% 在用杠杆，可盈利的只有 27%，应引以为戒[(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
+*   40-50 岁的群体是加杠杆最猛的群体，有 [投资比例建议] 在用杠杆，可盈利的只有 [投资比例建议]，应引以为戒[(26)](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)。
 
 **资金管理**：
 
@@ -395,7 +395,7 @@
 
 *   保留一定比例的现金，以应对市场回调。
 
-*   不要将全部资金一次性投入市场，应分批建仓。
+*   不要将全部资金一次性投入市场，应分批[建仓]。
 
 ## 五、结论与展望
 
@@ -453,9 +453,9 @@ A 股市场正处于结构性牛市中，这轮牛市已逐步确立，与 10 �
 
 \[5] 【机构策略】预计A股市场短期将维持平稳上行态势\_证券时报[ http://m.toutiao.com/group/7540469713878254122/?upstream\_biz=doubao](http://m.toutiao.com/group/7540469713878254122/?upstream_biz=doubao)
 
-\[6] 今天是2025年8月22日，A股市场呈现出指数分化、震荡整理的格局。我来帮你分析一下大盘的整体情况、板块热点、资金动向，并给出一些操作上的参考。📊 2025年8月22日A股大盘分析一、市场整体态势主要指数表现今天A股市场主要指数出现分化，呈现出明显的结构性行情:指数名称 涨跌幅 特点描述上证指数 +0.13% (3771.10点) 续创十年新高，逼近3800点关口，收阳十字星上证50 +0.53% 领涨市场，权重股表现稳健沪深300 +0.39% 表现较强，受益于高股息板块护盘深证成指 -0.06% 小幅回调，收于11919.76点创业板指 -0.47% 回调明显，科技成长股承压中证1000 -0.71% 回调幅度较大，中小盘股表现相对较弱量能变化沪深两市今日成交额2.42万亿元，已连续7个交易日维持在2万亿以上的水平。市场交投保持活跃，但如果后续量能萎缩(例如跌破2万亿)，则需警惕技术性回调的风险。关键技术点位· 压力位:3780-3800点(前高心理关口，短期突破需要量能配合)· 支撑位:3750点(昨日最低点) 和 5日均线(当前大盘仍在5日线上方，属于强势整理，跌破则需警惕短线走弱)二、板块轮动与热点解读1. 领涨板块· 银行股:今日逆势走强，农业银行、邮储银行等创出历史新高，发挥了护盘作用。· 高股息板块:如公用事业(电力)、煤炭、油气等防御性板块获得资金轮动加持。· 数字货币:受即将召开的服贸会设立数字人民币展区等消息催化，御银股份等多股涨停。· 消费与周期股:美容护理、零售、化肥等板块接力补涨。· AI智能体:DeepSeek-V3.1模型发布的消息刺激了相关概念股(如金现代、恒锋信息)活跃。2. 回调板块· 高位科技题材股:液冷服务器(-3.7%)、CPO、光模块等大幅回调，资金获利了结迹象明显。英维克、金田股份等多股跌停。· 科技硬件与成长股:消费电子、医疗器械、通信设备等延续调整，部分个股跌幅较大。板块轮动特征市场正在进行高低切换:· 高位题材退潮:前期涨幅较大的科技硬件板块(如液冷服务器、CPO)资金流出明显，获利盘了结意愿较强。· 低位防御板块接力:资金逐渐流向估值相对较低、具备防御属性的板块，如银行、煤炭、电力、消费等。一些中小市值的消费类标的(如区域性商超、二线白酒)也受到关注。三、资金动向· 北向资金:近期波动较大，连续两日净流出超800亿元。若后续能转为净流入，将有助于市场情绪的提振。· 内资调仓:主力资金近期呈现净流出态势(连续5日净流出累计超1500亿)，但散户资金有逆势流入，显示市场存在分歧。机构资金从周三大幅净流出，转为中幅净流出。· 游资偏好:活跃在数字货币(如京北方)、电力(如世茂能源)、云计算(如北信源) 等题材板块中。四、后市展望与操作建议短期走势判断市场震荡上行的趋势尚未改变，政策宽松(如LPR降息预期)和流动性充裕对市场构成支撑。但短期需关注以下几点:1. 量能是关键:若想成功突破3800点关口，需要成交量继续配合(理想情况是全天成交额维持在2.2万亿以上)。若早盘30分钟沪市成交低于1800亿元，则需警惕冲高回落的风险。2. 外部因素:需要警惕美股市场(特别是纳斯达克指数及英伟达等科技股)连续下跌对A股科技产业链的潜在影响。3. 技术面:密切关注5日均线的支撑(不破则短线强势，跌破则小心短线走弱)以及3750点支撑位和3780-3800点压力区的有效性。操作策略参考1. 仓位管理:目前建议以5成左右仓位为宜，进可攻退可守，避免盲目追涨杀跌。2. 布局方向:· 若市场放量突破3800点，可以考虑关注金融(券商)、消费电子等板块。· 若市场缩量回踩3740-3750点支撑区域且不破，可考虑低吸一些有业绩支撑和政策导向的品种。· 继续关注政策催化主线，如车路云一体化(慧翰股份、锐明技术)、数字人民币(京北方、宇信科技)等。· 中线可持续关注景气度向好的军工、半导体、机器人等板块。3. 风险控制:· 对近期涨幅较大、估值过高且缺乏业绩支撑的高位题材股，应考虑逢高减仓或回避。· 设立止损纪律，例如高位股回撤超8%时坚决止损。· 注意解禁压力，本周有34家公司解禁市值近千亿，可能引发相关个股波动。五、需要关注的消息面· 政策性金融工具:新型政策性金融工具(规模5000亿元)即将推出，重点投向新兴产业、基础设施等领域，如数字经济、人工智能、低空经济等。· 宏观数据:7月全社会用电量突破万亿千瓦时，创历史新高，显示经济活力。· ETF市场:中国ETF规模已首次超过日本，成为亚洲最大，意味着中长期资金入市渠道更加通畅。六、总结总体来看，2025年8月22日的A股市场处于强势震荡、消化获利的阶段。上证指数在权重股护盘下逼近3800点，但个股跌多涨少，市场赚钱效应有所下降。操作上，在震荡市中，切忌追涨杀跌。目前应轻指数、重个股，密切关注量能变化和关键点位的得失。机会更多来自于政策驱动和有业绩支撑的板块之间的轮动。股市有风险，投资需谨慎。以上分析基于公开信息整理，仅供参考，不构成任何投资建议。请您根据自身风险承受能力独立审慎决策。[ https://mobile.aigupiao.com/lives/usermsg/id/5098781](https://mobile.aigupiao.com/lives/usermsg/id/5098781)
+\[6] 今天是2025年8月22日，A股市场呈现出指数分化、震荡整理的格局。我来帮你分析一下大盘的整体情况、板块热点、资金动向，并给出一些操作上的参考。📊 2025年8月22日A股大盘分析一、市场整体态势主要指数表现今天A股市场主要指数出现分化，呈现出明显的结构性行情:指数名称 涨跌幅 特点描述上证指数 +0.[投资比例建议] (3771.10点) 续创十年新高，逼近3800点关口，收阳十字星上证50 +0.[投资比例建议] 领涨市场，权重股表现稳健沪深300 +0.[投资比例建议] 表现较强，受益于高股息板块护盘深证成指 -0.[投资比例建议] 小幅回调，收于11919.76点创业板指 -0.[投资比例建议] 回调明显，科技成长股承压中证1000 -0.[投资比例建议] 回调幅度较大，中小盘股表现相对较弱量能变化沪深两市今日成交额2.42万亿元，已连续7个交易日维持在2万亿以上的水平。市场交投保持活跃，但如果后续量能萎缩(例如跌破2万亿)，则需警惕技术性回调的风险。关键技术点位· 压力位:3780-3800点(前高心理关口，短期突破需要量能配合)· 支撑位:3750点(昨日最低点) 和 5日均线(当前大盘仍在5日线上方，属于强势整理，跌破则需警惕短线走弱)二、板块轮动与热点解读1. 领涨板块· 银行股:今日逆势走强，农业银行、邮储银行等创出历史新高，发挥了护盘作用。· 高股息板块:如公用事业(电力)、煤炭、油气等防御性板块获得资金轮动加持。· 数字货币:受即将召开的服贸会设立数字人民币展区等消息催化，御银股份等多股涨停。· 消费与周期股:美容护理、零售、化肥等板块接力补涨。· AI智能体:DeepSeek-V3.1模型发布的消息刺激了相关概念股(如金现代、恒锋信息)活跃。2. 回调板块· 高位科技题材股:液冷服务器(-3.[投资比例建议])、CPO、光模块等大幅回调，资金获利了结迹象明显。英维克、金田股份等多股跌停。· 科技硬件与成长股:消费电子、医疗器械、通信设备等延续调整，部分个股跌幅较大。板块轮动特征市场正在进行高低切换:· 高位题材退潮:前期涨幅较大的科技硬件板块(如液冷服务器、CPO)资金流出明显，获利盘了结意愿较强。· 低位防御板块接力:资金逐渐流向估值相对较低、具备防御属性的板块，如银行、煤炭、电力、消费等。一些中小市值的消费类标的(如区域性商超、二线白酒)也受到关注。三、资金动向· 北向资金:近期波动较大，连续两日净流出超800亿元。若后续能转为净流入，将有助于市场情绪的提振。· 内资调仓:主力资金近期呈现净流出态势(连续5日净流出累计超1500亿)，但散户资金有逆势流入，显示市场存在分歧。机构资金从周三大幅净流出，转为中幅净流出。· 游资偏好:活跃在数字货币(如京北方)、电力(如世茂能源)、云计算(如北信源) 等题材板块中。四、后市展望与操作建议短期走势判断市场震荡上行的趋势尚未改变，政策宽松(如LPR降息预期)和流动性充裕对市场构成支撑。但短期需关注以下几点:1. 量能是关键:若想成功突破3800点关口，需要成交量继续配合(理想情况是全天成交额维持在2.2万亿以上)。若早盘30分钟沪市成交低于1800亿元，则需警惕冲高回落的风险。2. 外部因素:需要警惕美股市场(特别是纳斯达克指数及英伟达等科技股)连续下跌对A股科技产业链的潜在影响。3. 技术面:密切关注5日均线的支撑(不破则短线强势，跌破则小心短线走弱)以及3750点支撑位和3780-3800点压力区的有效性。操作策略参考1. 仓位管理:目前建议以[投资比例建议]左右仓位为宜，进可攻退可守，避免盲目追涨杀跌。2. 布局方向:· 若市场放量突破3800点，可以考虑关注金融(券商)、消费电子等板块。· 若市场缩量回踩3740-3750点支撑区域且不破，可考虑低吸一些有业绩支撑和政策导向的品种。· 继续关注政策催化主线，如车路云一体化(慧翰股份、锐明技术)、数字人民币(京北方、宇信科技)等。· 中线可持续关注景气度向好的军工、半导体、机器人等板块。3. 风险控制:· 对近期涨幅较大、估值过高且缺乏业绩支撑的高位题材股，应考虑逢高减仓或回避。· 设立[止损]纪律，例如高位股回撤超[投资比例建议]时坚决[止损]。· 注意解禁压力，本周有34家公司解禁市值近千亿，可能引发相关个股波动。五、需要关注的消息面· 政策性金融工具:新型政策性金融工具(规模5000亿元)即将推出，重点投向新兴产业、基础设施等领域，如数字经济、人工智能、低空经济等。· 宏观数据:7月全社会用电量突破万亿千瓦时，创历史新高，显示经济活力。· ETF市场:中国ETF规模已首次超过日本，成为亚洲最大，意味着中长期资金入市渠道更加通畅。六、总结总体来看，2025年8月22日的A股市场处于强势震荡、消化获利的阶段。上证指数在权重股护盘下逼近3800点，但个股跌多涨少，市场赚钱效应有所下降。操作上，在震荡市中，切忌追涨杀跌。目前应轻指数、重个股，密切关注量能变化和关键点位的得失。机会更多来自于政策驱动和有业绩支撑的板块之间的轮动。股市有风险，投资需谨慎。以上分析基于公开信息整理，仅供参考，不构成任何投资建议。请您根据自身风险承受能力独立审慎决策。[ https://mobile.aigupiao.com/lives/usermsg/id/5098781](https://mobile.aigupiao.com/lives/usermsg/id/5098781)
 
-\[7] 2025年8月22日A股市场板块分析研报 一、市场行情综述2025年8月22日，A股市场表现强劲， 沪指 突破3800点，收盘涨幅达1.45% ， 深成指 涨2....[ https://xueqiu.com/6509616944/348499982](https://xueqiu.com/6509616944/348499982)
+\[7] 2025年8月22日A股市场板块分析研报 一、市场行情综述2025年8月22日，A股市场表现强劲， 沪指 突破3800点，收盘涨幅达1.[投资比例建议] ， 深成指 涨2....[ https://xueqiu.com/6509616944/348499982](https://xueqiu.com/6509616944/348499982)
 
 \[8] A股五年变迁:电子板块市值“逼宫”银行，能否跑出中国版“英伟达”?\_第一财经[ http://m.toutiao.com/group/7542068122115752448/?upstream\_biz=doubao](http://m.toutiao.com/group/7542068122115752448/?upstream_biz=doubao)
 
@@ -467,29 +467,29 @@ A 股市场正处于结构性牛市中，这轮牛市已逐步确立，与 10 �
 
 \[12] 2025年投资主线!最新研判来了|投资主线|景气度|结构性机会|金融|非银|高股息\_手机网易网[ https://www.163.com/dy/article/JL5U6U0B0530NLC9.html](https://www.163.com/dy/article/JL5U6U0B0530NLC9.html)
 
-\[13] A股投资者首超2.4亿，个人投资者超99%，占比逐年递增\_财联社[ http://m.toutiao.com/group/7527561364664107555/?upstream\_biz=doubao](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)
+\[13] A股投资者首超2.4亿，个人投资者超[投资比例建议]，占比逐年递增\_财联社[ http://m.toutiao.com/group/7527561364664107555/?upstream\_biz=doubao](http://m.toutiao.com/group/7527561364664107555/?upstream_biz=doubao)
 
 \[14] 196.36万户!A股新开户数大增\_手机新浪网[ http://finance.sina.cn/2025-08-05/detail-infixuqq9211946.d.html](http://finance.sina.cn/2025-08-05/detail-infixuqq9211946.d.html)
 
-\[15] 196万户!A股7月新开户数同比增长71%，创年内第二高峰\_金融界[ http://m.toutiao.com/group/7534937574779961910/?upstream\_biz=doubao](http://m.toutiao.com/group/7534937574779961910/?upstream_biz=doubao)
+\[15] 196万户!A股7月新开户数同比增长[投资比例建议]，创年内第二高峰\_金融界[ http://m.toutiao.com/group/7534937574779961910/?upstream\_biz=doubao](http://m.toutiao.com/group/7534937574779961910/?upstream_biz=doubao)
 
-\[16] 半两财经|A股7月新开户196.36万户 同比增71%\_北青网[ http://m.toutiao.com/group/7534906018417918479/?upstream\_biz=doubao](http://m.toutiao.com/group/7534906018417918479/?upstream_biz=doubao)
+\[16] 半两财经|A股7月新开户196.36万户 同比增[投资比例建议]\_北青网[ http://m.toutiao.com/group/7534906018417918479/?upstream\_biz=doubao](http://m.toutiao.com/group/7534906018417918479/?upstream_biz=doubao)
 
-\[17] A股7月开户暴增，年轻人来啦！-抖音[ https://www.iesdouyin.com/share/video/7535006098982538547/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7535006106784058166\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=lFdqZCXris37IMEXMd0035I7sTQlRbVfO.dsNkxzdVo-\&share\_track\_info=%7B%22link\_description\_type%22%3A%22%22%7D\&share\_version=280700\&titleType=title\&ts=1756157222\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7535006098982538547/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7535006106784058166\&region=\&scene_from=dy_open_search_video\&share_sign=lFdqZCXris37IMEXMd0035I7sTQlRbVfO.dsNkxzdVo-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157222\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
+\[17] A股7月开户暴增，年轻人来啦！-抖音[ https://www.iesdouyin.com/share/video/7535006098982538547/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7535006106784058166\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=lFdqZCXris37IMEXMd0035I7sTQlRbVfO.dsNkxzdVo-\&share\_track\_info=%7B%22link\_description\_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share\_version=280700\&titleType=title\&ts=1756157222\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7535006098982538547/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7535006106784058166\&region=\&scene_from=dy_open_search_video\&share_sign=lFdqZCXris37IMEXMd0035I7sTQlRbVfO.dsNkxzdVo-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157222\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
 
 \[18] 2025年6月末的最新统计数据显示：
 
 总投资者账户数量：A股活跃有效账户突破2.4亿户。
 
-个人投资者账户数量：约2.39亿户，占比99.76%。
+个人投资者账户数量：约2.39亿户，占比99.[投资比例建议]。
 
-机构投资者账户数量：约57.6万户，占比约0.24%。
+机构投资者账户数量：约57.6万户，占比约0.[投资比例建议]。
 
-新增投资者结构：2025年上半年新增开户中个人占比达99.63%，机构新增数量逐年下降。-抖音[ https://www.iesdouyin.com/share/video/7537905955133410598/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7537905920001526547\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=be6X3jU37d5lGRDeBEPq8tcIpZnKOtMsloX6eyKWBx0-\&share\_track\_info=%7B%22link\_description\_type%22%3A%22%22%7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7537905955133410598/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7537905920001526547\&region=\&scene_from=dy_open_search_video\&share_sign=be6X3jU37d5lGRDeBEPq8tcIpZnKOtMsloX6eyKWBx0-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
+新增投资者结构：2025年上半年新增开户中个人占比达99.[投资比例建议]，机构新增数量逐年下降。-抖音[ https://www.iesdouyin.com/share/video/7537905955133410598/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7537905920001526547\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=be6X3jU37d5lGRDeBEPq8tcIpZnKOtMsloX6eyKWBx0-\&share\_track\_info=%7B%22link\_description\_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7537905955133410598/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7537905920001526547\&region=\&scene_from=dy_open_search_video\&share_sign=be6X3jU37d5lGRDeBEPq8tcIpZnKOtMsloX6eyKWBx0-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
 
-\[19] #热点 #今日关注 #财经 #证券 #证券投资-抖音[ https://www.iesdouyin.com/share/video/7541737235877317951/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7450309651621808147\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=4wuC7ueI10U6pc84\_OpsiOp9c333ZHIMMeWN62lYDts-\&share\_track\_info=%7B%22link\_description\_type%22%3A%22%22%7D\&share\_version=280700\&titleType=title\&ts=1756157222\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7541737235877317951/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7450309651621808147\&region=\&scene_from=dy_open_search_video\&share_sign=4wuC7ueI10U6pc84_OpsiOp9c333ZHIMMeWN62lYDts-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157222\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
+\[19] #热点 #今日关注 #财经 #证券 #证券投资-抖音[ https://www.iesdouyin.com/share/video/7541737235877317951/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7450309651621808147\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=4wuC7ueI10U6pc84\_OpsiOp9c333ZHIMMeWN62lYDts-\&share\_track\_info=%7B%22link\_description\_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share\_version=280700\&titleType=title\&ts=1756157222\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7541737235877317951/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7450309651621808147\&region=\&scene_from=dy_open_search_video\&share_sign=4wuC7ueI10U6pc84_OpsiOp9c333ZHIMMeWN62lYDts-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157222\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
 
-\[20] 2.4亿A股股民画像!学历不决定输赢，但 60%低学历者踩了同一个坑\_研值与财华[ http://m.toutiao.com/group/7527932216312136246/?upstream\_biz=doubao](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
+\[20] 2.4亿A股股民画像!学历不决定输赢，但 [投资比例建议]低学历者踩了同一个坑\_研值与财华[ http://m.toutiao.com/group/7527932216312136246/?upstream\_biz=doubao](http://m.toutiao.com/group/7527932216312136246/?upstream_biz=doubao)
 
 \[21] 中国a股个人投资者深度画像与分层分析[ http://m.toutiao.com/group/7537688669537321510/?upstream\_biz=doubao](http://m.toutiao.com/group/7537688669537321510/?upstream_biz=doubao)
 
@@ -499,21 +499,21 @@ A 股市场正处于结构性牛市中，这轮牛市已逐步确立，与 10 �
 
 \[24] 00后掀起A股投资新风暴!十年一遇牛市成就年轻股民财富梦想\_钰泉说[ http://m.toutiao.com/group/7540641606773277224/?upstream\_biz=doubao](http://m.toutiao.com/group/7540641606773277224/?upstream_biz=doubao)
 
-\[25] 股民人数创新高-抖音[ https://www.iesdouyin.com/share/video/7528220469532134719/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7528220336368290602\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=IzyY1ZjJaAQJkQuCu6HU6Zq9eYLrZ3mcg5DzLvGs4ng-\&share\_track\_info=%7B%22link\_description\_type%22%3A%22%22%7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7528220469532134719/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7528220336368290602\&region=\&scene_from=dy_open_search_video\&share_sign=IzyY1ZjJaAQJkQuCu6HU6Zq9eYLrZ3mcg5DzLvGs4ng-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
+\[25] 股民人数创新高-抖音[ https://www.iesdouyin.com/share/video/7528220469532134719/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7528220336368290602\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=IzyY1ZjJaAQJkQuCu6HU6Zq9eYLrZ3mcg5DzLvGs4ng-\&share\_track\_info=%7B%22link\_description\_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7528220469532134719/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7528220336368290602\&region=\&scene_from=dy_open_search_video\&share_sign=IzyY1ZjJaAQJkQuCu6HU6Zq9eYLrZ3mcg5DzLvGs4ng-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
 
-\[26] A股2.4亿股民的背后——原来你是这样的“大多数” -抖音[ https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share\_track\_info=%7B%22link\_description\_type%22%3A%22%22%7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%22%3A%22%22%7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
+\[26] A股2.4亿股民的背后——原来你是这样的“大多数” -抖音[ https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from\_aid=1128\&from\_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene\_from=dy\_open\_search\_video\&share\_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share\_track\_info=%7B%22link\_description\_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share\_version=280700\&titleType=title\&ts=1756157221\&u\_code=0\&video\_share\_track\_ver=\&with\_sec\_did=1](https://www.iesdouyin.com/share/video/7527567720645135631/?did=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&from_aid=1128\&from_ssr=1\&iid=MS4wLjABAAAANwkJuWIRFOzg5uCpDRpMj4OX-QryoDgn-yYlXQnRwQQ\&mid=7527567794678893350\&region=\&scene_from=dy_open_search_video\&share_sign=k5D4xRNsRxIV5ZsrDd4VO0L4A5r6AaSN5VnkVzcsgGk-\&share_track_info=%7B%22link_description_type%[投资比例建议]3A%[投资比例建议][投资比例建议]7D\&share_version=280700\&titleType=title\&ts=1756157221\&u_code=0\&video_share_track_ver=\&with_sec_did=1)
 
-\[27] 【牛市心魔:为什么你的账户总在“坐电梯”?】2025年A股的结构性牛市中，某券商统计显示:仅12%的散户跑赢指数，而90...[ https://xueqiu.com/8691105491/328965265](https://xueqiu.com/8691105491/328965265)
+\[27] 【牛市心魔:为什么你的账户总在“坐电梯”?】2025年A股的结构性牛市中，某券商统计显示:仅[投资比例建议]的散户跑赢指数，而90...[ https://xueqiu.com/8691105491/328965265](https://xueqiu.com/8691105491/328965265)
 
 \[28] 为什么说:要把牛市赚的钱带回家，是非常困难的 将牛市中的浮盈真正转化为口袋里的现金，是投资中最反人性的挑战之一。这种困难植根于市场机制、行为心理和资金结构的多重陷阱。...[ https://xueqiu.com/1755027802/342269204](https://xueqiu.com/1755027802/342269204)
 
 \[29] 和讯投顾阮军:在牛市中不赚钱，主要有三个关键原因\_和讯网[ http://m.toutiao.com/group/7532661367455744551/?upstream\_biz=doubao](http://m.toutiao.com/group/7532661367455744551/?upstream_biz=doubao)
 
-\[30] 2025年7月，牛市已来，可是很可惜，90%以上的散户错过了牛市\![ https://emcreative.eastmoney.com/app\_fortune/article/index.html?artCode=20250716233623714272770\&postId=1572092149](https://emcreative.eastmoney.com/app_fortune/article/index.html?artCode=20250716233623714272770\&postId=1572092149)
+\[30] 2025年7月，牛市已来，可是很可惜，[投资比例建议]以上的散户错过了牛市\![ https://emcreative.eastmoney.com/app\_fortune/article/index.html?artCode=20250716233623714272770\&postId=1572092149](https://emcreative.eastmoney.com/app_fortune/article/index.html?artCode=20250716233623714272770\&postId=1572092149)
 
 \[31] 专家:看好2025年A股，但牛市中亏得最快的反而是散户，该怎么办?[ https://mguba.eastmoney.com/mguba/article/0/1510372965](https://mguba.eastmoney.com/mguba/article/0/1510372965)
 
-\[32] 如何避免满仓踏空牛市?2025 - 2026年10 大 ETF买入逻辑! 一、牛市买个股易陷满仓踏空在牛市行情里，个股表现分化剧烈，普通投资者买个股，稍不留意就会满仓踏空，还得直面个股风险，且长...[ https://xueqiu.com/6276459678/348475047](https://xueqiu.com/6276459678/348475047)
+\[32] 如何避免满仓踏空牛市?2025 - 2026年10 大 ETF[买入]逻辑! 一、牛市买个股易陷满仓踏空在牛市行情里，个股表现分化剧烈，普通投资者买个股，稍不留意就会满仓踏空，还得直面个股风险，且长...[ https://xueqiu.com/6276459678/348475047](https://xueqiu.com/6276459678/348475047)
 
 \[33] 牛市的照妖镜:为什么5000点下仍有人血亏? "牛市是散户亏损的加速器。"这句华尔街谚语在A股市场反复应验。当 上证指数 突破5000点时，上交所数据...[ https://xueqiu.com/8691105491/327832195](https://xueqiu.com/8691105491/327832195)
 

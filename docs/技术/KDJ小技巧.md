@@ -20,11 +20,11 @@
 
 ## 实战应用技巧
 
-### 卖出时机判断
+### [卖出]时机判断
 
 以股票代码<span class="data-number">000636</span>为例，观察到每次KDJ达到<span class="data-number">80</span>的临界点时，股价通常会出现下跌。
 
-### 买入时机选择
+### [买入]时机选择
 
 - 选择KDJ在<span class="data-number">50</span>附近的股票
 - 确保尚未到达<span class="data-number">80</span>超买区
@@ -32,8 +32,8 @@
 - 在<span class="data-number">50</span>附近介入，短期获利<span class="data-number">2</span>-<span class="data-number">5</span>个点的概率较大
 
 ### 操作原则
-- 当KDJ超过<span class="data-number">80</span>时，考虑卖出
-- 当KDJ在<span class="data-number">80</span>以下时，可以继续持有或买入
+- 当KDJ超过<span class="data-number">80</span>时，考虑[卖出]
+- 当KDJ在<span class="data-number">80</span>以下时，可以继续持有或[买入]
 - 此方法特别适合短线操作
 
 ## 指标特性与局限性
@@ -61,8 +61,8 @@ KDJ指标是一种稳健的操作参考工具：
 
 ![股票代码000636的KDJ走势](images/image_2b3df211.png)
 
-![KDJ买入信号示例](images/image_71322d32.png)
+![KDJ[买入信号]示例](images/image_71322d32.png)
 
-![KDJ卖出信号示例](images/image_2a83d8d0.png)
+![KDJ[卖出]信号示例](images/image_2a83d8d0.png)
 
 ![KDJ指标综合应用](images/image_d29a23c7.png)
