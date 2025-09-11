@@ -19,6 +19,8 @@
   <a href="https://app.shanjian.tv/" target="_blank">闪剪AI</a>
   <span>|</span>
   <a href="http://www.12tool.com/" target="_blank">在线微信对话生成器</a>
+  <span>|</span>
+  <a href="https://drgphlxsfa.feishu.cn/wiki/GeuMwglQdi65BbkclgLcBUCFnRf" target="_blank">飞书知识库文档</a>
 </div>
 
 <!-- 自定义封面样式 -->
