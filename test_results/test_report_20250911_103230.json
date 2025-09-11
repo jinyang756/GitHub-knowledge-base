@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-09-11 10:30:14",
+  "success_count": 7,
+  "fail_count": 0,
+  "details": [
+    {
+      "name": "上证指数",
+      "code": "sh000001",
+      "type": "index",
+      "status": "成功",
+      "response_time_ms": 10387.733936309814
+    },
+    {
+      "name": "深证成指",
+      "code": "sz399001",
+      "type": "index",
+      "status": "成功",
+      "response_time_ms": 8579.226016998291
+    },
+    {
+      "name": "创业板指",
+      "code": "sz399006",
+      "type": "index",
+      "status": "成功",
+      "response_time_ms": 10048.574924468994
+    },
+    {
+      "name": "浦发银行",
+      "code": "600000",
+      "type": "stock",
+      "status": "成功",
+      "response_time_ms": 16853.27696800232
+    },
+    {
+      "name": "贵州茅台",
+      "code": "600519",
+      "type": "stock",
+      "status": "成功",
+      "response_time_ms": 14824.70726966858
+    },
+    {
+      "name": "宁德时代",
+      "code": "300750",
+      "type": "stock",
+      "status": "成功",
+      "response_time_ms": 12178.120374679565
+    },
+    {
+      "name": "市场概览",
+      "type": "overview",
+      "status": "成功",
+      "response_time_ms": 50740.36884307861
+    }
+  ]
+}

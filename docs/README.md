@@ -1,6 +1,6 @@
 # 金融知识库 - 极光风格 · 策略驱动 · 自动化联动
 
-<!-- 搜索框 - 放置在页面标题下方 -->
+## 🔍 全局搜索
 <div class="search-section">
   <div class="search-container">
     <div class="search-wrapper">
@@ -12,9 +12,81 @@
   </div>
 </div>
 
+## 📊 知识库概览
+
 欢迎来到金融知识库，这是一个为投资者、分析师和金融专业人士打造的结构化、可联动、可自动化的金融策略知识平台。我们整合行业优质资源，致力于提供最新、最全面的金融市场资讯、深度行业分析、专业投资策略和风险管理方案，助力您做出更明智的投资决策。
 
 本知识库采用现代Web技术构建，融合了先进的视觉设计理念和用户体验优化，为您提供卓越的浏览和学习体验。我们将持续更新和扩充内容，确保您能够及时获取最有价值的金融知识和市场洞见。
+
+## 🚀 核心优势
+
+<div class="feature-grid">
+  <div class="feature-card">
+    <h3>🔄 自动化联动</h3>
+    <p>与实盘交易分析系统无缝对接，实现知识与实践的自动化联动</p>
+  </div>
+  <div class="feature-card">
+    <h3>📈 实时市场分析</h3>
+    <p>每日更新金融市场分析报告，及时把握市场动态和投资机会</p>
+  </div>
+  <div class="feature-card">
+    <h3>🧠 AI赋能</h3>
+    <p>整合先进AI技术，提供智能搜索、自动摘要和个性化推荐</p>
+  </div>
+  <div class="feature-card">
+    <h3>📚 结构化知识体系</h3>
+    <p>构建完整的金融知识图谱，实现知识的关联和体系化管理</p>
+  </div>
+</div>
+
+## 📊 知识库数据
+
+<div class="stats-container">
+  <div class="stat-item">
+    <span class="stat-number">1000+</span>
+    <span class="stat-label">专业研究报告</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">10+</span>
+    <span class="stat-label">日均更新内容</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">5000+</span>
+    <span class="stat-label">金融专业人士使用</span>
+  </div>
+</div>
+
+## 📚 知识库分类导航
+
+<div class="quick-navigation">
+  <h3>快速导航</h3>
+  <div class="nav-grid">
+    <a href="policy/README.md" class="nav-item">
+      <span class="nav-icon">📋</span>
+      <span class="nav-text">政策解读</span>
+    </a>
+    <a href="industry/README.md" class="nav-item">
+      <span class="nav-icon">🏭</span>
+      <span class="nav-text">行业分析</span>
+    </a>
+    <a href="strategy/README.md" class="nav-item">
+      <span class="nav-icon">📈</span>
+      <span class="nav-text">投资策略</span>
+    </a>
+    <a href="risk/README.md" class="nav-item">
+      <span class="nav-icon">⚠️</span>
+      <span class="nav-text">风险提示</span>
+    </a>
+    <a href="技术/README.md" class="nav-item">
+      <span class="nav-icon">🔧</span>
+      <span class="nav-text">技术分析</span>
+    </a>
+    <a href="AI宝藏库/README.md" class="nav-item">
+      <span class="nav-icon">🤖</span>
+      <span class="nav-text">AI宝藏库</span>
+    </a>
+  </div>
+</div>
 
 ## 关于本知识库
 

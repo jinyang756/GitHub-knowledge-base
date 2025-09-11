@@ -92,8 +92,8 @@ jobs:
         run: |
           set -x  # 启用详细输出
           # 配置Git用户信息
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global user.name 'GDragon19888..'
+          git config --global user.email 'guanyu432hz@gmail.com'
           
           # 详细的Git环境检查
           echo "=== Git环境详细检查 ==="
